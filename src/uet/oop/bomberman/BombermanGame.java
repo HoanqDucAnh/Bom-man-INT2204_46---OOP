@@ -90,6 +90,7 @@ public class BombermanGame extends Application {
                     object = new Grass(i, j, Sprite.grass.getFxImage());
                 }
                 stillObjects.add(object);
+                int a;
             }
         }
 
