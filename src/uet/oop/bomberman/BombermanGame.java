@@ -67,7 +67,7 @@ public class BombermanGame extends Application {
 
     public void createMap() throws IOException {
         File map = new File("F:\\Java stuff\\bomberman-starter\\res\\levels\\Map1.txt");
-        int bruh;
+        int a;
         Scanner scan = new Scanner(map);
         ArrayList<String> loadMap = new ArrayList<String>();
         while(scan.hasNextLine()){
