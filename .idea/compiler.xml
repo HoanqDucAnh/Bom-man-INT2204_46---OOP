@@ -6,11 +6,11 @@
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
-        <module name="GameJavaOOP" />
+        <module name="JavaGameOOP" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
-      <module name="GameJavaOOP" target="18" />
+      <module name="JavaGameOOP" target="18" />
     </bytecodeTargetLevel>
   </component>
 </project>
