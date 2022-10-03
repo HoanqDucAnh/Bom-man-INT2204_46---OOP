@@ -7,6 +7,8 @@ import javafx.scene.Group;
 import javafx.scene.Scene;
 import javafx.scene.canvas.Canvas;
 import javafx.scene.canvas.GraphicsContext;
+import javafx.scene.image.Image;
+import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
 import javafx.stage.Stage;
 import uet.oop.bomberman.entities.*;
@@ -14,12 +16,12 @@ import uet.oop.bomberman.graphics.Sprite;
 
 import java.io.File;
 import java.io.IOException;
+import java.security.Key;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 
 public class BombermanGame extends Application {
-    static String current_key = "stop";
     public static final int WIDTH = 25;
     public static final int HEIGHT = 20;
 
@@ -46,6 +48,8 @@ public class BombermanGame extends Application {
 
         // Tao scene
         Scene scene = new Scene(root);
+        final int[] counter = {0};
+
 
         // Them scene vao stage
         stage.setScene(scene);
@@ -61,43 +65,49 @@ public class BombermanGame extends Application {
         timer.start();
 
         createMap();
-
         Entity bomberman = new Bomber(1, 1, Sprite.player_right.getFxImage());
+
         entities.add(bomberman);
+
         scene.setOnKeyPressed(new EventHandler<KeyEvent>() {
             @Override
-            public void handle(KeyEvent event) {
-                int x = bomberman.getX();
-                int y = bomberman.getY();
-                switch (event.getCode()) {
-                    case A:
-                        x-=5;
-                        bomberman.setX(x);
-                        break;
-                    case W:
-                        y-=5;
-                        bomberman.setY(y);
-                        break;
-                    case S:
-                        y+=5;
-                        bomberman.setY(y);
-                        break;
-                    case D:
-                        x+=5;
-                        bomberman.setX(x);
-                        break;
-
-
+            public void handle(KeyEvent keyEvent) {
+                if (keyEvent.getCode() == KeyCode.A) {
+                    bomberman.setLeftPressed(true);
                 }
-
+                if (keyEvent.getCode() == KeyCode.W) {
+                    bomberman.setUpPressed(true);
+                }
+                if (keyEvent.getCode() == KeyCode.S) {
+                    bomberman.setDownPressed(true);
+                }
+                if (keyEvent.getCode() == KeyCode.D) {
+                    bomberman.setRightPressed(true);
+                }
+//
             }
         });
 
-
-
+        scene.setOnKeyReleased(new EventHandler<KeyEvent>() {
+            @Override
+            public void handle(KeyEvent keyEvent) {
+                if (keyEvent.getCode() == KeyCode.A) {
+                    bomberman.setLeftPressed(false);
+                }
+                if (keyEvent.getCode() == KeyCode.W) {
+                    bomberman.setUpPressed(false);
+                }
+                if (keyEvent.getCode() == KeyCode.S) {
+                    bomberman.setDownPressed(false);
+                }
+                if (keyEvent.getCode() == KeyCode.D) {
+                    bomberman.setRightPressed(false);
+                }
+//
+            }
+        });
+//
     }
-
-
 
 
     public void createMap() throws IOException {
