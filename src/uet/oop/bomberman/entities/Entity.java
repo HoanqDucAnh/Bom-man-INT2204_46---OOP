@@ -15,6 +15,14 @@ public abstract class Entity {
     public int spriteCounter = 0;
     public int spriteNum = 1;
 
+    public Image getImg() {
+        return img;
+    }
+
+    public void setImg(Image img) {
+        this.img = img;
+    }
+
     public boolean upPressed, downPressed, leftPressed, rightPressed;
 
     public void setUpPressed(boolean upPressed) {

@@ -93,15 +93,19 @@ public class BombermanGame extends Application {
             public void handle(KeyEvent keyEvent) {
                 if (keyEvent.getCode() == KeyCode.A) {
                     bomberman.setLeftPressed(false);
+                    bomberman.setImg(Sprite.player_left.getFxImage());
                 }
                 if (keyEvent.getCode() == KeyCode.W) {
                     bomberman.setUpPressed(false);
+                    bomberman.setImg(Sprite.player_up.getFxImage());
                 }
                 if (keyEvent.getCode() == KeyCode.S) {
                     bomberman.setDownPressed(false);
+                    bomberman.setImg(Sprite.player_down.getFxImage());
                 }
                 if (keyEvent.getCode() == KeyCode.D) {
                     bomberman.setRightPressed(false);
+                    bomberman.setImg(Sprite.player_right.getFxImage());
                 }
 //
             }

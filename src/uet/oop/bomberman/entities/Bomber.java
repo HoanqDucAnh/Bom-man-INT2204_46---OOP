@@ -61,54 +61,33 @@ public class Bomber extends Entity {
             }
 
             else if (spriteNum == 2) {
-                spriteNum = 3;
-            }
-
-            else if (spriteNum == 3) {
-                spriteNum = 4;
-            }
-
-            else if (spriteNum == 4) {
                 spriteNum = 1;
             }
             spriteCounter = 0;
         }
 
         if (upPressed) {
-            if (spriteNum == 1) {
-                this.img = up[0];
-            }
 
-            if (spriteNum == 2) {
+            if (spriteNum == 1) {
                 this.img = up[1];
             }
 
-            if (spriteNum == 3) {
+            if (spriteNum == 2) {
                 this.img = up[0];
             }
 
-            if (spriteNum == 4) {
-                this.img = up[2];
-            }
             y--;
 
         }
          else if (downPressed) {
             if (spriteNum == 1) {
-                this.img = down[0];
-            }
-
-            if (spriteNum == 2) {
                 this.img = down[1];
             }
 
-            if (spriteNum == 3) {
-                this.img = down[0];
-            }
-
-            if (spriteNum == 4) {
+            if (spriteNum == 2) {
                 this.img = down[2];
             }
+
 
             y++;
 
@@ -116,40 +95,26 @@ public class Bomber extends Entity {
 
         else if (leftPressed) {
             if (spriteNum == 1) {
-                this.img = left[0];
-            }
-
-            if (spriteNum == 2) {
                 this.img = left[1];
             }
 
-            if (spriteNum == 3) {
-                this.img = left[0];
-            }
-
-            if (spriteNum == 4) {
+            if (spriteNum == 2) {
                 this.img = left[2];
             }
+
             x--;
 
         }
 
         else if (rightPressed) {
             if (spriteNum == 1) {
-                this.img = right[2];
-            }
-
-            if (spriteNum == 2) {
-                this.img = right[0];
-            }
-
-            if (spriteNum == 3) {
                 this.img = right[1];
             }
 
-            if (spriteNum == 4) {
-                this.img = right[0];
+            if (spriteNum == 2) {
+                this.img = right[2];
             }
+
             x++;
         }
 
