@@ -13,6 +13,8 @@ import javafx.scene.input.KeyEvent;
 import javafx.stage.Stage;
 import uet.oop.bomberman.entities.*;
 import uet.oop.bomberman.graphics.Sprite;
+import uet.oop.bomberman.entities.block.Bomb;
+import uet.oop.bomberman.entities.block.Bomb;
 
 import java.io.File;
 import java.io.IOException;
@@ -30,6 +32,9 @@ public class BombermanGame extends Application {
     private List<Entity> entities = new ArrayList<>();
     private List<Entity> stillObjects = new ArrayList<>();
 
+    public static final List<Entity> block = new ArrayList<>();;
+
+    public static Entity bomberman;
 
     public static void main(String[] args) {
         Application.launch(BombermanGame.class);
@@ -65,8 +70,7 @@ public class BombermanGame extends Application {
         timer.start();
 
         createMap();
-        Entity bomberman = new Bomber(1, 1, Sprite.player_right.getFxImage());
-
+        bomberman = new Bomber(1, 1, Sprite.player_right.getFxImage());
         entities.add(bomberman);
 
         scene.setOnKeyPressed(new EventHandler<KeyEvent>() {
@@ -83,6 +87,9 @@ public class BombermanGame extends Application {
                 }
                 if (keyEvent.getCode() == KeyCode.D) {
                     bomberman.setRightPressed(true);
+                }
+                if (keyEvent.getCode() == KeyCode.SPACE) {
+                    ;Bomb.putBomb();
                 }
 //
             }
@@ -144,11 +151,13 @@ public class BombermanGame extends Application {
 
     public void update() {
         entities.forEach(Entity::update);
+        block.forEach(Entity::update);
     }
 
     public void render() {
         gc.clearRect(0, 0, canvas.getWidth(), canvas.getHeight());
         stillObjects.forEach(g -> g.render(gc));
         entities.forEach(g -> g.render(gc));
+        block.forEach(g->g.render(gc));
     }
 }
