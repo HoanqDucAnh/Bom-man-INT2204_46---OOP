@@ -76,7 +76,7 @@ public class Bomber extends Entity {
                 this.img = up[0];
             }
 
-            y--;
+            y-=speed;
 
         }
          else if (downPressed) {
@@ -89,7 +89,7 @@ public class Bomber extends Entity {
             }
 
 
-            y++;
+            y+=speed;
 
         }
 
@@ -102,7 +102,7 @@ public class Bomber extends Entity {
                 this.img = left[2];
             }
 
-            x--;
+            x-=speed;
 
         }
 
@@ -115,7 +115,7 @@ public class Bomber extends Entity {
                 this.img = right[2];
             }
 
-            x++;
+            x+=speed;
         }
 
     }
