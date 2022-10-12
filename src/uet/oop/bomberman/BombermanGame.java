@@ -12,6 +12,7 @@ import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
 import javafx.stage.Stage;
 import uet.oop.bomberman.entities.*;
+import uet.oop.bomberman.graphics.Map;
 import uet.oop.bomberman.graphics.Sprite;
 import uet.oop.bomberman.entities.block.Bomb;
 import uet.oop.bomberman.entities.block.Bomb;
@@ -27,10 +28,14 @@ public class BombermanGame extends Application {
     public static final int WIDTH = 25;
     public static final int HEIGHT = 20;
 
+    public static int _width = 0;
+    public static int _height = 0;
+    public static int _level = 1;
     private GraphicsContext gc;
     private Canvas canvas;
-    private List<Entity> entities = new ArrayList<>();
-    private List<Entity> stillObjects = new ArrayList<>();
+    private Map map;
+    public  List<Entity> entities = new ArrayList<>();
+    public static final List<Entity> stillObjects = new ArrayList<>();
 
     public static final List<Entity> block = new ArrayList<>();;
 
@@ -69,9 +74,8 @@ public class BombermanGame extends Application {
         };
         timer.start();
 
-        createMap();
+
         bomberman = new Bomber(1, 1, Sprite.player_right.getFxImage());
-        entities.add(bomberman);
 
         scene.setOnKeyPressed(new EventHandler<KeyEvent>() {
             @Override
@@ -121,43 +125,21 @@ public class BombermanGame extends Application {
     }
 
 
-    public void createMap() throws IOException {
-        File map = new File("res\\levels\\Map1.txt");
 
-        Scanner scan = new Scanner(map);
-        ArrayList<String> loadMap = new ArrayList<String>();
-        while(scan.hasNextLine()){
-            loadMap.add(scan.nextLine());
-        }
-        String[] simpleArray = loadMap.toArray(new String[]{});
-
-        for (int i = 0; i < WIDTH; i++) {
-            for (int j = 0; j < HEIGHT; j++) {
-                Entity object;
-                if (simpleArray[j].charAt(i) == '#') {
-                    object = new Wall(i, j, Sprite.wall.getFxImage());
-                } else if (simpleArray[j].charAt(i) == '*') {
-                    object = new Brick(i, j, Sprite.brick.getFxImage());
-                } else {
-                    object = new Grass(i, j, Sprite.grass.getFxImage());
-                }
-                stillObjects.add(object);
-
-            }
-        }
-
-
-    }
 
     public void update() {
-        entities.forEach(Entity::update);
         block.forEach(Entity::update);
+        entities.forEach(Entity::update);
+        bomberman.update();
+        block.clear();
+
     }
 
     public void render() {
         gc.clearRect(0, 0, canvas.getWidth(), canvas.getHeight());
         stillObjects.forEach(g -> g.render(gc));
-        entities.forEach(g -> g.render(gc));
         block.forEach(g->g.render(gc));
+        entities.forEach(g -> g.render(gc));
+        bomberman.render(gc);
     }
 }
