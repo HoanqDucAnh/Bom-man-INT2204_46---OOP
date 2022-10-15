@@ -15,7 +15,8 @@ import uet.oop.bomberman.entities.*;
 import uet.oop.bomberman.graphics.Map;
 import uet.oop.bomberman.graphics.Sprite;
 import uet.oop.bomberman.entities.block.Bomb;
-import uet.oop.bomberman.entities.block.Bomb;
+import uet.oop.bomberman.level.Level1;
+
 
 import java.io.File;
 import java.io.IOException;
@@ -26,7 +27,7 @@ import java.util.Scanner;
 
 public class BombermanGame extends Application {
     public static final int WIDTH = 25;
-    public static final int HEIGHT = 20;
+    public static final int HEIGHT = 15;
 
     public static int _width = 0;
     public static int _height = 0;
@@ -74,6 +75,7 @@ public class BombermanGame extends Application {
         };
         timer.start();
 
+        new Level1();
 
         bomberman = new Bomber(1, 1, Sprite.player_right.getFxImage());
 
@@ -93,7 +95,7 @@ public class BombermanGame extends Application {
                     bomberman.setRightPressed(true);
                 }
                 if (keyEvent.getCode() == KeyCode.SPACE) {
-                    ;Bomb.putBomb();
+                    Bomb.putBomb();
                 }
 //
             }
@@ -132,14 +134,14 @@ public class BombermanGame extends Application {
         entities.forEach(Entity::update);
         bomberman.update();
         block.clear();
-
     }
 
     public void render() {
         gc.clearRect(0, 0, canvas.getWidth(), canvas.getHeight());
         stillObjects.forEach(g -> g.render(gc));
-        block.forEach(g->g.render(gc));
+        entities.forEach(g -> g.render(gc));
         entities.forEach(g -> g.render(gc));
         bomberman.render(gc);
+        block.forEach((g -> g.render(gc)));
     }
 }

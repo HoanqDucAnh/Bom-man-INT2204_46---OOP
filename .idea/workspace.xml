@@ -4,11 +4,20 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="e158ab31-45d2-4b66-9fc5-59715caa0eda" name="Changes" comment="Character's movement(upgraded)">
+    <list default="true" id="e158ab31-45d2-4b66-9fc5-59715caa0eda" name="Changes" comment="Test colli">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/res/levels/Level1.txt" beforeDir="false" afterPath="$PROJECT_DIR$/res/levels/Level1.txt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/uet/oop/bomberman/BombermanGame.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/uet/oop/bomberman/BombermanGame.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/uet/oop/bomberman/entities/Entity.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/uet/oop/bomberman/entities/Entity.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/uet/oop/bomberman/entities/block/Bomb.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/uet/oop/bomberman/entities/block/Bomb.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/uet/oop/bomberman/graphics/Map.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/uet/oop/bomberman/graphics/Map.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/uet/oop/bomberman/level/Level1.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/uet/oop/bomberman/level/Level1.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/levels/Level1.txt" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/levels/Level1.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/uet/oop/bomberman/BombermanGame$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/uet/oop/bomberman/BombermanGame$1.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/uet/oop/bomberman/BombermanGame$2.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/uet/oop/bomberman/BombermanGame$2.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/uet/oop/bomberman/BombermanGame$3.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/uet/oop/bomberman/BombermanGame$3.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/uet/oop/bomberman/BombermanGame.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/uet/oop/bomberman/BombermanGame.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/uet/oop/bomberman/entities/Bomber.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/uet/oop/bomberman/entities/Bomber.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/uet/oop/bomberman/entities/Entity.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/uet/oop/bomberman/entities/Entity.class" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -49,6 +58,26 @@
     &quot;last_opened_file_path&quot;: &quot;D:/Intelliji Project/BTL bommm&quot;
   }
 }</component>
+  <component name="RunManager">
+    <configuration name="BombermanGame" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="uet.oop.bomberman.BombermanGame" />
+      <module name="JavaGameOOP" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="uet.oop.bomberman.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Application.BombermanGame" />
+      </list>
+    </recent_temporary>
+  </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
@@ -59,6 +88,13 @@
       <updated>1664559800240</updated>
       <workItem from="1664802269920" duration="766000" />
       <workItem from="1664856791365" duration="307000" />
+      <workItem from="1665639344492" duration="125000" />
+      <workItem from="1665639479863" duration="2615000" />
+      <workItem from="1665677858114" duration="70000" />
+      <workItem from="1665714296183" duration="1514000" />
+      <workItem from="1665717878874" duration="247000" />
+      <workItem from="1665743786348" duration="1419000" />
+      <workItem from="1665813747366" duration="2037000" />
     </task>
     <servers />
   </component>

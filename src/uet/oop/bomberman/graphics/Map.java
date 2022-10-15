@@ -1,5 +1,6 @@
 package uet.oop.bomberman.graphics;
 
+import javafx.scene.canvas.GraphicsContext;
 import uet.oop.bomberman.entities.Brick;
 import uet.oop.bomberman.entities.Entity;
 import uet.oop.bomberman.entities.Grass;
@@ -8,40 +9,41 @@ import uet.oop.bomberman.entities.Wall;
 import java.io.File;
 import java.io.FileReader;
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.Scanner;
 import java.util.StringTokenizer;
 
 import static uet.oop.bomberman.BombermanGame.*;
 
 public class Map {
+    private GraphicsContext gc;
 
-/**
-    public void createMap() throws IOException {
-        File map = new File("res\\levels\\Map1.txt");
+//    public Map(String level) throws IOException {
+//        File map = new File(level);
+//
+//        Scanner scan = new Scanner(map);
+//        ArrayList<String> loadMap = new ArrayList<String>();
+//        while(scan.hasNextLine()){
+//            loadMap.add(scan.nextLine());
+//        }
+//        String[] simpleArray = loadMap.toArray(new String[]{});
+//
+//        for (int i = 0; i < WIDTH; i++) {
+//            for (int j = 0; j < HEIGHT; j++) {
+//                Entity object;
+//                if (simpleArray[j].charAt(i) == '#') {
+//                    object = new Wall(i, j, Sprite.wall.getFxImage());
+//                } else if (simpleArray[j].charAt(i) == '*') {
+//                    object = new Brick(i, j, Sprite.brick.getFxImage());
+//                } else {
+//                    object = new Grass(i, j, Sprite.grass.getFxImage());
+//                }
+//                stillObjects.add(object);
+//
+//            }
+//        }
+//    }
 
-        Scanner scan = new Scanner(map);
-        ArrayList<String> loadMap = new ArrayList<String>();
-        while(scan.hasNextLine()){
-            loadMap.add(scan.nextLine());
-        }
-        String[] simpleArray = loadMap.toArray(new String[]{});
-
-        for (int i = 0; i < WIDTH; i++) {
-            for (int j = 0; j < HEIGHT; j++) {
-                Entity object;
-                if (simpleArray[j].charAt(i) == '#') {
-                    object = new Wall(i, j, Sprite.wall.getFxImage());
-                } else if (simpleArray[j].charAt(i) == '*') {
-                    object = new Brick(i, j, Sprite.brick.getFxImage());
-                } else {
-                    object = new Grass(i, j, Sprite.grass.getFxImage());
-                }
-                stillObjects.add(object);
-
-            }
-        }
-    }
-*/
     public Map(String level) {
         System.out.println(System.getProperty("user.dir"));
         final File fileName = new File(level);
@@ -63,16 +65,16 @@ public class Map {
                         int s = Integer.parseInt(tokenTile.nextToken());
                         Entity entity;
                         switch (s) {
-                            case 1:
+                            case 2:
                                 entity = new Wall(j, i, Sprite.wall.getFxImage());
                                 break;
-                            case 2:
+                            case 1:
                                 entity = new Brick(j, i, Sprite.brick.getFxImage());
                                 break;
                             default:
                                 entity = new Grass(j, i, Sprite.grass.getFxImage());
                         }
-                        block.add(entity);
+                        stillObjects.add(entity);
                     }
                 }
             }
@@ -80,4 +82,5 @@ public class Map {
             e.printStackTrace();
         }
     }
+
 }

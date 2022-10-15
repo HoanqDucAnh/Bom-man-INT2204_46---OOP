@@ -94,7 +94,7 @@ public class Bomb extends Entity {
                 }
             } else {
                 isBomb = 0;
-                bomb.setImg(Sprite.transparent.getFxImage());
+                bomb.setImg(Sprite.bomb.getFxImage());
             }
     }
 
