@@ -133,7 +133,6 @@ public class BombermanGame extends Application {
         block.forEach(Entity::update);
         entities.forEach(Entity::update);
         bomberman.update();
-        block.clear();
     }
 
     public void render() {
