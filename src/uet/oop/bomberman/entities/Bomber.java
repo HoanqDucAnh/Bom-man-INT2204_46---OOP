@@ -79,7 +79,7 @@ public class Bomber extends Entity {
             y--;
 
         }
-         else if (downPressed) {
+        else if (downPressed) {
             if (spriteNum == 1) {
                 this.img = down[1];
             }
@@ -120,8 +120,7 @@ public class Bomber extends Entity {
 
     }
 
-    }
-
+}
 
 
 

@@ -18,6 +18,7 @@ import uet.oop.bomberman.entities.block.Bomb;
 import uet.oop.bomberman.level.Level1;
 
 
+import java.awt.*;
 import java.io.File;
 import java.io.IOException;
 import java.security.Key;
@@ -41,6 +42,9 @@ public class BombermanGame extends Application {
     public static final List<Entity> block = new ArrayList<>();;
 
     public static Entity bomberman;
+    private final long[] frameTimes = new long[100];
+    private int frameTimeIndex = 0 ;
+    private boolean arrayFilled = false ;
 
     public static void main(String[] args) {
         Application.launch(BombermanGame.class);
@@ -61,14 +65,28 @@ public class BombermanGame extends Application {
         Scene scene = new Scene(root);
         final int[] counter = {0};
 
-
         // Them scene vao stage
         stage.setScene(scene);
         stage.show();
+        stage.setTitle("Bomman");
 
         AnimationTimer timer = new AnimationTimer() {
+
             @Override
-            public void handle(long l) {
+            public void handle(long now) {
+                long oldFrameTime = frameTimes[frameTimeIndex] ;
+                frameTimes[frameTimeIndex] = now ;
+                frameTimeIndex = (frameTimeIndex + 1) % frameTimes.length ;
+                if (frameTimeIndex == 0) {
+                    arrayFilled = true ;
+                }
+                if (arrayFilled) {
+                    long elapsedNanos = now - oldFrameTime ;
+                    long elapsedNanosPerFrame = elapsedNanos / frameTimes.length ;
+                    double frameRate = 1_000_000_000.0 / elapsedNanosPerFrame ;
+                    System.out.println(String.format("Current frame rate: %.3f", frameRate));
+                }
+
                 render();
                 update();
             }
@@ -127,13 +145,10 @@ public class BombermanGame extends Application {
     }
 
 
-
-
     public void update() {
         block.forEach(Entity::update);
         entities.forEach(Entity::update);
         bomberman.update();
-        block.clear();
     }
 
     public void render() {
