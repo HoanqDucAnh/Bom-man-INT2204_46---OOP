@@ -1,6 +1,9 @@
 package uet.oop.bomberman;
 
+import javafx.animation.Animation;
 import javafx.animation.AnimationTimer;
+import javafx.animation.KeyFrame;
+import javafx.animation.Timeline;
 import javafx.application.Application;
 import javafx.event.EventHandler;
 import javafx.scene.Group;
@@ -11,6 +14,7 @@ import javafx.scene.image.Image;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
 import javafx.stage.Stage;
+import javafx.util.Duration;
 import uet.oop.bomberman.entities.*;
 import uet.oop.bomberman.graphics.Map;
 import uet.oop.bomberman.graphics.Sprite;
@@ -47,6 +51,11 @@ public class BombermanGame extends Application {
     private boolean arrayFilled = false ;
 
     public static void main(String[] args) {
+
+        System.setProperty("prism.verbose", "true");
+        System.setProperty("prism.dirtyopts", "false");
+        //System.setProperty("javafx.animation.fullspeed", "true");
+        System.setProperty("javafx.animation.pulse", "10");
         Application.launch(BombermanGame.class);
     }
 
@@ -70,28 +79,37 @@ public class BombermanGame extends Application {
         stage.show();
         stage.setTitle("Bomman");
 
-        AnimationTimer timer = new AnimationTimer() {
+//        AnimationTimer timer = new AnimationTimer() {
+//
+//            @Override
+//            public void handle(long now) {
+//                long oldFrameTime = frameTimes[frameTimeIndex] ;
+//                frameTimes[frameTimeIndex] = now ;
+//                frameTimeIndex = (frameTimeIndex + 1) % frameTimes.length ;
+//                if (frameTimeIndex == 0) {
+//                    arrayFilled = true ;
+//                }
+//                if (arrayFilled) {
+//                    long elapsedNanos = now - oldFrameTime ;
+//                    long elapsedNanosPerFrame = elapsedNanos / frameTimes.length ;
+//                    double frameRate = 1_000_000_000.0 / elapsedNanosPerFrame ;
+//                    System.out.println(String.format("Current frame rate: %.3f", frameRate));
+//                }
+//
+//                render();
+//                update();
+//            }
+//        };
+//        timer.start();
 
-            @Override
-            public void handle(long now) {
-                long oldFrameTime = frameTimes[frameTimeIndex] ;
-                frameTimes[frameTimeIndex] = now ;
-                frameTimeIndex = (frameTimeIndex + 1) % frameTimes.length ;
-                if (frameTimeIndex == 0) {
-                    arrayFilled = true ;
-                }
-                if (arrayFilled) {
-                    long elapsedNanos = now - oldFrameTime ;
-                    long elapsedNanosPerFrame = elapsedNanos / frameTimes.length ;
-                    double frameRate = 1_000_000_000.0 / elapsedNanosPerFrame ;
-                    System.out.println(String.format("Current frame rate: %.3f", frameRate));
-                }
+        Timeline timeline = new Timeline(new KeyFrame(Duration.seconds(1), event -> {
+            render();
+            update();
+        }));
 
-                render();
-                update();
-            }
-        };
-        timer.start();
+        timeline.setCycleCount(Animation.INDEFINITE);
+        timeline.play();
+        timeline.setRate(120);
 
         new Level1();
 
