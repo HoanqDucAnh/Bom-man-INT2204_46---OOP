@@ -12,11 +12,12 @@ import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
 import javafx.stage.Stage;
 import uet.oop.bomberman.entities.*;
+import uet.oop.bomberman.graphics.Map;
 import uet.oop.bomberman.graphics.Sprite;
 import uet.oop.bomberman.entities.block.Bomb;
-import uet.oop.bomberman.entities.block.Bomb;
+import uet.oop.bomberman.level.Level1;
 
-import java.awt.*;
+
 import java.io.File;
 import java.io.IOException;
 import java.security.Key;
@@ -26,14 +27,16 @@ import java.util.Scanner;
 
 public class BombermanGame extends Application {
     public static final int WIDTH = 25;
-    public static final int HEIGHT = 20;
+    public static final int HEIGHT = 15;
 
+    public static int _width = 0;
+    public static int _height = 0;
+    public static int _level = 1;
     private GraphicsContext gc;
     private Canvas canvas;
-    private List<Entity> entities = new ArrayList<>();
-    private List<Entity> stillObjects = new ArrayList<>();
-
-    private List<Rectangle> rec = new ArrayList<>();
+    private Map map;
+    public  List<Entity> entities = new ArrayList<>();
+    public static final List<Entity> stillObjects = new ArrayList<>();
 
     public static final List<Entity> block = new ArrayList<>();;
 
@@ -63,7 +66,6 @@ public class BombermanGame extends Application {
         stage.setScene(scene);
         stage.show();
 
-        Rectangle wall = new Rectangle(64,64,16,16);
         AnimationTimer timer = new AnimationTimer() {
             @Override
             public void handle(long l) {
@@ -73,46 +75,24 @@ public class BombermanGame extends Application {
         };
         timer.start();
 
+        new Level1();
 
-        createMap();
         bomberman = new Bomber(1, 1, Sprite.player_right.getFxImage());
-        entities.add(bomberman);
 
         scene.setOnKeyPressed(new EventHandler<KeyEvent>() {
             @Override
             public void handle(KeyEvent keyEvent) {
-                Rectangle rec = new Rectangle(bomberman.getX(),bomberman.getY(),32,32);
-
                 if (keyEvent.getCode() == KeyCode.A) {
                     bomberman.setLeftPressed(true);
-                    if (rec.intersects(wall)) {
-                        bomberman.speed = 0;
-                    }
-
                 }
                 if (keyEvent.getCode() == KeyCode.W) {
                     bomberman.setUpPressed(true);
-                    if (rec.intersects(wall)) {
-                        bomberman.speed = 0;
-                    }
-
                 }
                 if (keyEvent.getCode() == KeyCode.S) {
                     bomberman.setDownPressed(true);
-                    if (rec.intersects(wall)) {
-                        bomberman.speed = 0;
-                    }
-
-
                 }
                 if (keyEvent.getCode() == KeyCode.D) {
                     bomberman.setRightPressed(true);
-                    if (rec.intersects(wall)) {
-                        bomberman.speed = 0;
-                    }
-
-
-
                 }
                 if (keyEvent.getCode() == KeyCode.SPACE) {
                     Bomb.putBomb();
@@ -126,73 +106,41 @@ public class BombermanGame extends Application {
             public void handle(KeyEvent keyEvent) {
                 if (keyEvent.getCode() == KeyCode.A) {
                     bomberman.setLeftPressed(false);
-                    bomberman.speed = 1;
                     bomberman.setImg(Sprite.player_left.getFxImage());
-
                 }
                 if (keyEvent.getCode() == KeyCode.W) {
                     bomberman.setUpPressed(false);
-                    bomberman.speed = 1;
                     bomberman.setImg(Sprite.player_up.getFxImage());
                 }
                 if (keyEvent.getCode() == KeyCode.S) {
                     bomberman.setDownPressed(false);
-                    bomberman.speed = 1;
                     bomberman.setImg(Sprite.player_down.getFxImage());
                 }
                 if (keyEvent.getCode() == KeyCode.D) {
                     bomberman.setRightPressed(false);
-                    bomberman.speed = 1;
                     bomberman.setImg(Sprite.player_right.getFxImage());
                 }
-
+//
             }
         });
-
-
+//
     }
 
 
-    public void createMap() throws IOException {
-        File map = new File("res\\levels\\Map1.txt");
 
-        Scanner scan = new Scanner(map);
-        ArrayList<String> loadMap = new ArrayList<String>();
-        while(scan.hasNextLine()){
-            loadMap.add(scan.nextLine());
-        }
-        String[] simpleArray = loadMap.toArray(new String[]{});
-
-        for (int i = 0; i < WIDTH; i++) {
-            for (int j = 0; j < HEIGHT; j++) {
-                Entity object;
-                if (simpleArray[j].charAt(i) == '#') {
-                    object = new Wall(i, j, Sprite.wall.getFxImage());
-
-//                    System.out.println("(" + object.getX() + " ," +object.getY() + ")");
-
-                } else if (simpleArray[j].charAt(i) == '*') {
-                    object = new Brick(i, j, Sprite.brick.getFxImage());
-                } else {
-                    object = new Grass(i, j, Sprite.grass.getFxImage());
-                }
-                stillObjects.add(object);
-
-            }
-        }
-
-
-    }
 
     public void update() {
-        entities.forEach(Entity::update);
         block.forEach(Entity::update);
+        entities.forEach(Entity::update);
+        bomberman.update();
     }
 
     public void render() {
         gc.clearRect(0, 0, canvas.getWidth(), canvas.getHeight());
         stillObjects.forEach(g -> g.render(gc));
         entities.forEach(g -> g.render(gc));
-        block.forEach(g->g.render(gc));
+        entities.forEach(g -> g.render(gc));
+        bomberman.render(gc);
+        block.forEach((g -> g.render(gc)));
     }
 }
