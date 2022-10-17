@@ -56,22 +56,26 @@ public class Bomber extends Entity {
         movement();
     }
 
+    public boolean collision() {
+        for (Entity stillObject : stillObjects) {
+            if (stillObject.colidable) {
+                collisionChecker = new CollisionChecker(this.solidArea, stillObject.solidArea);
+                if (collisionChecker.isColided()) {
+                    System.out.println("colldie");
+                    return true;
+                }
+            }
+        }
+        return false;
+    }
     public void movement() {
         Image[] up = {Sprite.player_up.getFxImage(), Sprite.player_up_1.getFxImage(), Sprite.player_up_2.getFxImage()};
         Image[] down = {Sprite.player_down.getFxImage(), Sprite.player_down_1.getFxImage(), Sprite.player_down_2.getFxImage()};
         Image[] left= {Sprite.player_left.getFxImage(), Sprite.player_left_1.getFxImage(), Sprite.player_left_2.getFxImage()};
         Image[] right = {Sprite.player_right.getFxImage(), Sprite.player_right_1.getFxImage(), Sprite.player_right_2.getFxImage()};
         spriteCounter++;
-        boolean isCollide = false;
-        for (Entity stillObject : stillObjects) {
-            if (stillObject.colidable) {
-                collisionChecker = new CollisionChecker(this.solidArea, stillObject.solidArea);
-                if (collisionChecker.isColided()) {
-                    isCollide = true;
-                    System.out.println("colldie");
-                }
-            }
-        }
+        this.solidArea.setLocation(this.x,this.y);
+        boolean isCollide = collision();
         if (spriteCounter > 35) {
             if (spriteNum == 1) {
                 spriteNum = 2;
@@ -95,8 +99,6 @@ public class Bomber extends Entity {
 
             if(!isCollide){
                 y--;
-            }else{
-                System.out.println("strue");
             }
 
         }
