@@ -21,7 +21,7 @@ public class Bomb extends Entity {
 
     public static int bombNumber = 10;
     public Bomb(int x, int y, Image img) {
-        super(x, y, img);
+        super(x, y, img,false);
     }
 
     public static void putBomb() {
