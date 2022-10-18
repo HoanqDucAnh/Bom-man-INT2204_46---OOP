@@ -47,7 +47,7 @@ public class Bomber extends Entity {
 
     public Bomber(int x, int y, Image img) {
         super(x,y,img,false);
-        this.solidArea = new Rectangle(this.x,this.y,16,16);
+        this.solidArea = new Rectangle(this.x+8,this.y+8,10,10);
     }
 
 
@@ -74,7 +74,7 @@ public class Bomber extends Entity {
         Image[] left= {Sprite.player_left.getFxImage(), Sprite.player_left_1.getFxImage(), Sprite.player_left_2.getFxImage()};
         Image[] right = {Sprite.player_right.getFxImage(), Sprite.player_right_1.getFxImage(), Sprite.player_right_2.getFxImage()};
         spriteCounter++;
-        this.solidArea.setLocation(this.x,this.y);
+        this.solidArea.setLocation(this.x+8,this.y+8);
         boolean isCollide = collision();
         if (spriteCounter > 35) {
             if (spriteNum == 1) {
@@ -96,9 +96,9 @@ public class Bomber extends Entity {
             if (spriteNum == 2) {
                 this.img = up[0];
             }
-
-            if(!isCollide){
-                y--;
+            y--;
+            if(isCollide){
+                y+=2;
             }
 
         }
@@ -111,8 +111,8 @@ public class Bomber extends Entity {
                 this.img = down[2];
             }
 
-
-            if(!isCollide) y++;
+            y++;
+            if(isCollide) y-=2;
 
         }
 
@@ -124,8 +124,8 @@ public class Bomber extends Entity {
             if (spriteNum == 2) {
                 this.img = left[2];
             }
-
-            if(!isCollide) x--;
+            x--;
+            if(isCollide) x+=2;
 
         }
 
@@ -137,8 +137,8 @@ public class Bomber extends Entity {
             if (spriteNum == 2) {
                 this.img = right[2];
             }
-
-            if(!isCollide) x++;
+            x++;
+            if(isCollide) x-=2;
         }
 
     }
