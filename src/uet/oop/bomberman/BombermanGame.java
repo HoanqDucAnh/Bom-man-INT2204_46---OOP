@@ -172,19 +172,19 @@ public class BombermanGame extends Application {
 //
             }
         });
-        Rectangle rec1 = new Rectangle(1 * Sprite.SCALED_SIZE + 4,1 * Sprite.SCALED_SIZE - 4 ,10,10); //up
-        Rectangle rec2 = new Rectangle(1 * Sprite.SCALED_SIZE + 4,1 * Sprite.SCALED_SIZE + 23 ,10,10); //down
-        Rectangle rec3 = new Rectangle(1 * Sprite.SCALED_SIZE + 16,1 * Sprite.SCALED_SIZE + 11 ,10,10); //right
-        Rectangle rec4 = new Rectangle(1 * Sprite.SCALED_SIZE - 2,1 * Sprite.SCALED_SIZE + 11 ,10,10); //left
-        rec1.setFill(Color.RED);
-        rec2.setFill(Color.BLUE);
-        rec3.setFill(Color.YELLOW);
-        rec4.setFill(Color.GREEN);
-
-        root.getChildren().add(rec1);
-        root.getChildren().add(rec2);
-        root.getChildren().add(rec3);
-        root.getChildren().add(rec4);
+//        Rectangle rec1 = new Rectangle(1 * Sprite.SCALED_SIZE + 4,1 * Sprite.SCALED_SIZE - 4 ,10,10); //up
+//        Rectangle rec2 = new Rectangle(1 * Sprite.SCALED_SIZE + 4,1 * Sprite.SCALED_SIZE + 23 ,10,10); //down
+//        Rectangle rec3 = new Rectangle(1 * Sprite.SCALED_SIZE + 16,1 * Sprite.SCALED_SIZE + 11 ,10,10); //right
+//        Rectangle rec4 = new Rectangle(1 * Sprite.SCALED_SIZE - 2,1 * Sprite.SCALED_SIZE + 11 ,10,10); //left
+//        rec1.setFill(Color.RED);
+//        rec2.setFill(Color.BLUE);
+//        rec3.setFill(Color.YELLOW);
+//        rec4.setFill(Color.GREEN);
+//
+//        root.getChildren().add(rec1);
+//        root.getChildren().add(rec2);
+//        root.getChildren().add(rec3);
+//        root.getChildren().add(rec4);
     }
 
 
