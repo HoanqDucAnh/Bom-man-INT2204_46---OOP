@@ -46,21 +46,16 @@ public class Bomber extends Entity {
     private CollisionChecker collisionChecker;
 
     protected int speedLeft = 1;
-    private String direction;
-    boolean collideLeft = false;
-    private boolean checkLeft = false;
-    private boolean checkRight = false;
-    private boolean checkUp = false;
-    private boolean checkDown = false;
     protected int speedRight = 1;
     protected int speedUp = 1;
     protected int speedDown = 1;
+
     public Bomber(int x, int y, Image img) {
         super(x,y,img,false);
         this.solidAreaUp = new Rectangle(this.x+4,this.y-4,10,10);
         this.solidAreaDown = new Rectangle(this.x+4,this.y+23,10,10);
         this.solidAreaLeft = new Rectangle(this.x-2,this.y+11,10,10);
-        this.solidAreaRight = new Rectangle(this.x+16,this.y+11,10,10);
+        this.solidAreaRight = new Rectangle(this.x + 16,this.y + 11 ,10,10);
     }
 
 
@@ -74,9 +69,7 @@ public class Bomber extends Entity {
         for (Entity stillObject : stillObjects) {
             if (stillObject.colidable) {
                 collisionChecker = new CollisionChecker(this.solidAreaRight, stillObject.solidArea);
-
                 if (collisionChecker.isColided()) {
-                    System.out.println("colldie" );
                     return true;
                 }
             }
@@ -91,9 +84,7 @@ public class Bomber extends Entity {
             for (Entity stillObject : stillObjects) {
                 if (stillObject.colidable) {
                     collisionChecker = new CollisionChecker(this.solidAreaUp, stillObject.solidArea);
-
                     if (collisionChecker.isColided()) {
-                        System.out.println("colldie");
                         return true;
                     }
                 }
@@ -105,9 +96,7 @@ public class Bomber extends Entity {
         for (Entity stillObject : stillObjects) {
             if (stillObject.colidable) {
                 collisionChecker = new CollisionChecker(this.solidAreaDown, stillObject.solidArea);
-
                 if (collisionChecker.isColided()) {
-                    System.out.println("colldie");
                     return true;
                 }
             }
@@ -119,9 +108,7 @@ public class Bomber extends Entity {
         for (Entity stillObject : stillObjects) {
             if (stillObject.colidable) {
                 collisionChecker = new CollisionChecker(this.solidAreaLeft, stillObject.solidArea);
-
                 if (collisionChecker.isColided()) {
-                    System.out.println("colldie");
                     return true;
                 }
             }
@@ -160,7 +147,7 @@ public void setUP() {
         if(collisionRight()) {
             speedRight = 0;
         }
-        if (!collisionDown()) {
+        if (!collisionRight()) {
             speedRight = 1;
         }
     }
@@ -174,9 +161,8 @@ public void setUP() {
         this.solidAreaUp.setLocation(this.x+4,this.y-4);
         this.solidAreaDown.setLocation(this.x+4,this.y+23);
         this.solidAreaLeft.setLocation(this.x-2,this.y+11);
-        this.solidAreaRight.setLocation(this.x+16,this.y+11);
+        this.solidAreaRight.setLocation(this.x + 16,this.y + 11);
 
-        boolean Down = collisionDown();
         if (spriteCounter > 35) {
             if (spriteNum == 1) {
                 spriteNum = 2;
@@ -216,18 +202,7 @@ public void setUP() {
 
         }
 
-        if (leftPressed) {
-            setLeft();
-            if (spriteNum == 1) {
-                this.img = left[1];
-            }
 
-            if (spriteNum == 2) {
-                this.img = left[2];
-            }
-            x-=speedLeft;
-
-        }
 
         if (rightPressed) {
             setRight();
@@ -241,7 +216,18 @@ public void setUP() {
             x+=speedRight;
 
         }
+        if (leftPressed) {
+            setLeft();
+            if (spriteNum == 1) {
+                this.img = left[1];
+            }
 
+            if (spriteNum == 2) {
+                this.img = left[2];
+            }
+            x-=speedLeft;
+
+        }
     }
 
 }
