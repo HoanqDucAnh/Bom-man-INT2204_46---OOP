@@ -13,6 +13,7 @@ import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.image.Image;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
+import javafx.scene.paint.Color;
 import javafx.stage.Stage;
 import javafx.util.Duration;
 import uet.oop.bomberman.entities.*;
@@ -20,8 +21,9 @@ import uet.oop.bomberman.graphics.Map;
 import uet.oop.bomberman.graphics.Sprite;
 import uet.oop.bomberman.entities.block.Bomb;
 import uet.oop.bomberman.level.Level1;
-
-
+import uet.oop.bomberman.entities.Bomber;
+import uet.oop.bomberman.entities.Entity;
+import javafx.scene.paint.Paint;
 import java.awt.*;
 import java.io.File;
 import java.io.IOException;
@@ -29,6 +31,15 @@ import java.security.Key;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
+
+import javafx.application.Application;
+import javafx.scene.Scene;
+import javafx.scene.control.Button;
+import javafx.scene.layout.*;
+import javafx.scene.paint.Color;
+import javafx.scene.shape.Rectangle;
+import javafx.scene.control.*;
+import javafx.stage.Stage;
 
 public class BombermanGame extends Application {
     public static final int WIDTH = 25;
@@ -49,7 +60,7 @@ public class BombermanGame extends Application {
     private final long[] frameTimes = new long[100];
     private int frameTimeIndex = 0 ;
     private boolean arrayFilled = false ;
-
+    public Rectangle bomber;
     public static void main(String[] args) {
 
         System.setProperty("prism.verbose", "true");
@@ -63,6 +74,7 @@ public class BombermanGame extends Application {
     @Override
     public void start(Stage stage) throws IOException {
         // Tao Canvas
+        //bomberman = new Bomber(1, 1, Sprite.player_right.getFxImage());
         canvas = new Canvas(Sprite.SCALED_SIZE * WIDTH, Sprite.SCALED_SIZE * HEIGHT);
         gc = canvas.getGraphicsContext2D();
 
@@ -73,11 +85,11 @@ public class BombermanGame extends Application {
         // Tao scene
         Scene scene = new Scene(root);
         final int[] counter = {0};
-
         // Them scene vao stage
         stage.setScene(scene);
         stage.show();
         stage.setTitle("Bomman");
+
 
 //        AnimationTimer timer = new AnimationTimer() {
 //
@@ -115,6 +127,7 @@ public class BombermanGame extends Application {
 
         bomberman = new Bomber(1, 1, Sprite.player_right.getFxImage());
 
+        //bomberman.setSolidArea(bomber);
         scene.setOnKeyPressed(new EventHandler<KeyEvent>() {
             @Override
             public void handle(KeyEvent keyEvent) {
@@ -159,7 +172,19 @@ public class BombermanGame extends Application {
 //
             }
         });
-//
+        Rectangle rec1 = new Rectangle(1 * Sprite.SCALED_SIZE + 4,1 * Sprite.SCALED_SIZE - 4 ,10,10); //up
+        Rectangle rec2 = new Rectangle(1 * Sprite.SCALED_SIZE + 4,1 * Sprite.SCALED_SIZE + 23 ,10,10); //down
+        Rectangle rec3 = new Rectangle(1 * Sprite.SCALED_SIZE + 16,1 * Sprite.SCALED_SIZE + 11 ,10,10); //right
+        Rectangle rec4 = new Rectangle(1 * Sprite.SCALED_SIZE - 2,1 * Sprite.SCALED_SIZE + 11 ,10,10); //left
+        rec1.setFill(Color.RED);
+        rec2.setFill(Color.BLUE);
+        rec3.setFill(Color.YELLOW);
+        rec4.setFill(Color.GREEN);
+
+        root.getChildren().add(rec1);
+        root.getChildren().add(rec2);
+        root.getChildren().add(rec3);
+        root.getChildren().add(rec4);
     }
 
 

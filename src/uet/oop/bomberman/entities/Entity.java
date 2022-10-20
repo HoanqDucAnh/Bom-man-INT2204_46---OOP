@@ -16,6 +16,10 @@ public abstract class Entity {
     public int spriteCounter = 0;
     public int spriteNum = 1;
     protected Rectangle solidArea;
+    protected Rectangle solidAreaUp;
+    protected Rectangle solidAreaDown;
+    protected Rectangle solidAreaLeft;
+    protected Rectangle solidAreaRight;
     protected boolean colidable;
 
     public Image getImg() {
