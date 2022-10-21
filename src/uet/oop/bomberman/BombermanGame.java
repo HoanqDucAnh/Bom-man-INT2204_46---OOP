@@ -41,6 +41,8 @@ import javafx.scene.shape.Rectangle;
 import javafx.scene.control.*;
 import javafx.stage.Stage;
 
+import static uet.oop.bomberman.graphics.Sprite.SCALED_SIZE;
+
 public class BombermanGame extends Application {
     public static final int WIDTH = 25;
     public static final int HEIGHT = 15;
@@ -53,6 +55,7 @@ public class BombermanGame extends Application {
     private Map map;
     public  List<Entity> entities = new ArrayList<>();
     public static final List<Entity> stillObjects = new ArrayList<>();
+    public static final List<Entity> brick = new ArrayList<>();
 
     public static final List<Entity> block = new ArrayList<>();;
 
@@ -172,21 +175,33 @@ public class BombermanGame extends Application {
 //
             }
         });
+       Rectangle rec1 = new Rectangle((bomberman.getX() + (SCALED_SIZE / 2)) / SCALED_SIZE * SCALED_SIZE + 1*SCALED_SIZE ,(bomberman.getX() + (SCALED_SIZE / 2)) / SCALED_SIZE * SCALED_SIZE,25,25);//up
+        Rectangle rec2 = new Rectangle((bomberman.getX() + (SCALED_SIZE / 2)) / SCALED_SIZE,(bomberman.getY() + (SCALED_SIZE / 2)) / SCALED_SIZE ,10,10); //down
+        Rectangle rec3 = new Rectangle(1 * Sprite.SCALED_SIZE + 16,1 * Sprite.SCALED_SIZE + 16,10,10); //right
+        Rectangle rec4 = new Rectangle(1 * Sprite.SCALED_SIZE - 2,1 * Sprite.SCALED_SIZE + 11 ,10,10); //left
+        rec1.setFill(Color.RED);
+        rec2.setFill(Color.BLUE);
+        rec3.setFill(Color.YELLOW);
+       rec4.setFill(Color.GREEN);
+
+       root.getChildren().add(rec1);
+       root.getChildren().add(rec2);
+       root.getChildren().add(rec3);
+       root.getChildren().add(rec4);
     }
 
 
     public void update() {
-        block.forEach(Entity::update);
-        entities.forEach(Entity::update);
+        //entities.forEach(Entity::update);
         bomberman.update();
+        block.forEach(Entity::update);
     }
 
     public void render() {
         gc.clearRect(0, 0, canvas.getWidth(), canvas.getHeight());
         stillObjects.forEach(g -> g.render(gc));
-        entities.forEach(g -> g.render(gc));
-        entities.forEach(g -> g.render(gc));
-        bomberman.render(gc);
         block.forEach((g -> g.render(gc)));
+        //entities.forEach(g -> g.render(gc));
+        bomberman.render(gc);
     }
 }

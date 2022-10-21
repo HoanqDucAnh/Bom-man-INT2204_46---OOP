@@ -20,7 +20,64 @@ public abstract class Entity {
     protected Rectangle solidAreaDown;
     protected Rectangle solidAreaLeft;
     protected Rectangle solidAreaRight;
-    protected boolean colidable;
+
+    private boolean colidable;
+
+    public int getSpriteCounter() {
+        return spriteCounter;
+    }
+
+    public void setSpriteCounter(int spriteCounter) {
+        this.spriteCounter = spriteCounter;
+    }
+
+    public Rectangle getSolidArea() {
+        return solidArea;
+    }
+
+    public void setSolidArea(Rectangle solidArea) {
+        this.solidArea = solidArea;
+    }
+
+    public Rectangle getSolidAreaUp() {
+        return solidAreaUp;
+    }
+
+    public void setSolidAreaUp(Rectangle solidAreaUp) {
+        this.solidAreaUp = solidAreaUp;
+    }
+
+    public Rectangle getSolidAreaDown() {
+        return solidAreaDown;
+    }
+
+    public void setSolidAreaDown(Rectangle solidAreaDown) {
+        this.solidAreaDown = solidAreaDown;
+    }
+
+    public Rectangle getSolidAreaLeft() {
+        return solidAreaLeft;
+    }
+
+    public void setSolidAreaLeft(Rectangle solidAreaLeft) {
+        this.solidAreaLeft = solidAreaLeft;
+    }
+
+    public boolean isColidable() {
+        return colidable;
+    }
+
+    public void setColidable(boolean colidable) {
+        this.colidable = colidable;
+    }
+
+    public Rectangle getSolidAreaRight() {
+        return solidAreaRight;
+    }
+
+    public void setSolidAreaRight(Rectangle solidAreaRight) {
+        this.solidAreaRight = solidAreaRight;
+    }
 
     public Image getImg() {
         return img;
