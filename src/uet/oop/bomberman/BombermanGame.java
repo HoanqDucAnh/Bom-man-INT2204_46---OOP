@@ -1,7 +1,7 @@
 package uet.oop.bomberman;
 
 import javafx.animation.Animation;
-import javafx.animation.AnimationTimer;
+//import javafx.animation.AnimationTimer;
 import javafx.animation.KeyFrame;
 import javafx.animation.Timeline;
 import javafx.application.Application;
@@ -10,13 +10,13 @@ import javafx.scene.Group;
 import javafx.scene.Scene;
 import javafx.scene.canvas.Canvas;
 import javafx.scene.canvas.GraphicsContext;
-import javafx.scene.image.Image;
+//import javafx.scene.image.Image;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.paint.Color;
 import javafx.stage.Stage;
 import javafx.util.Duration;
-import uet.oop.bomberman.entities.*;
+//import uet.oop.bomberman.entities.*;
 import uet.oop.bomberman.graphics.Map;
 import uet.oop.bomberman.graphics.Sprite;
 import uet.oop.bomberman.entities.block.Bomb;
@@ -77,7 +77,6 @@ public class BombermanGame extends Application {
     @Override
     public void start(Stage stage) throws IOException {
         // Tao Canvas
-        //bomberman = new Bomber(1, 1, Sprite.player_right.getFxImage());
         canvas = new Canvas(Sprite.SCALED_SIZE * WIDTH, Sprite.SCALED_SIZE * HEIGHT);
         gc = canvas.getGraphicsContext2D();
 
@@ -130,7 +129,6 @@ public class BombermanGame extends Application {
 
         bomberman = new Bomber(1, 1, Sprite.player_right.getFxImage());
 
-        //bomberman.setSolidArea(bomber);
         scene.setOnKeyPressed(new EventHandler<KeyEvent>() {
             @Override
             public void handle(KeyEvent keyEvent) {
@@ -175,6 +173,21 @@ public class BombermanGame extends Application {
 
             }
         });
+        /*
+       Rectangle rec1 = new Rectangle((bomberman.getX() + (SCALED_SIZE / 2)) / SCALED_SIZE * SCALED_SIZE + 1*SCALED_SIZE ,(bomberman.getX() + (SCALED_SIZE / 2)) / SCALED_SIZE * SCALED_SIZE,25,25);//up
+        Rectangle rec2 = new Rectangle((bomberman.getX() + (SCALED_SIZE / 2)) / SCALED_SIZE,(bomberman.getY() + (SCALED_SIZE / 2)) / SCALED_SIZE ,10,10); //down
+        Rectangle rec3 = new Rectangle(1 * Sprite.SCALED_SIZE + 16,1 * Sprite.SCALED_SIZE + 16,10,10); //right
+        Rectangle rec4 = new Rectangle(1 * Sprite.SCALED_SIZE - 2,1 * Sprite.SCALED_SIZE + 11 ,10,10); //left
+        rec1.setFill(Color.RED);
+        rec2.setFill(Color.BLUE);
+        rec3.setFill(Color.YELLOW);
+       rec4.setFill(Color.GREEN);
+
+       root.getChildren().add(rec1);
+       root.getChildren().add(rec2);
+       root.getChildren().add(rec3);
+       root.getChildren().add(rec4);
+       */
     }
 
 
