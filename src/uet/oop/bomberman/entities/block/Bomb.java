@@ -1,6 +1,7 @@
 package uet.oop.bomberman.entities.block;
 
 import javafx.scene.image.Image;
+import uet.oop.bomberman.Collision;
 import uet.oop.bomberman.CollisionChecker;
 import uet.oop.bomberman.entities.Entity;
 
@@ -14,7 +15,7 @@ import static uet.oop.bomberman.graphics.Sprite.SCALED_SIZE;
 import static uet.oop.bomberman.graphics.Sprite.powerup_bombs;
 import uet.oop.bomberman.CollisionChecker;
 public class Bomb extends Entity {
-    private CollisionChecker collisionChecker;
+    private CollisionChecker collisionCheckerBomb;
 
     private static long timeBomb;
     private static long timeTmp;
@@ -36,7 +37,7 @@ public class Bomb extends Entity {
     private static boolean isEdge = false;
     public static int bombNumber = 1000;
     public Bomb(int x, int y, Image img) {
-        super(x, y, img,false);
+        super(x, y, img, false);
     }
 
     public static void putBomb() {
@@ -51,100 +52,29 @@ public class Bomb extends Entity {
             //y = Math.round(y);
             bomb = new Bomb(x, y, Sprite.bomb.getFxImage());
             block.add(bomb);
-                edge_down = new Bomb(x, y + 1,
-                        Sprite.transparent.getFxImage());
-                Down = new Rectangle(x * SCALED_SIZE, y * SCALED_SIZE + 1 * SCALED_SIZE, 10, 10);
-                edge_down.setSolidArea(Down);
-                block.add(edge_down);
-                edge_up = new Bomb(x, y - 1,
-                        Sprite.transparent.getFxImage());
-                Up = new Rectangle(x * SCALED_SIZE, (y - 1) * SCALED_SIZE, 10, 10);
-                block.add(edge_up);
-                edge_left = new Bomb(x - 1, y,
-                        Sprite.transparent.getFxImage());
-                Left = new Rectangle((x - 1) * SCALED_SIZE, y * SCALED_SIZE, 10, 10);
-                edge_left.setSolidArea(Left);
-                block.add(edge_left);
-                edge_right = new Bomb(x + 1, y,
-                        Sprite.transparent.getFxImage());
-                Right = new Rectangle((x + 1) * SCALED_SIZE, y * SCALED_SIZE, 10, 10);
-                edge_right.setSolidArea(Right);
-                block.add(edge_right);
-
-        }
-    }
-
-    public boolean collisionRight() {
-        for (Entity stillObject : stillObjects) {
-            if (stillObject.isColidable() == true) {
-                collisionChecker = new CollisionChecker(edge_right.getSolidArea(), stillObject.getSolidArea());
-
-                if (collisionChecker.isColided()) {
-                    return true;
-                }
-            }
-        }
-        return false;
-    }
-
-
-
-    public boolean collisionUp() {
-
-        for (Entity stillObject : stillObjects) {
-            if (stillObject.isColidable()) {
-                collisionChecker = new CollisionChecker(Up, stillObject.getSolidArea());
-
-                if (collisionChecker.isColided()) {
-                    return true;
-                }
-            }
-        }
-        return false;
-    }
-
-    public boolean collisionDown() {
-        for (Entity stillObject : stillObjects) {
-            if (stillObject.isColidable()) {
-                collisionChecker = new CollisionChecker(Down, stillObject.getSolidArea());
-
-                if (collisionChecker.isColided()) {
-                    return true;
-                }
-            }
-        }
-        return false;
-    }
-
-    public boolean collisionLeft() {
-        for (Entity stillObject : stillObjects) {
-            if (stillObject.isColidable() == true) {
-                collisionChecker = new CollisionChecker(edge_left.getSolidArea(), stillObject.getSolidArea());
-
-                if (collisionChecker.isColided()) {
-                    System.out.println("colldie");
-                    return true;
-                }
-            }
-        }
-        return false;
-    }
-
-    public void checkUp() {
-        if (collisionUp()) {
+            edge_down = new Bomb(x, y + 1,
+                    Sprite.transparent.getFxImage());
+            Down = new Rectangle(x * SCALED_SIZE, y * SCALED_SIZE + 1 * SCALED_SIZE, 10, 10);
+            edge_down.setSolidArea(Down);
+            block.add(edge_down);
+            edge_up = new Bomb(x, y - 1,
+                    Sprite.transparent.getFxImage());
+            Up = new Rectangle(x * SCALED_SIZE, (y - 1) * SCALED_SIZE, 10, 10);
+            block.add(edge_up);
             edge_left = new Bomb(x - 1, y,
                     Sprite.transparent.getFxImage());
-            edge_down.setImg(Sprite.explosion_vertical_down_last.getFxImage());
-            edge_up.setImg(Sprite.explosion_vertical_top_last.getFxImage());
-            edge_right.setImg(Sprite.explosion_horizontal_right_last.getFxImage());
-        }
-        if (!collisionUp()) {
-            edge_down.setImg(Sprite.explosion_vertical_down_last.getFxImage());
-            edge_up.setImg(Sprite.explosion_vertical_top_last.getFxImage());
-            edge_left.setImg(Sprite.explosion_horizontal_left_last.getFxImage());
-            edge_right.setImg(Sprite.explosion_horizontal_right_last.getFxImage());
+            Left = new Rectangle((x - 1) * SCALED_SIZE, y * SCALED_SIZE, 10, 10);
+            edge_left.setSolidArea(Left);
+            block.add(edge_left);
+            edge_right = new Bomb(x + 1, y,
+                    Sprite.transparent.getFxImage());
+            Right = new Rectangle((x + 1) * SCALED_SIZE, y * SCALED_SIZE, 10, 10);
+            edge_right.setSolidArea(Right);
+            block.add(edge_right);
+
         }
     }
+
     public static void StatusBomb() {
         if (Status == 1) {
             bomb.setImg(Sprite.bomb.getFxImage());
@@ -161,23 +91,23 @@ public class Bomb extends Entity {
         }
     }
 
-    public  void explosionCenter() {
+    public void explosionCenter() {
         if (swapExplosion == 1) {
             bomb.setImg(Sprite.bomb_exploded.getFxImage());
             edge_up.setImg(Sprite.explosion_vertical_top_last.getFxImage());
             edge_right.setImg(Sprite.explosion_horizontal_right_last.getFxImage());
             edge_down.setImg(Sprite.explosion_vertical_down_last.getFxImage());
             edge_left.setImg(Sprite.explosion_horizontal_left_last.getFxImage());
-            if(collisionRight()) {
+            if (Collision.collisionRight(collisionCheckerBomb, Right)) {
                 edge_right.setImg(Sprite.transparent.getFxImage());
             }
-            if (collisionLeft()) {
+            if (Collision.collisionLeft(collisionCheckerBomb, Left)) {
                 edge_left.setImg(Sprite.transparent.getFxImage());
             }
-            if (collisionDown()) {
+            if (Collision.collisionDown(collisionCheckerBomb, Down)) {
                 edge_down.setImg(Sprite.transparent.getFxImage());
             }
-            if (collisionUp()) {
+            if (Collision.collisionUp(collisionCheckerBomb, Up)) {
                 edge_up.setImg(Sprite.transparent.getFxImage());
             }
             swapExplosion = 2;
@@ -188,16 +118,16 @@ public class Bomb extends Entity {
             edge_right.setImg(Sprite.explosion_horizontal_right_last1.getFxImage());
             edge_down.setImg(Sprite.explosion_vertical_down_last1.getFxImage());
             edge_left.setImg(Sprite.explosion_horizontal_left_last1.getFxImage());
-            if(collisionRight()) {
+            if (Collision.collisionRight(collisionCheckerBomb, Right)) {
                 edge_right.setImg(Sprite.transparent.getFxImage());
             }
-            if (collisionLeft()) {
+            if (Collision.collisionLeft(collisionCheckerBomb, Left)) {
                 edge_left.setImg(Sprite.transparent.getFxImage());
             }
-            if (collisionDown()) {
+            if (Collision.collisionDown(collisionCheckerBomb, Down)) {
                 edge_down.setImg(Sprite.transparent.getFxImage());
             }
-            if (collisionUp()) {
+            if (Collision.collisionUp(collisionCheckerBomb, Up)) {
                 edge_up.setImg(Sprite.transparent.getFxImage());
             }
 
@@ -209,16 +139,16 @@ public class Bomb extends Entity {
             edge_right.setImg(Sprite.explosion_horizontal_right_last2.getFxImage());
             edge_down.setImg(Sprite.explosion_vertical_down_last2.getFxImage());
             edge_left.setImg(Sprite.explosion_horizontal_left_last2.getFxImage());
-            if(collisionRight()) {
+            if (Collision.collisionRight(collisionCheckerBomb, Right)) {
                 edge_right.setImg(Sprite.transparent.getFxImage());
             }
-            if (collisionLeft()) {
+            if (Collision.collisionLeft(collisionCheckerBomb, Left)) {
                 edge_left.setImg(Sprite.transparent.getFxImage());
             }
-            if (collisionDown()) {
+            if (Collision.collisionDown(collisionCheckerBomb, Down)) {
                 edge_down.setImg(Sprite.transparent.getFxImage());
             }
-            if (collisionUp()) {
+            if (Collision.collisionUp(collisionCheckerBomb, Up)) {
                 edge_up.setImg(Sprite.transparent.getFxImage());
             }
             swapExplosion = 1;
