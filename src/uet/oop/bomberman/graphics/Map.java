@@ -66,13 +66,13 @@ public class Map {
                         Entity entity;
                         switch (s) {
                             case 2:
-                                entity = new Wall(j, i, Sprite.wall.getFxImage());
+                                entity = new Wall(j, i, Sprite.wall.getFxImage(),true);
                                 break;
                             case 1:
-                                entity = new Brick(j, i, Sprite.brick.getFxImage());
+                                entity = new Brick(j, i, Sprite.brick.getFxImage(),true);
                                 break;
                             default:
-                                entity = new Grass(j, i, Sprite.grass.getFxImage());
+                                entity = new Grass(j, i, Sprite.grass.getFxImage(),false);
                         }
                         stillObjects.add(entity);
                     }
