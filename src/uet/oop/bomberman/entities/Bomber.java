@@ -34,6 +34,7 @@ import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.paint.Color;
 
+import uet.oop.bomberman.Collision;
 import uet.oop.bomberman.CollisionChecker;
 import uet.oop.bomberman.graphics.Sprite;
 
@@ -43,18 +44,18 @@ import static uet.oop.bomberman.BombermanGame.*;
 
 
 public class Bomber extends Entity {
-    private CollisionChecker collisionChecker;
+    private CollisionChecker collisionCheckerBomber;
 
     protected int speedLeft = 1;
     protected int speedRight = 1;
     protected int speedUp = 1;
     protected int speedDown = 1;
     public Bomber(int x, int y, Image img) {
-        super(x,y,img,false);
-        this.solidAreaUp = new Rectangle(this.x+4,this.y-4,10,10);
-        this.solidAreaDown = new Rectangle(this.x+4,this.y+23,15,10);
-        this.solidAreaLeft = new Rectangle(this.x-2,this.y+11,10,10);
-        this.solidAreaRight = new Rectangle(this.x + 16,this.y+11,10,10);
+        super(x, y, img, false);
+        this.solidAreaUp = new Rectangle(this.x + 4, this.y - 4, 10, 10);
+        this.solidAreaDown = new Rectangle(this.x + 4, this.y + 23, 15, 10);
+        this.solidAreaLeft = new Rectangle(this.x - 2, this.y + 11, 10, 10);
+        this.solidAreaRight = new Rectangle(this.x + 16, this.y + 11, 10, 10);
     }
 
 
@@ -63,119 +64,73 @@ public class Bomber extends Entity {
         movement();
     }
 
-
-    public boolean collisionRight() {
-        for (Entity stillObject : stillObjects) {
-            if (stillObject.isColidable()) {
-                collisionChecker = new CollisionChecker(this.solidAreaRight, stillObject.solidArea);
-
-                if (collisionChecker.isColided()) {
-
-                    return true;
-                }
-            }
-        }
-        return false;
-    }
-
-
-
-    public boolean collisionUp() {
-
-            for (Entity stillObject : stillObjects) {
-                if (stillObject.isColidable()) {
-                    collisionChecker = new CollisionChecker(this.solidAreaUp, stillObject.solidArea);
-
-                    if (collisionChecker.isColided()) {
-
-                        return true;
-                    }
-                }
-            }
-        return false;
-    }
-
-    public boolean collisionDown() {
-        for (Entity stillObject : stillObjects) {
-            if (stillObject.isColidable()) {
-                collisionChecker = new CollisionChecker(this.solidAreaDown, stillObject.solidArea);
-
-                if (collisionChecker.isColided()) {
-
-                    return true;
-                }
-            }
-        }
-        return false;
-    }
-
-    public boolean collisionLeft() {
-        for (Entity stillObject : stillObjects) {
-            if (stillObject.isColidable()) {
-                collisionChecker = new CollisionChecker(this.solidAreaLeft, stillObject.solidArea);
-
-                if (collisionChecker.isColided()) {
-                    return true;
-                }
-            }
-        }
-        return false;
-    }
-
-public void setUP() {
-        if(collisionUp()) {
+    public void setUP() {
+        if (Collision.collisionUp(collisionCheckerBomber, this.solidAreaUp)) {
             speedUp = 0;
         }
-        if (!collisionUp()) {
+        if (!Collision.collisionUp(collisionCheckerBomber, this.solidAreaUp)) {
             speedUp = 1;
         }
-}
+    }
 
     public void setLeft() {
-        if(collisionLeft()) {
+        if (Collision.collisionLeft(collisionCheckerBomber, this.solidAreaLeft)) {
             speedLeft = 0;
         }
-        if (!collisionLeft()) {
-            speedLeft= 1;
+        if (!Collision.collisionLeft(collisionCheckerBomber, this.solidAreaLeft)) {
+            speedLeft = 1;
         }
     }
 
     public void setDown() {
-        if(collisionDown()) {
+        if (Collision.collisionDown(collisionCheckerBomber, this.solidAreaDown)) {
             speedDown = 0;
         }
-        if (!collisionDown()) {
+        if (!Collision.collisionDown(collisionCheckerBomber, this.solidAreaDown)) {
             speedDown = 1;
         }
     }
 
     public void setRight() {
-        if(collisionRight()) {
+        if (Collision.collisionRight(collisionCheckerBomber, this.solidAreaRight)) {
             speedRight = 0;
         }
-        if (!collisionRight()) {
+        if (!Collision.collisionRight(collisionCheckerBomber, this.solidAreaRight)) {
             speedRight = 1;
         }
     }
 
     public void movement() {
-        Image[] up = {Sprite.player_up.getFxImage(), Sprite.player_up_1.getFxImage(), Sprite.player_up_2.getFxImage()};
-        Image[] down = {Sprite.player_down.getFxImage(), Sprite.player_down_1.getFxImage(), Sprite.player_down_2.getFxImage()};
-        Image[] left= {Sprite.player_left.getFxImage(), Sprite.player_left_1.getFxImage(), Sprite.player_left_2.getFxImage()};
-        Image[] right = {Sprite.player_right.getFxImage(), Sprite.player_right_1.getFxImage(), Sprite.player_right_2.getFxImage()};
+        Image[] up = {
+                Sprite.player_up.getFxImage(),
+                Sprite.player_up_1.getFxImage(),
+                Sprite.player_up_2.getFxImage()
+        };
+        Image[] down = {
+                Sprite.player_down.getFxImage(),
+                Sprite.player_down_1.getFxImage(),
+                Sprite.player_down_2.getFxImage()
+        };
+        Image[] left = {
+                Sprite.player_left.getFxImage(),
+                Sprite.player_left_1.getFxImage(),
+                Sprite.player_left_2.getFxImage()
+        };
+        Image[] right = {
+                Sprite.player_right.getFxImage(),
+                Sprite.player_right_1.getFxImage(),
+                Sprite.player_right_2.getFxImage()
+        };
         spriteCounter++;
-        this.solidAreaUp.setLocation(this.x+4,this.y-4);
-        this.solidAreaDown.setLocation(this.x+4,this.y+23);
-        this.solidAreaLeft.setLocation(this.x-2,this.y+11);
-        this.solidAreaRight.setLocation(this.x+16,this.y+11);
+        this.solidAreaUp.setLocation(this.x + 4, this.y - 4);
+        this.solidAreaDown.setLocation(this.x + 4, this.y + 23);
+        this.solidAreaLeft.setLocation(this.x - 2, this.y + 11);
+        this.solidAreaRight.setLocation(this.x + 16, this.y + 11);
 
-        boolean Down = collisionDown();
         if (spriteCounter > 35) {
             if (spriteNum == 1) {
                 spriteNum = 2;
-            }
-
-            else if (spriteNum == 2) {
+            } else if (spriteNum == 2) {
                 spriteNum = 1;
             }
             spriteCounter = 0;
@@ -191,7 +146,7 @@ public void setUP() {
             if (spriteNum == 2) {
                 this.img = up[0];
             }
-            y-=speedUp;
+            y -= speedUp;
 
         }
         if (downPressed) {
@@ -205,7 +160,7 @@ public void setUP() {
                 this.img = down[2];
             }
 
-            y+=speedDown;
+            y += speedDown;
 
         }
 
@@ -218,7 +173,7 @@ public void setUP() {
             if (spriteNum == 2) {
                 this.img = left[2];
             }
-            x-=speedLeft;
+            x -= speedLeft;
 
         }
 
@@ -231,7 +186,7 @@ public void setUP() {
             if (spriteNum == 2) {
                 this.img = right[2];
             }
-            x+=speedRight;
+            x += speedRight;
 
         }
 
