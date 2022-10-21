@@ -47,9 +47,7 @@ public class Bomb extends Entity {
             timeTmp = timeBomb;
             int x = (bomberman.getX() + (SCALED_SIZE / 2)) / SCALED_SIZE;
             int y = (bomberman.getY() + (SCALED_SIZE / 2)) / SCALED_SIZE;
-            //int x = bomberman.getX() * SCALED_SIZE;
-            //int y = bomberman.getY() * SCALED_SIZE;
-            // = Math.round(x);
+            //x = Math.round(x);
             //y = Math.round(y);
             bomb = new Bomb(x, y, Sprite.bomb.getFxImage());
             block.add(bomb);
@@ -82,7 +80,6 @@ public class Bomb extends Entity {
                 collisionChecker = new CollisionChecker(edge_right.getSolidArea(), stillObject.getSolidArea());
 
                 if (collisionChecker.isColided()) {
-                    System.out.println("colldie" );
                     return true;
                 }
             }
@@ -99,7 +96,6 @@ public class Bomb extends Entity {
                 collisionChecker = new CollisionChecker(Up, stillObject.getSolidArea());
 
                 if (collisionChecker.isColided()) {
-                    System.out.println("colldie");
                     return true;
                 }
             }
@@ -113,7 +109,6 @@ public class Bomb extends Entity {
                 collisionChecker = new CollisionChecker(Down, stillObject.getSolidArea());
 
                 if (collisionChecker.isColided()) {
-                    System.out.println("colldie");
                     return true;
                 }
             }
@@ -165,44 +160,7 @@ public class Bomb extends Entity {
             Status = 1;
         }
     }
-/*
-    public void setUP() {
-        if(collisionUp()) {
-            edge_up.setImg(Sprite.transparent.getFxImage());
-        }
-        if (!collisionUp()) {
-            edge_up.setImg(Sprite.explosion_vertical_top_last.getFxImage());
-        }
-    }
 
-    public void setLeft() {
-        if(collisionLeft()) {
-            edge_left.setImg(Sprite.transparent.getFxImage());
-        }
-        if (!collisionLeft()) {
-            edge_left.setImg(Sprite.explosion_horizontal_left_last.getFxImage());
-        }
-    }
-
-    public void setDown() {
-        if(collisionDown()) {
-            edge_down.setImg(Sprite.transparent.getFxImage());
-        }
-        if (!collisionDown()) {
-            edge_down.setImg(Sprite.explosion_vertical_down_last.getFxImage());
-        }
-    }
-
-    public void setRight() {
-        if(collisionRight()) {
-            edge_right.setImg(Sprite.transparent.getFxImage());
-        }
-        if (!collisionRight()) {
-            edge_right.setImg(Sprite.explosion_horizontal_right_last.getFxImage());
-        }
-    }
-
- */
     public  void explosionCenter() {
         if (swapExplosion == 1) {
             bomb.setImg(Sprite.bomb_exploded.getFxImage());
@@ -225,81 +183,47 @@ public class Bomb extends Entity {
             swapExplosion = 2;
 
         } else if (swapExplosion == 2) {
-            /*
-            if (collisionRight()) {
+            bomb.setImg(Sprite.bomb_exploded1.getFxImage());
+            edge_up.setImg(Sprite.explosion_vertical_top_last1.getFxImage());
+            edge_right.setImg(Sprite.explosion_horizontal_right_last1.getFxImage());
+            edge_down.setImg(Sprite.explosion_vertical_down_last1.getFxImage());
+            edge_left.setImg(Sprite.explosion_horizontal_left_last1.getFxImage());
+            if(collisionRight()) {
                 edge_right.setImg(Sprite.transparent.getFxImage());
             }
             if (collisionLeft()) {
                 edge_left.setImg(Sprite.transparent.getFxImage());
             }
-            if (collisionUp()) {
-                edge_up.setImg(Sprite.transparent.getFxImage());
-            }
             if (collisionDown()) {
                 edge_down.setImg(Sprite.transparent.getFxImage());
             }
-            bomb.setImg(Sprite.bomb_exploded1.getFxImage());
-            edge_down.setImg(Sprite.explosion_vertical_down_last1.getFxImage());
-            edge_up.setImg(Sprite.explosion_vertical_top_last1.getFxImage());
-            edge_left.setImg(Sprite.explosion_horizontal_left_last1.getFxImage());
-            edge_right.setImg(Sprite.explosion_horizontal_right_last1.getFxImage());
-            */
+            if (collisionUp()) {
+                edge_up.setImg(Sprite.transparent.getFxImage());
+            }
 
             swapExplosion = 3;
 
         } else if (swapExplosion == 3) {
-            /*
-            if (collisionRight()) {
+            bomb.setImg(Sprite.bomb_exploded2.getFxImage());
+            edge_up.setImg(Sprite.explosion_vertical_top_last2.getFxImage());
+            edge_right.setImg(Sprite.explosion_horizontal_right_last2.getFxImage());
+            edge_down.setImg(Sprite.explosion_vertical_down_last2.getFxImage());
+            edge_left.setImg(Sprite.explosion_horizontal_left_last2.getFxImage());
+            if(collisionRight()) {
                 edge_right.setImg(Sprite.transparent.getFxImage());
             }
             if (collisionLeft()) {
                 edge_left.setImg(Sprite.transparent.getFxImage());
             }
-            if (collisionUp()) {
-                edge_up.setImg(Sprite.transparent.getFxImage());
-            }
             if (collisionDown()) {
                 edge_down.setImg(Sprite.transparent.getFxImage());
             }
-            bomb.setImg(Sprite.bomb_exploded2.getFxImage());
-            edge_down.setImg(Sprite.explosion_vertical_down_last2.getFxImage());
-            edge_up.setImg(Sprite.explosion_vertical_top_last2.getFxImage());
-            edge_left.setImg(Sprite.explosion_horizontal_left_last2.getFxImage());
-            edge_right.setImg(Sprite.explosion_horizontal_right_last2.getFxImage());
-
-             */
+            if (collisionUp()) {
+                edge_up.setImg(Sprite.transparent.getFxImage());
+            }
             swapExplosion = 1;
         }
     }
-/*
-    public static void createEdge() {
-        if (powerBomb == 0) {
-            edge_down = new Bomb(bomb.getX() / 32, bomb.getY() / 32 + 1,
-                    Sprite.bomb_exploded.getFxImage());
-            block.add(edge_down);
-        }
-    }
-
-        if (powerBomb == 0) {
-            edge_up = new Bomb(bomb.getX() / 32, bomb.getY() / 32 - 1,
-                    Sprite.bomb_exploded.getFxImage());
-            block.add(edge_up);
-        }
-        if (powerBomb == 0) {
-            edge_left = new Bomb(bomb.getX() / 32 - 1, bomb.getY() / 32,
-                    Sprite.bomb_exploded.getFxImage());
-
-            block.add(edge_left);
-        }
-        if (powerBomb == 0) {
-            edge_right = new Bomb(bomb.getX() / 32 + 1, bomb.getY() / 32,
-                    Sprite.bomb_exploded.getFxImage());
-            block.add(edge_right);
-        }
-    }
-
-
- */
     private static void Status() {
         if (isBomb == 1) {
             if (System.currentTimeMillis() - timeBomb < 2000) {
