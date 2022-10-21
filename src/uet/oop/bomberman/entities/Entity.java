@@ -23,6 +23,14 @@ public abstract class Entity {
 
     private boolean colidable;
 
+    public Entity( int xUnit, int yUnit, Image img,boolean colidable) {
+        this.x = xUnit * Sprite.SCALED_SIZE;
+        this.y = yUnit * Sprite.SCALED_SIZE;
+        this.img = img;
+        this.colidable = colidable;
+        this.solidArea = new Rectangle(x,y,32, 32);
+    }
+
     public int getSpriteCounter() {
         return spriteCounter;
     }
@@ -103,15 +111,6 @@ public abstract class Entity {
 
     public void setRightPressed(boolean rightPressed) {
         this.rightPressed = rightPressed;
-    }
-
-    //Khởi tạo đối tượng, chuyển từ tọa độ đơn vị sang tọa độ trong canvas
-    public Entity( int xUnit, int yUnit, Image img,boolean colidable) {
-        this.x = xUnit * Sprite.SCALED_SIZE;
-        this.y = yUnit * Sprite.SCALED_SIZE;
-        this.img = img;
-        this.colidable = colidable;
-        this.solidArea = new Rectangle(x,y,32, 32);
     }
 
     public int getX() {
