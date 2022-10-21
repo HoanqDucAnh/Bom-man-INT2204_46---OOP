@@ -49,13 +49,12 @@ public class Bomber extends Entity {
     protected int speedRight = 1;
     protected int speedUp = 1;
     protected int speedDown = 1;
-
     public Bomber(int x, int y, Image img) {
         super(x,y,img,false);
         this.solidAreaUp = new Rectangle(this.x+4,this.y-4,10,10);
-        this.solidAreaDown = new Rectangle(this.x+4,this.y+23,10,10);
+        this.solidAreaDown = new Rectangle(this.x+4,this.y+23,15,10);
         this.solidAreaLeft = new Rectangle(this.x-2,this.y+11,10,10);
-        this.solidAreaRight = new Rectangle(this.x + 16,this.y + 11 ,10,10);
+        this.solidAreaRight = new Rectangle(this.x + 16,this.y+11,10,10);
     }
 
 
@@ -67,9 +66,11 @@ public class Bomber extends Entity {
 
     public boolean collisionRight() {
         for (Entity stillObject : stillObjects) {
-            if (stillObject.colidable) {
+            if (stillObject.isColidable()) {
                 collisionChecker = new CollisionChecker(this.solidAreaRight, stillObject.solidArea);
+
                 if (collisionChecker.isColided()) {
+
                     return true;
                 }
             }
@@ -82,9 +83,11 @@ public class Bomber extends Entity {
     public boolean collisionUp() {
 
             for (Entity stillObject : stillObjects) {
-                if (stillObject.colidable) {
+                if (stillObject.isColidable()) {
                     collisionChecker = new CollisionChecker(this.solidAreaUp, stillObject.solidArea);
+
                     if (collisionChecker.isColided()) {
+
                         return true;
                     }
                 }
@@ -94,9 +97,11 @@ public class Bomber extends Entity {
 
     public boolean collisionDown() {
         for (Entity stillObject : stillObjects) {
-            if (stillObject.colidable) {
+            if (stillObject.isColidable()) {
                 collisionChecker = new CollisionChecker(this.solidAreaDown, stillObject.solidArea);
+
                 if (collisionChecker.isColided()) {
+
                     return true;
                 }
             }
@@ -106,8 +111,9 @@ public class Bomber extends Entity {
 
     public boolean collisionLeft() {
         for (Entity stillObject : stillObjects) {
-            if (stillObject.colidable) {
+            if (stillObject.isColidable()) {
                 collisionChecker = new CollisionChecker(this.solidAreaLeft, stillObject.solidArea);
+
                 if (collisionChecker.isColided()) {
                     return true;
                 }
@@ -161,8 +167,9 @@ public void setUP() {
         this.solidAreaUp.setLocation(this.x+4,this.y-4);
         this.solidAreaDown.setLocation(this.x+4,this.y+23);
         this.solidAreaLeft.setLocation(this.x-2,this.y+11);
-        this.solidAreaRight.setLocation(this.x + 16,this.y + 11);
+        this.solidAreaRight.setLocation(this.x+16,this.y+11);
 
+        boolean Down = collisionDown();
         if (spriteCounter > 35) {
             if (spriteNum == 1) {
                 spriteNum = 2;
@@ -202,7 +209,18 @@ public void setUP() {
 
         }
 
+        if (leftPressed) {
+            setLeft();
+            if (spriteNum == 1) {
+                this.img = left[1];
+            }
 
+            if (spriteNum == 2) {
+                this.img = left[2];
+            }
+            x-=speedLeft;
+
+        }
 
         if (rightPressed) {
             setRight();
@@ -216,18 +234,7 @@ public void setUP() {
             x+=speedRight;
 
         }
-        if (leftPressed) {
-            setLeft();
-            if (spriteNum == 1) {
-                this.img = left[1];
-            }
 
-            if (spriteNum == 2) {
-                this.img = left[2];
-            }
-            x-=speedLeft;
-
-        }
     }
 
 }
