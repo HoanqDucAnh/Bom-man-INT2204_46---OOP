@@ -98,16 +98,16 @@ public class Bomb extends Entity {
             edge_right.setImg(Sprite.explosion_horizontal_right_last.getFxImage());
             edge_down.setImg(Sprite.explosion_vertical_down_last.getFxImage());
             edge_left.setImg(Sprite.explosion_horizontal_left_last.getFxImage());
-            if (Collision.collisionRight(collisionCheckerBomb, Right)) {
+            if (Collision.collision(collisionCheckerBomb, Right)) {
                 edge_right.setImg(Sprite.transparent.getFxImage());
             }
-            if (Collision.collisionLeft(collisionCheckerBomb, Left)) {
+            if (Collision.collision(collisionCheckerBomb, Left)) {
                 edge_left.setImg(Sprite.transparent.getFxImage());
             }
-            if (Collision.collisionDown(collisionCheckerBomb, Down)) {
+            if (Collision.collision(collisionCheckerBomb, Down)) {
                 edge_down.setImg(Sprite.transparent.getFxImage());
             }
-            if (Collision.collisionUp(collisionCheckerBomb, Up)) {
+            if (Collision.collision(collisionCheckerBomb, Up)) {
                 edge_up.setImg(Sprite.transparent.getFxImage());
             }
             swapExplosion = 2;
@@ -118,16 +118,16 @@ public class Bomb extends Entity {
             edge_right.setImg(Sprite.explosion_horizontal_right_last1.getFxImage());
             edge_down.setImg(Sprite.explosion_vertical_down_last1.getFxImage());
             edge_left.setImg(Sprite.explosion_horizontal_left_last1.getFxImage());
-            if (Collision.collisionRight(collisionCheckerBomb, Right)) {
+            if (Collision.collision(collisionCheckerBomb, Right)) {
                 edge_right.setImg(Sprite.transparent.getFxImage());
             }
-            if (Collision.collisionLeft(collisionCheckerBomb, Left)) {
+            if (Collision.collision(collisionCheckerBomb, Left)) {
                 edge_left.setImg(Sprite.transparent.getFxImage());
             }
-            if (Collision.collisionDown(collisionCheckerBomb, Down)) {
+            if (Collision.collision(collisionCheckerBomb, Down)) {
                 edge_down.setImg(Sprite.transparent.getFxImage());
             }
-            if (Collision.collisionUp(collisionCheckerBomb, Up)) {
+            if (Collision.collision(collisionCheckerBomb, Up)) {
                 edge_up.setImg(Sprite.transparent.getFxImage());
             }
 
@@ -139,16 +139,16 @@ public class Bomb extends Entity {
             edge_right.setImg(Sprite.explosion_horizontal_right_last2.getFxImage());
             edge_down.setImg(Sprite.explosion_vertical_down_last2.getFxImage());
             edge_left.setImg(Sprite.explosion_horizontal_left_last2.getFxImage());
-            if (Collision.collisionRight(collisionCheckerBomb, Right)) {
+            if (Collision.collision(collisionCheckerBomb, Right)) {
                 edge_right.setImg(Sprite.transparent.getFxImage());
             }
-            if (Collision.collisionLeft(collisionCheckerBomb, Left)) {
+            if (Collision.collision(collisionCheckerBomb, Left)) {
                 edge_left.setImg(Sprite.transparent.getFxImage());
             }
-            if (Collision.collisionDown(collisionCheckerBomb, Down)) {
+            if (Collision.collision(collisionCheckerBomb, Down)) {
                 edge_down.setImg(Sprite.transparent.getFxImage());
             }
-            if (Collision.collisionUp(collisionCheckerBomb, Up)) {
+            if (Collision.collision(collisionCheckerBomb, Up)) {
                 edge_up.setImg(Sprite.transparent.getFxImage());
             }
             swapExplosion = 1;

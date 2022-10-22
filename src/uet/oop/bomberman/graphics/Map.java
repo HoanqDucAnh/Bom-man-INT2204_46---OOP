@@ -13,34 +13,6 @@ import java.util.StringTokenizer;
 import static uet.oop.bomberman.BombermanGame.*;
 
 public class Map {
-    private GraphicsContext gc;
-
-//    public Map(String level) throws IOException {
-//        File map = new File(level);
-//
-//        Scanner scan = new Scanner(map);
-//        ArrayList<String> loadMap = new ArrayList<String>();
-//        while(scan.hasNextLine()){
-//            loadMap.add(scan.nextLine());
-//        }
-//        String[] simpleArray = loadMap.toArray(new String[]{});
-//
-//        for (int i = 0; i < WIDTH; i++) {
-//            for (int j = 0; j < HEIGHT; j++) {
-//                Entity object;
-//                if (simpleArray[j].charAt(i) == '#') {
-//                    object = new Wall(i, j, Sprite.wall.getFxImage());
-//                } else if (simpleArray[j].charAt(i) == '*') {
-//                    object = new Brick(i, j, Sprite.brick.getFxImage());
-//                } else {
-//                    object = new Grass(i, j, Sprite.grass.getFxImage());
-//                }
-//                stillObjects.add(object);
-//
-//            }
-//        }
-//    }
-
     public Map(String level) {
         System.out.println(System.getProperty("user.dir"));
         final File fileName = new File(level);
@@ -61,6 +33,7 @@ public class Map {
                     for (int j = 0; j < _width; j++) {
                         int s = Integer.parseInt(tokenTile.nextToken());
                         Entity entity;
+                        Monster monster = null;
                         switch (s) {
                             case 2:
                                 entity = new Wall(j, i, Sprite.wall.getFxImage(),true);
@@ -68,11 +41,26 @@ public class Map {
                             case 1:
                                 entity = new Brick(j, i, Sprite.brick.getFxImage(),true);
                                 break;
+                            case 6:
+                                entity = new Item(j, i, Sprite.powerup_speed.getFxImage(),true);
+                                break;
                             default:
                                 entity = new Grass(j, i, Sprite.grass.getFxImage(),false);
                         }
                         stillObjects.add(entity);
+
                     }
+
+
+                }
+
+            }
+
+            for (int i = 0; i < stillObjects.size(); i ++) {
+                if (stillObjects.get(i) instanceof Item) {
+                    items.add(stillObjects.get(i));
+                    Entity grass = new Grass(stillObjects.get(i).getX(), stillObjects.get(i).getY(), Sprite.grass.getFxImage(),false);
+                    stillObjects.set(i, grass);
                 }
             }
         } catch (IOException e) {

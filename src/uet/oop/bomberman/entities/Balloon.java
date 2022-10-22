@@ -65,11 +65,11 @@ public class Balloon extends Monster {
                 this.img = right[2];
             }
         }
-        if(Collision.collisionLeft(collisionCheckerBalloon,this.solidAreaLeft) || Collision.collisionRight(collisionCheckerBalloon,this.solidAreaRight)){
+        if(Collision.collision(collisionCheckerBalloon,this.solidAreaLeft) || Collision.collision(collisionCheckerBalloon,this.solidAreaRight)){
             direction *= -1;
         }
         x+= direction;
-        System.out.println("running");
+
     }
 
     public void update() {
