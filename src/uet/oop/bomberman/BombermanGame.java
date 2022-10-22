@@ -17,6 +17,8 @@ import javafx.scene.paint.Color;
 import javafx.stage.Stage;
 import javafx.util.Duration;
 //import uet.oop.bomberman.entities.*;
+import uet.oop.bomberman.entities.Balloon;
+import uet.oop.bomberman.entities.Monster;
 import uet.oop.bomberman.graphics.Map;
 import uet.oop.bomberman.graphics.Sprite;
 import uet.oop.bomberman.entities.block.Bomb;
@@ -60,10 +62,14 @@ public class BombermanGame extends Application {
     public static final List<Entity> block = new ArrayList<>();;
 
     public static Entity bomberman;
+    public static List<Monster> monstersEntity = new ArrayList<>();
     private final long[] frameTimes = new long[100];
     private int frameTimeIndex = 0 ;
     private boolean arrayFilled = false ;
     public Rectangle bomber;
+    public Monster balloon1;
+    public Monster balloon2;
+    public Monster balloon3;
     public static void main(String[] args) {
 
         System.setProperty("prism.verbose", "true");
@@ -93,29 +99,6 @@ public class BombermanGame extends Application {
         stage.setTitle("Bomman");
 
 
-//        AnimationTimer timer = new AnimationTimer() {
-//
-//            @Override
-//            public void handle(long now) {
-//                long oldFrameTime = frameTimes[frameTimeIndex] ;
-//                frameTimes[frameTimeIndex] = now ;
-//                frameTimeIndex = (frameTimeIndex + 1) % frameTimes.length ;
-//                if (frameTimeIndex == 0) {
-//                    arrayFilled = true ;
-//                }
-//                if (arrayFilled) {
-//                    long elapsedNanos = now - oldFrameTime ;
-//                    long elapsedNanosPerFrame = elapsedNanos / frameTimes.length ;
-//                    double frameRate = 1_000_000_000.0 / elapsedNanosPerFrame ;
-//                    System.out.println(String.format("Current frame rate: %.3f", frameRate));
-//                }
-//
-//                render();
-//                update();
-//            }
-//        };
-//        timer.start();
-
         Timeline timeline = new Timeline(new KeyFrame(Duration.seconds(1), event -> {
             render();
             update();
@@ -128,6 +111,10 @@ public class BombermanGame extends Application {
         new Level1();
 
         bomberman = new Bomber(1, 1, Sprite.player_right.getFxImage());
+        balloon1 = new Balloon(2,13,Sprite.balloom_left1.getFxImage());
+        balloon2 = new Balloon(23,13,Sprite.balloom_left1.getFxImage());
+        balloon3 = new Balloon(14,1,Sprite.balloom_left1.getFxImage());
+
 
         scene.setOnKeyPressed(new EventHandler<KeyEvent>() {
             @Override
@@ -173,27 +160,15 @@ public class BombermanGame extends Application {
 
             }
         });
-        /*
-       Rectangle rec1 = new Rectangle((bomberman.getX() + (SCALED_SIZE / 2)) / SCALED_SIZE * SCALED_SIZE + 1*SCALED_SIZE ,(bomberman.getX() + (SCALED_SIZE / 2)) / SCALED_SIZE * SCALED_SIZE,25,25);//up
-        Rectangle rec2 = new Rectangle((bomberman.getX() + (SCALED_SIZE / 2)) / SCALED_SIZE,(bomberman.getY() + (SCALED_SIZE / 2)) / SCALED_SIZE ,10,10); //down
-        Rectangle rec3 = new Rectangle(1 * Sprite.SCALED_SIZE + 16,1 * Sprite.SCALED_SIZE + 16,10,10); //right
-        Rectangle rec4 = new Rectangle(1 * Sprite.SCALED_SIZE - 2,1 * Sprite.SCALED_SIZE + 11 ,10,10); //left
-        rec1.setFill(Color.RED);
-        rec2.setFill(Color.BLUE);
-        rec3.setFill(Color.YELLOW);
-       rec4.setFill(Color.GREEN);
-
-       root.getChildren().add(rec1);
-       root.getChildren().add(rec2);
-       root.getChildren().add(rec3);
-       root.getChildren().add(rec4);
-       */
     }
 
 
     public void update() {
         bomberman.update();
         block.forEach(Entity::update);
+        balloon1.update();
+        balloon2.update();
+        balloon3.update();
     }
 
     public void render() {
@@ -201,5 +176,8 @@ public class BombermanGame extends Application {
         stillObjects.forEach(g -> g.render(gc));
         block.forEach((g -> g.render(gc)));
         bomberman.render(gc);
+        balloon3.render(gc);
+        balloon2.render(gc);
+        balloon1.render(gc);
     }
 }

@@ -53,9 +53,11 @@ public class Bomber extends Entity {
     public Bomber(int x, int y, Image img) {
         super(x, y, img, false);
         this.solidAreaUp = new Rectangle(this.x + 4, this.y - 4, 10, 10);
-        this.solidAreaDown = new Rectangle(this.x + 4, this.y + 23, 15, 10);
+        this.solidAreaDown = new Rectangle(this.x + 4, this.y + 23, 10, 10);
         this.solidAreaLeft = new Rectangle(this.x - 2, this.y + 11, 10, 10);
         this.solidAreaRight = new Rectangle(this.x + 16, this.y + 11, 10, 10);
+        
+
     }
 
 
@@ -123,7 +125,7 @@ public class Bomber extends Entity {
         };
         spriteCounter++;
         this.solidAreaUp.setLocation(this.x + 4, this.y - 4);
-        this.solidAreaDown.setLocation(this.x + 4, this.y + 23);
+        this.solidAreaDown.setLocation(this.x + 3, this.y + 23);
         this.solidAreaLeft.setLocation(this.x - 2, this.y + 11);
         this.solidAreaRight.setLocation(this.x + 16, this.y + 11);
 
