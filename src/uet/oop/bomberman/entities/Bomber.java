@@ -74,7 +74,7 @@ public class Bomber extends Entity {
         if (!Collision.collision(collisionCheckerBomber, this.solidAreaUp)) {
             speedUp = currentSpeed;
         }
-        if (Collision.collisionItem(collisionCheckerBomber, this.solidAreaRight)) {
+        if (Collision.collisionItemSpeed(collisionCheckerBomber, this.solidAreaRight)) {
             currentSpeed++;
         }
     }
@@ -86,7 +86,7 @@ public class Bomber extends Entity {
         if (!Collision.collision(collisionCheckerBomber, this.solidAreaLeft)) {
             speedLeft = currentSpeed;
         }
-        if (Collision.collisionItem(collisionCheckerBomber, this.solidAreaRight)) {
+        if (Collision.collisionItemSpeed(collisionCheckerBomber, this.solidAreaRight)) {
             currentSpeed++;
         }
     }
@@ -98,7 +98,7 @@ public class Bomber extends Entity {
         if (!Collision.collision(collisionCheckerBomber, this.solidAreaDown)) {
             speedDown = currentSpeed;
         }
-        if (Collision.collisionItem(collisionCheckerBomber, this.solidAreaRight)) {
+        if (Collision.collisionItemSpeed(collisionCheckerBomber, this.solidAreaRight)) {
             currentSpeed++;
         }
     }
@@ -110,7 +110,7 @@ public class Bomber extends Entity {
         if (!Collision.collision(collisionCheckerBomber, this.solidAreaRight)) {
             speedRight = currentSpeed;
         }
-        if (Collision.collisionItem(collisionCheckerBomber, this.solidAreaRight)) {
+        if (Collision.collisionItemSpeed(collisionCheckerBomber, this.solidAreaRight)) {
             currentSpeed++;
         }
     }

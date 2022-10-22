@@ -87,7 +87,6 @@ public class BombermanGame extends Application {
         stage.show();
         stage.setTitle("Bomman");
 
-        System.out.println(items.size());
         Timeline timeline = new Timeline(new KeyFrame(Duration.seconds(1), event -> {
             render();
             update();
@@ -98,7 +97,7 @@ public class BombermanGame extends Application {
         timeline.setRate(120);
 
         new Level1();
-
+        System.out.print(stillObjects.size());
         bomberman = new Bomber(1, 1, Sprite.player_right.getFxImage());
 
         scene.setOnKeyPressed(new EventHandler<KeyEvent>() {
@@ -156,13 +155,14 @@ public class BombermanGame extends Application {
 
     public void render() {
         gc.clearRect(0, 0, canvas.getWidth(), canvas.getHeight());
-        items.forEach((g -> g.render(gc)));
+        monsters.forEach((g -> g.render(gc)));
         stillObjects.forEach(g -> g.render(gc));
+        items.forEach((g -> g.render(gc)));
+
         block.forEach((g -> g.render(gc)));
 
         bomberman.render(gc);
 
-        monsters.forEach((g -> g.render(gc)));
 
     }
 }

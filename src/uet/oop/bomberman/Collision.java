@@ -21,13 +21,14 @@ public class Collision {
         return false;
     }
 
-    public static boolean collisionItem(CollisionChecker collisionCheckerer, Rectangle player) {
+    public static boolean collisionItemSpeed(CollisionChecker collisionCheckerer, Rectangle player) {
         for (int i = 0; i < items.size(); i++) {
             if (items.get(i).isColidable()) {
                 collisionCheckerer = new CollisionChecker(player, items.get(i).getSolidArea());
                 if (collisionCheckerer.isColided()) {
                     items.remove(i);
                     return true;
+
                 }
             }
         }
