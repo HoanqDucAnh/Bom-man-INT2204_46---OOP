@@ -46,6 +46,7 @@ import static uet.oop.bomberman.BombermanGame.*;
 public class Bomber extends Entity {
     private CollisionChecker collisionCheckerBomber;
 
+    public int currentSpeed = 1;
     protected int speedLeft = 1;
     protected int speedRight = 1;
     protected int speedUp = 1;
@@ -67,38 +68,50 @@ public class Bomber extends Entity {
     }
 
     public void setUP() {
-        if (Collision.collisionUp(collisionCheckerBomber, this.solidAreaUp)) {
+        if (Collision.collision(collisionCheckerBomber, this.solidAreaUp)) {
             speedUp = 0;
         }
-        if (!Collision.collisionUp(collisionCheckerBomber, this.solidAreaUp)) {
-            speedUp = 1;
+        if (!Collision.collision(collisionCheckerBomber, this.solidAreaUp)) {
+            speedUp = currentSpeed;
+        }
+        if (Collision.collisionItemSpeed(collisionCheckerBomber, this.solidAreaUp)) {
+            currentSpeed++;
         }
     }
 
     public void setLeft() {
-        if (Collision.collisionLeft(collisionCheckerBomber, this.solidAreaLeft)) {
+        if (Collision.collision(collisionCheckerBomber, this.solidAreaLeft)) {
             speedLeft = 0;
         }
-        if (!Collision.collisionLeft(collisionCheckerBomber, this.solidAreaLeft)) {
-            speedLeft = 1;
+        if (!Collision.collision(collisionCheckerBomber, this.solidAreaLeft)) {
+            speedLeft = currentSpeed;
+        }
+        if (Collision.collisionItemSpeed(collisionCheckerBomber, this.solidAreaLeft)) {
+            currentSpeed++;
         }
     }
 
     public void setDown() {
-        if (Collision.collisionDown(collisionCheckerBomber, this.solidAreaDown)) {
+        if (Collision.collision(collisionCheckerBomber, this.solidAreaDown)) {
             speedDown = 0;
         }
-        if (!Collision.collisionDown(collisionCheckerBomber, this.solidAreaDown)) {
-            speedDown = 1;
+        if (!Collision.collision(collisionCheckerBomber, this.solidAreaDown)) {
+            speedDown = currentSpeed;
+        }
+        if (Collision.collisionItemSpeed(collisionCheckerBomber, this.solidAreaDown)) {
+            currentSpeed++;
         }
     }
 
     public void setRight() {
-        if (Collision.collisionRight(collisionCheckerBomber, this.solidAreaRight)) {
+        if (Collision.collision(collisionCheckerBomber, this.solidAreaRight)) {
             speedRight = 0;
         }
-        if (!Collision.collisionRight(collisionCheckerBomber, this.solidAreaRight)) {
-            speedRight = 1;
+        if (!Collision.collision(collisionCheckerBomber, this.solidAreaRight)) {
+            speedRight = currentSpeed;
+        }
+        if (Collision.collisionItemSpeed(collisionCheckerBomber, this.solidAreaRight)) {
+            currentSpeed++;
         }
     }
 
