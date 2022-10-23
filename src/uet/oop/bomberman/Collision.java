@@ -5,8 +5,8 @@ import uet.oop.bomberman.graphics.Sprite;
 
 import java.awt.*;
 
-import static uet.oop.bomberman.BombermanGame.items;
-import static uet.oop.bomberman.BombermanGame.stillObjects;
+import static uet.oop.bomberman.BombermanGame.*;
+
 public class Collision {
     public static boolean collision(CollisionChecker collisionCheckerer, Rectangle player) {
         for (Entity stillObject : stillObjects) {
@@ -38,4 +38,19 @@ public class Collision {
         return false;
     }
 
+    public static boolean collisionBrick(CollisionChecker collisionCheckerer, Rectangle player) {
+        for (int i = 0; i < brick.size(); i++) {
+            if (brick.get(i).isColidable()) {
+                collisionCheckerer = new CollisionChecker(player, brick.get(i).getSolidArea());
+                if (collisionCheckerer.isColided()) {
+                    brick.get(i).setColidable(false);
+                    brick.get(i).setImg(Sprite.grass.getFxImage());
+                    brick.remove(i);
+                    return true;
+
+                }
+            }
+        }
+        return false;
+    }
 }
