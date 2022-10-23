@@ -61,6 +61,11 @@ public class Map {
                     items.add(stillObjects.get(i));
                 }
             }
+            for (int i = 0; i < stillObjects.size(); i ++) {
+                if (stillObjects.get(i) instanceof Brick) {
+                    brick.add(stillObjects.get(i));
+                }
+            }
         } catch (IOException e) {
             e.printStackTrace();
         }
