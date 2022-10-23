@@ -1,6 +1,7 @@
 package uet.oop.bomberman;
 
 import uet.oop.bomberman.entities.Entity;
+import uet.oop.bomberman.graphics.Sprite;
 
 import java.awt.*;
 
@@ -26,6 +27,8 @@ public class Collision {
             if (items.get(i).isColidable()) {
                 collisionCheckerer = new CollisionChecker(player, items.get(i).getSolidArea());
                 if (collisionCheckerer.isColided()) {
+                    items.get(i).setColidable(false);
+                    items.get(i).setImg(Sprite.grass.getFxImage());
                     items.remove(i);
                     return true;
 

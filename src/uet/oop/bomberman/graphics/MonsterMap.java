@@ -35,7 +35,7 @@ public class MonsterMap {
                                 monster = new Balloon(j, i, Sprite.balloom_left1.getFxImage());
                                 break;
                             default:
-                                monster = new Unharmed(j, i, Sprite.grass.getFxImage());
+                                monster = new Unharmed(j, i, Sprite.transparent.getFxImage());
 
                         }
                         monsters.add(monster);

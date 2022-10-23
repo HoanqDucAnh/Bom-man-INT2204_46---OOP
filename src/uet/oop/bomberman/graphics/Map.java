@@ -42,7 +42,7 @@ public class Map {
                                 entity = new Brick(j, i, Sprite.brick.getFxImage(),true);
                                 break;
                             case 6:
-                                entity = new Item(j, i, Sprite.powerup_speed.getFxImage(),true);
+                                entity = new Item(j, i, Sprite.powerup_speed.getFxImage(), true);
                                 break;
                             default:
                                 entity = new Grass(j, i, Sprite.grass.getFxImage(),false);
@@ -59,8 +59,6 @@ public class Map {
             for (int i = 0; i < stillObjects.size(); i ++) {
                 if (stillObjects.get(i) instanceof Item) {
                     items.add(stillObjects.get(i));
-                    Entity grass = new Grass(stillObjects.get(i).getX(), stillObjects.get(i).getY(), Sprite.grass.getFxImage(),false);
-                    stillObjects.set(i, grass);
                 }
             }
         } catch (IOException e) {

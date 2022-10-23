@@ -41,6 +41,7 @@ import javafx.scene.control.*;
 import javafx.stage.Stage;
 
 import static uet.oop.bomberman.graphics.Sprite.SCALED_SIZE;
+import static uet.oop.bomberman.graphics.Sprite.grass;
 
 public class BombermanGame extends Application {
     public static final int WIDTH = 25;
@@ -144,6 +145,7 @@ public class BombermanGame extends Application {
 
             }
         });
+
     }
 
 
@@ -151,18 +153,16 @@ public class BombermanGame extends Application {
         bomberman.update();
         block.forEach(Entity::update);
         monsters.forEach(Monster::update);
+        items.forEach(Entity::update);
+
     }
 
     public void render() {
         gc.clearRect(0, 0, canvas.getWidth(), canvas.getHeight());
-        monsters.forEach((g -> g.render(gc)));
         stillObjects.forEach(g -> g.render(gc));
+        monsters.forEach((g -> g.render(gc)));
         items.forEach((g -> g.render(gc)));
-
         block.forEach((g -> g.render(gc)));
-
         bomberman.render(gc);
-
-
     }
 }
