@@ -130,6 +130,7 @@ public class Bomb extends Entity {
             }
 
             if (Collision.collisionMonster(collisionCheckerBomb, Right)) {
+
                 edge_right.setImg(Sprite.balloom_dead.getFxImage());
             }
             if (Collision.collisionMonster(collisionCheckerBomb, Left)) {

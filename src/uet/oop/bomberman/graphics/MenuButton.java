@@ -76,7 +76,7 @@ public class MenuButton extends Button {
                 if(event.getButton().equals(MouseButton.PRIMARY)) {
                     setButtonPressedStyle();
                     status = false;
-                    isAlive = false;
+                    //isAlive = false;
                     System.out.print(status);
                     new Level1();
                 }

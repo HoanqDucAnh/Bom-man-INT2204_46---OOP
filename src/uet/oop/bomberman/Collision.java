@@ -71,8 +71,8 @@ public class Collision {
             if (monsters.get(i).isColidable()) {
                 collisionCheckerer = new CollisionChecker(player, monsters.get(i).getSolidArea());
                 if (collisionCheckerer.isColided()) {
-                    monsters.get(i).setAlive(false);
                     monsters.get(i).setDirection(0);
+                    monsters.get(i).setAlive(false);
                     monsters.get(i).setImg(Sprite.transparent.getFxImage());
                     monsters.remove(i);
                     return true;
