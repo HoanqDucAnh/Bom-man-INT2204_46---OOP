@@ -60,6 +60,7 @@ public class BombermanGame extends Application {
     public static final int WIDTH = 25;
     public static final int HEIGHT = 15;
 
+    public static int check = 0;
     public static int _width = 0;
     public static int _height = 0;
     public static int _level = 1;
@@ -234,15 +235,16 @@ public class BombermanGame extends Application {
             monsters.forEach(Monster::update);
             items.forEach(Entity::update);
             bomberman.update();
+
             if (monsters.size() == 0 && !isPortal && !wait) {
                 Entity portal = new Portal(_width - 2, _height - 2, Sprite.portal.getFxImage(), true);
-                stillObjects.add(portal);
+                items.add(portal);
+
                 if (Collision.collisionPortal(bomberman.getSolidAreaRight(), portal)) {
                     wait = true;
                     waitingTime = System.currentTimeMillis();
                 }
             }
-            waitToLevelUp();
         }
 
         public void render() {
