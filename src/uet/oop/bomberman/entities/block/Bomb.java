@@ -110,6 +110,18 @@ public class Bomb extends Entity {
             if (Collision.collision(collisionCheckerBomb, Up)) {
                 edge_up.setImg(Sprite.transparent.getFxImage());
             }
+            if (Collision.collisionBrick(collisionCheckerBomb, Right)) {
+                edge_right.setImg(Sprite.explosion_horizontal_right_last.getFxImage());
+            }
+            if (Collision.collisionBrick(collisionCheckerBomb, Left)) {
+                edge_right.setImg(Sprite.explosion_horizontal_left_last.getFxImage());
+            }
+            if (Collision.collisionBrick(collisionCheckerBomb, Up)) {
+                edge_right.setImg(Sprite.explosion_vertical_top_last.getFxImage());
+            }
+            if (Collision.collisionBrick(collisionCheckerBomb, Down)) {
+                edge_right.setImg(Sprite.explosion_vertical_down_last.getFxImage());
+            }
             swapExplosion = 2;
 
         } else if (swapExplosion == 2) {
