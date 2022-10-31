@@ -34,6 +34,8 @@ public class Bomb extends Entity {
     private static Entity edge_up = null;
     private static Entity edge_left = null;
     private static Entity edge_right = null;
+    private static Rectangle mid = null;
+
     private static boolean isEdge = false;
     public static int bombNumber = 1000;
     public Bomb(int x, int y, Image img) {
@@ -52,6 +54,8 @@ public class Bomb extends Entity {
             //y = Math.round(y);
             bomb = new Bomb(x, y, Sprite.bomb.getFxImage());
             block.add(bomb);
+            mid = new Rectangle(x * SCALED_SIZE, y * SCALED_SIZE, 10, 10);
+            bomb.setSolidArea(mid);
             edge_down = new Bomb(x, y + 1,
                     Sprite.transparent.getFxImage());
             Down = new Rectangle(x * SCALED_SIZE, y * SCALED_SIZE + 1 * SCALED_SIZE, 10, 10);
@@ -107,21 +111,40 @@ public class Bomb extends Entity {
             if (Collision.collision(collisionCheckerBomb, Down)) {
                 edge_down.setImg(Sprite.transparent.getFxImage());
             }
+
             if (Collision.collision(collisionCheckerBomb, Up)) {
                 edge_up.setImg(Sprite.transparent.getFxImage());
             }
+
             if (Collision.collisionBrick(collisionCheckerBomb, Right)) {
-                edge_right.setImg(Sprite.explosion_horizontal_right_last.getFxImage());
+                edge_right.setImg(Sprite.brick_exploded.getFxImage());
             }
             if (Collision.collisionBrick(collisionCheckerBomb, Left)) {
-                edge_right.setImg(Sprite.explosion_horizontal_left_last.getFxImage());
+                edge_left.setImg(Sprite.brick_exploded.getFxImage());
             }
             if (Collision.collisionBrick(collisionCheckerBomb, Up)) {
-                edge_right.setImg(Sprite.explosion_vertical_top_last.getFxImage());
+                edge_up.setImg(Sprite.brick_exploded.getFxImage());
             }
             if (Collision.collisionBrick(collisionCheckerBomb, Down)) {
-                edge_right.setImg(Sprite.explosion_vertical_down_last.getFxImage());
+                edge_down.setImg(Sprite.brick_exploded.getFxImage());
             }
+
+            if (Collision.collisionMonster(collisionCheckerBomb, Right)) {
+                edge_right.setImg(Sprite.balloom_dead.getFxImage());
+            }
+            if (Collision.collisionMonster(collisionCheckerBomb, Left)) {
+                edge_left.setImg(Sprite.balloom_dead.getFxImage());
+            }
+            if (Collision.collisionMonster(collisionCheckerBomb, Down)) {
+                edge_down.setImg(Sprite.balloom_dead.getFxImage());
+            }
+            if (Collision.collisionMonster(collisionCheckerBomb, Up)) {
+                edge_up.setImg(Sprite.balloom_dead.getFxImage());
+            }
+            if (Collision.collisionMonster(collisionCheckerBomb, mid)) {
+                bomb.setImg(Sprite.balloom_dead.getFxImage());
+            }
+
             swapExplosion = 2;
 
         } else if (swapExplosion == 2) {

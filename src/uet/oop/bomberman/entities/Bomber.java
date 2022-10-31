@@ -46,19 +46,28 @@ import static uet.oop.bomberman.BombermanGame.*;
 public class Bomber extends Entity {
     private CollisionChecker collisionCheckerBomber;
 
+    public CollisionChecker getCollisionCheckerBomber() {
+        return collisionCheckerBomber;
+    }
+
+    public void setCollisionCheckerBomber(CollisionChecker collisionCheckerBomber) {
+        this.collisionCheckerBomber = collisionCheckerBomber;
+    }
+
     public int currentSpeed = 1;
     protected int speedLeft = 1;
     protected int speedRight = 1;
     protected int speedUp = 1;
     protected int speedDown = 1;
+
+
     public Bomber(int x, int y, Image img) {
         super(x, y, img, false);
         this.solidAreaUp = new Rectangle(this.x + 4, this.y - 4, 10, 10);
         this.solidAreaDown = new Rectangle(this.x + 4, this.y + 23, 10, 10);
         this.solidAreaLeft = new Rectangle(this.x - 2, this.y + 11, 10, 10);
         this.solidAreaRight = new Rectangle(this.x + 16, this.y + 11, 10, 10);
-        
-
+        this.solidArea = new Rectangle(this.x, this.y, 32, 32);
     }
 
 
@@ -74,7 +83,7 @@ public class Bomber extends Entity {
         if (!Collision.collision(collisionCheckerBomber, this.solidAreaUp)) {
             speedUp = currentSpeed;
         }
-        if (Collision.collisionItemSpeed(collisionCheckerBomber, this.solidAreaUp)) {
+        if (Collision.collisionItemSpeed(collisionCheckerBomber, this.solidAreaRight)) {
             currentSpeed++;
         }
     }
@@ -86,7 +95,7 @@ public class Bomber extends Entity {
         if (!Collision.collision(collisionCheckerBomber, this.solidAreaLeft)) {
             speedLeft = currentSpeed;
         }
-        if (Collision.collisionItemSpeed(collisionCheckerBomber, this.solidAreaLeft)) {
+        if (Collision.collisionItemSpeed(collisionCheckerBomber, this.solidAreaRight)) {
             currentSpeed++;
         }
     }
@@ -98,7 +107,7 @@ public class Bomber extends Entity {
         if (!Collision.collision(collisionCheckerBomber, this.solidAreaDown)) {
             speedDown = currentSpeed;
         }
-        if (Collision.collisionItemSpeed(collisionCheckerBomber, this.solidAreaDown)) {
+        if (Collision.collisionItemSpeed(collisionCheckerBomber, this.solidAreaRight)) {
             currentSpeed++;
         }
     }
@@ -116,6 +125,9 @@ public class Bomber extends Entity {
     }
 
     public void movement() {
+        if (bomberman.life == false) {
+
+        }
         Image[] up = {
                 Sprite.player_up.getFxImage(),
                 Sprite.player_up_1.getFxImage(),
@@ -141,7 +153,7 @@ public class Bomber extends Entity {
         this.solidAreaDown.setLocation(this.x + 3, this.y + 23);
         this.solidAreaLeft.setLocation(this.x - 2, this.y + 11);
         this.solidAreaRight.setLocation(this.x + 16, this.y + 11);
-
+        this.solidArea.setLocation(this.x, this.y);
         if (spriteCounter > 35) {
             if (spriteNum == 1) {
                 spriteNum = 2;
@@ -204,9 +216,22 @@ public class Bomber extends Entity {
             x += speedRight;
 
         }
-
+        if (Collision.collisionMonsterMain(collisionCheckerBomber, this.solidArea)) {
+            System.out.println("Colid");
+        }
+        if (Collision.collisionMonsterMain(collisionCheckerBomber, this.solidArea)) {
+            bomberman.setLife(false);
+            System.out.println("Colid");
+        }
+        if (Collision.collisionMonsterMain(collisionCheckerBomber, this.solidArea)) {
+            bomberman.setLife(false);
+            System.out.println("Colid");
+        }
+        if (Collision.collisionMonsterMain(collisionCheckerBomber, this.solidArea)) {
+            bomberman.setLife(false);
+            System.out.println("Colid");
+        }
     }
-
 }
 
 
