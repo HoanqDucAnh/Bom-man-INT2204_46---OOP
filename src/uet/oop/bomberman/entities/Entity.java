@@ -24,12 +24,23 @@ public abstract class Entity {
 
     private boolean colidable;
 
+    protected boolean life;
+
+    public boolean isLife() {
+        return life;
+    }
+
+    public void setLife(boolean life) {
+        this.life = life;
+    }
+
     public Entity( int xUnit, int yUnit, Image img,boolean colidable) {
         this.x = xUnit * Sprite.SCALED_SIZE;
         this.y = yUnit * Sprite.SCALED_SIZE;
         this.img = img;
         this.colidable = colidable;
         this.solidArea = new Rectangle(x,y,32, 32);
+
     }
 
     public int getSpriteCounter() {

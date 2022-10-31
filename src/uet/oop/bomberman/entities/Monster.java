@@ -14,14 +14,82 @@ public abstract class Monster {
     protected int y;
     protected Image img;
     public int spriteCounter = 0;
+    protected boolean isColidable;
     public int spriteNum = 1;
+    protected Rectangle solidArea;
     protected Rectangle solidAreaUp;
     protected Rectangle solidAreaDown;
     protected Rectangle solidAreaLeft;
     protected Rectangle solidAreaRight;
     protected boolean isAlive;
 
-    public Monster(int xUnit,int yUnit, Image img) {
+    protected int direction = 1;
+
+    public int getDirection() {
+        return direction;
+    }
+
+    public void setDirection(int direction) {
+        this.direction = direction;
+    }
+
+    public int getX() {
+        return x;
+    }
+
+    public void setX(int x) {
+        this.x = x;
+    }
+
+    public Rectangle getSolidArea() {
+        return solidArea;
+    }
+
+    public void setSolidArea(Rectangle solidArea) {
+        this.solidArea = solidArea;
+    }
+
+    public boolean isColidable() {
+        return isColidable;
+    }
+
+    public void setColidable(boolean colidable) {
+        isColidable = colidable;
+    }
+
+    public Rectangle getSolidAreaUp() {
+        return solidAreaUp;
+    }
+
+    public void setSolidAreaUp(Rectangle solidAreaUp) {
+        this.solidAreaUp = solidAreaUp;
+    }
+
+    public Rectangle getSolidAreaDown() {
+        return solidAreaDown;
+    }
+
+    public void setSolidAreaDown(Rectangle solidAreaDown) {
+        this.solidAreaDown = solidAreaDown;
+    }
+
+    public Rectangle getSolidAreaLeft() {
+        return solidAreaLeft;
+    }
+
+    public void setSolidAreaLeft(Rectangle solidAreaLeft) {
+        this.solidAreaLeft = solidAreaLeft;
+    }
+
+    public Rectangle getSolidAreaRight() {
+        return solidAreaRight;
+    }
+
+    public void setSolidAreaRight(Rectangle solidAreaRight) {
+        this.solidAreaRight = solidAreaRight;
+    }
+
+    public Monster(int xUnit, int yUnit, Image img) {
         this.x = xUnit * Sprite.SCALED_SIZE;
         this.y = yUnit * Sprite.SCALED_SIZE;
         this.img = img;
@@ -29,7 +97,17 @@ public abstract class Monster {
         this.solidAreaDown = new Rectangle(this.x + 4, this.y + 23, 15, 10);
         this.solidAreaLeft = new Rectangle(this.x - 2, this.y + 11, 10, 10);
         this.solidAreaRight = new Rectangle(this.x + 16, this.y + 11, 10, 10);
+        this.solidArea = new Rectangle(this.x, this.y, 30, 30);
+        this.isColidable = true;
         this.isAlive = true;
+    }
+
+    public boolean isAlive() {
+        return isAlive;
+    }
+
+    public void setAlive(boolean alive) {
+        isAlive = alive;
     }
 
     public Image getImg() {

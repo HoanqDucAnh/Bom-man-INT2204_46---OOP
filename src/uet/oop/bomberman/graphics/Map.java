@@ -35,6 +35,10 @@ public class Map {
                         Entity entity;
                         Monster monster = null;
                         switch (s) {
+                            case 3:
+                                entity = new Portal(j, i, Sprite.grass.getFxImage(), true);
+                                s = 0;
+                                break;
                             case 2:
                                 entity = new Wall(j, i, Sprite.wall.getFxImage(),true);
                                 break;
