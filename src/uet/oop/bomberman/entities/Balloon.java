@@ -15,10 +15,12 @@ public class Balloon extends Monster {
      * dir = 1 -> go right
      * dir = -1 -> go left
      */
-    private int direction = 1;
+
 
     public Balloon(int xUnit, int yUnit, Image img) {
         super(xUnit, yUnit, img);
+
+        this.isColidable = true;
     }
 
 
@@ -47,8 +49,8 @@ public class Balloon extends Monster {
         this.solidAreaDown.setLocation(this.x + 3, this.y + 23);
         this.solidAreaLeft.setLocation(this.x - 2, this.y + 11);
         this.solidAreaRight.setLocation(this.x + 16, this.y + 11);
-
-        if(direction == -1) {
+        this.solidArea.setLocation(this.x + 30, this.y);
+        if(this.direction == -1) {
             if (spriteNum == 1) {
                 this.img = left[1];
             }
@@ -66,9 +68,10 @@ public class Balloon extends Monster {
             }
         }
         if(Collision.collision(collisionCheckerBalloon,this.solidAreaLeft) || Collision.collision(collisionCheckerBalloon,this.solidAreaRight)){
-            direction *= -1;
+            this.direction *= -1;
+            this.solidArea.setLocation(this.x - 30, this.y);
         }
-        x+= direction;
+        x+= this.direction;
 
     }
 
