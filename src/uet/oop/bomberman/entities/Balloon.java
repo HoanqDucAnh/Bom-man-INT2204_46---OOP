@@ -77,7 +77,8 @@ public class Balloon extends Monster {
         if (Collision.collisionCheck(this.solidAreaRight)) {
             heart--;
             if (heart == 0) {
-
+                bomberman.setY(1*32);
+                bomberman.setX(1*32);
             }
         }
        if (Collision.collisionBomb(this.solidAreaRight, bomb) || Collision.collisionBomb(this.solidAreaRight, bomb)) {
