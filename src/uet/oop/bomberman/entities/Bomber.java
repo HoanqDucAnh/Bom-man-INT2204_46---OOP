@@ -54,11 +54,11 @@ public class Bomber extends Entity {
         this.collisionCheckerBomber = collisionCheckerBomber;
     }
 
-    public int currentSpeed = 1;
-    protected int speedLeft = 1;
-    protected int speedRight = 1;
-    protected int speedUp = 1;
-    protected int speedDown = 1;
+    public static int currentSpeed = 1;
+    public static int speedLeft = 1;
+    public static int speedRight = 1;
+    public static int speedUp = 1;
+    public static int speedDown = 1;
 
 
     public Bomber(int x, int y, Image img) {

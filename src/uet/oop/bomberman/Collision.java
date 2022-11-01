@@ -3,7 +3,10 @@ package uet.oop.bomberman;
 import uet.oop.bomberman.entities.Entity;
 import uet.oop.bomberman.entities.Portal;
 import uet.oop.bomberman.graphics.Sprite;
+import uet.oop.bomberman.level.Level2;
+import uet.oop.bomberman.level.Level3;
 
+import static uet.oop.bomberman.BombermanGame.*;
 import java.awt.*;
 
 import static uet.oop.bomberman.BombermanGame.*;
@@ -61,18 +64,37 @@ public class Collision {
                 collisionCheckerer = new CollisionChecker(player, x.getSolidArea());
                 if (collisionCheckerer.isColided()) {
                     System.out.println("Collide");
+                    check++;
+                    stillObjects.clear();
+                    items.clear();
+                    block.clear();
+                    if (check == 1) {
+                        System.out.println(check);
+                        stillObjects.clear();
+                        items.clear();
+                        block.clear();
+                        new Level2();
+                    }
+                    if (check == 2) {
+                        System.out.println(check);
+                        stillObjects.clear();
+                        items.clear();
+                        block.clear();
+                        new Level3();
+                    }
                     return true;
                 }
             }
         return false;
     }
+
     public static boolean collisionMonster(CollisionChecker collisionCheckerer, Rectangle player) {
         for (int i = 0; i < monsters.size(); i++) {
             if (monsters.get(i).isColidable()) {
                 collisionCheckerer = new CollisionChecker(player, monsters.get(i).getSolidArea());
                 if (collisionCheckerer.isColided()) {
-                    monsters.get(i).setAlive(false);
                     monsters.get(i).setDirection(0);
+                    monsters.get(i).setAlive(false);
                     monsters.get(i).setImg(Sprite.transparent.getFxImage());
                     monsters.remove(i);
                     return true;
