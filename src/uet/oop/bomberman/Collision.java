@@ -2,6 +2,7 @@ package uet.oop.bomberman;
 
 import uet.oop.bomberman.entities.Entity;
 import uet.oop.bomberman.entities.Portal;
+import uet.oop.bomberman.entities.block.Bomb;
 import uet.oop.bomberman.graphics.Sprite;
 import uet.oop.bomberman.level.Level2;
 import uet.oop.bomberman.level.Level3;
@@ -101,6 +102,26 @@ public class Collision {
                 }
             }
         }
+        return false;
+    }
+
+    public static boolean collisionBomb(Rectangle player, Entity x) {
+        CollisionChecker collisionCheckerer;
+        if (x instanceof Bomb) {
+            collisionCheckerer = new CollisionChecker(player, x.getSolidArea());
+            if (collisionCheckerer.isColided()) {
+                return true;
+            }
+        }
+        return false;
+    }
+
+    public static boolean collisionCheck(Rectangle player) {
+        CollisionChecker collisionCheckerer;
+            collisionCheckerer = new CollisionChecker(player, bomberman.getSolidArea());
+            if (collisionCheckerer.isColided()) {
+                return true;
+            }
         return false;
     }
 

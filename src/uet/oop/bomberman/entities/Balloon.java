@@ -5,6 +5,9 @@ import uet.oop.bomberman.Collision;
 import uet.oop.bomberman.CollisionChecker;
 import uet.oop.bomberman.graphics.Sprite;
 
+import static uet.oop.bomberman.entities.Bomber.*;
+import static uet.oop.bomberman.BombermanGame.*;
+import static uet.oop.bomberman.entities.block.Bomb.*;
 import java.awt.*;
 import java.util.Random;
 
@@ -67,12 +70,21 @@ public class Balloon extends Monster {
                 this.img = right[2];
             }
         }
-        if(Collision.collision(collisionCheckerBalloon,this.solidAreaLeft) || Collision.collision(collisionCheckerBalloon,this.solidAreaRight)){
+        if((Collision.collision(collisionCheckerBalloon,this.solidAreaLeft) || Collision.collision(collisionCheckerBalloon,this.solidAreaRight))){
+            this.direction *= -1;
+            this.solidArea.setLocation(this.x - 1, this.y);
+        }
+        if (Collision.collisionCheck(this.solidAreaRight)) {
+            heart--;
+            if (heart == 0) {
+
+            }
+        }
+       if (Collision.collisionBomb(this.solidAreaRight, bomb) || Collision.collisionBomb(this.solidAreaRight, bomb)) {
             this.direction *= -1;
             this.solidArea.setLocation(this.x - 1, this.y);
         }
         x+= this.direction;
-
     }
 
     public void update() {
