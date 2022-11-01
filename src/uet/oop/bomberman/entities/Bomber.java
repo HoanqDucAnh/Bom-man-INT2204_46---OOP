@@ -53,12 +53,12 @@ public class Bomber extends Entity {
     public void setCollisionCheckerBomber(CollisionChecker collisionCheckerBomber) {
         this.collisionCheckerBomber = collisionCheckerBomber;
     }
-
-    public int currentSpeed = 1;
-    protected int speedLeft = 1;
-    protected int speedRight = 1;
-    protected int speedUp = 1;
-    protected int speedDown = 1;
+    public static int heart = 3;
+    public static int currentSpeed = 1;
+    public static int speedLeft = 1;
+    public static int speedRight = 1;
+    public static int speedUp = 1;
+    public static int speedDown = 1;
 
 
     public Bomber(int x, int y, Image img) {
@@ -216,21 +216,15 @@ public class Bomber extends Entity {
             x += speedRight;
 
         }
-        if (Collision.collisionMonsterMain(collisionCheckerBomber, this.solidArea)) {
-            System.out.println("Colid");
-        }
-        if (Collision.collisionMonsterMain(collisionCheckerBomber, this.solidArea)) {
-            bomberman.setLife(false);
-            System.out.println("Colid");
-        }
-        if (Collision.collisionMonsterMain(collisionCheckerBomber, this.solidArea)) {
-            bomberman.setLife(false);
-            System.out.println("Colid");
-        }
-        if (Collision.collisionMonsterMain(collisionCheckerBomber, this.solidArea)) {
-            bomberman.setLife(false);
-            System.out.println("Colid");
-        }
+//        if (Collision.collisionMonsterMain(collisionCheckerBomber, this.solidArea)) {
+//            bomberman.setImg(Sprite.player_dead1.getFxImage());
+//            heart--;
+//            System.out.println(heart);
+//            if (heart == 0) {
+//                bomberman.setX(1*32);
+//                bomberman.setY(1*32);
+//            }
+//        }
     }
 }
 

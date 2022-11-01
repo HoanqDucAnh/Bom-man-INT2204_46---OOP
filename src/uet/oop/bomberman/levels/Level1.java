@@ -4,7 +4,7 @@ import uet.oop.bomberman.graphics.Map;
 import uet.oop.bomberman.BombermanGame;
 
 import static uet.oop.bomberman.BombermanGame.*;
-
+/*
 public class Level1 {
      public Level1() {
          block.clear();
@@ -20,3 +20,5 @@ public class Level1 {
          }
     }
 }
+
+ */

@@ -17,9 +17,9 @@ import uet.oop.bomberman.CollisionChecker;
 public class Bomb extends Entity {
     private CollisionChecker collisionCheckerBomb;
 
-    private static long timeBomb;
-    private static long timeTmp;
-    private static Entity bomb;
+    public  static long timeBomb;
+    public static long timeTmp;
+    public  static Entity bomb;
     private static int Status = 1;
     private static int swapExplosion = 1;
 
@@ -37,7 +37,7 @@ public class Bomb extends Entity {
     private static Rectangle mid = null;
 
     private static boolean isEdge = false;
-    public static int bombNumber = 1000;
+    public static int bombNumber = 8;
     public Bomb(int x, int y, Image img) {
         super(x, y, img, false);
     }
@@ -54,7 +54,8 @@ public class Bomb extends Entity {
             //y = Math.round(y);
             bomb = new Bomb(x, y, Sprite.bomb.getFxImage());
             block.add(bomb);
-            mid = new Rectangle(x * SCALED_SIZE, y * SCALED_SIZE, 10, 10);
+            System.out.println("addBomb");
+            mid = new Rectangle(x * SCALED_SIZE, y * SCALED_SIZE, 32, 32);
             bomb.setSolidArea(mid);
             edge_down = new Bomb(x, y + 1,
                     Sprite.transparent.getFxImage());
@@ -130,6 +131,7 @@ public class Bomb extends Entity {
             }
 
             if (Collision.collisionMonster(collisionCheckerBomb, Right)) {
+
                 edge_right.setImg(Sprite.balloom_dead.getFxImage());
             }
             if (Collision.collisionMonster(collisionCheckerBomb, Left)) {
@@ -219,6 +221,8 @@ public class Bomb extends Entity {
                 edge_down.setImg(Sprite.transparent.getFxImage());
                 edge_right.setImg(Sprite.transparent.getFxImage());
                 edge_left.setImg(Sprite.transparent.getFxImage());
+                mid.setLocation(0,0);
+//                System.out.println("Clear");
             }
     }
 
