@@ -121,6 +121,7 @@ public abstract class Monster {
     public void render(GraphicsContext gc) {
         gc.drawImage(img, x, y);
     }
+    public abstract void movement();
     public abstract void update();
 
 }

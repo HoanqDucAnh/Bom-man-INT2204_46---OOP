@@ -15,6 +15,10 @@ public class Unharmed extends Monster {
         super(xUnit, yUnit, img);
     }
 
+    public void movement() {
+
+    }
+
     @Override
     public void update() {
 
