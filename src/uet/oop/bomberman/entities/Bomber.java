@@ -216,15 +216,15 @@ public class Bomber extends Entity {
             x += speedRight;
 
         }
-//        if (Collision.collisionMonsterMain(collisionCheckerBomber, this.solidArea)) {
-//            bomberman.setImg(Sprite.player_dead1.getFxImage());
-//            heart--;
-//            System.out.println(heart);
-//            if (heart == 0) {
-//                bomberman.setX(1*32);
-//                bomberman.setY(1*32);
-//            }
-//        }
+        if (Collision.collisionMonsterMain(collisionCheckerBomber, this.solidArea)) {
+            bomberman.setImg(Sprite.player_dead1.getFxImage());
+            heart--;
+            System.out.println(heart);
+            if (heart == 0) {
+                bomberman.setX(1*32);
+                bomberman.setY(1*32);
+            }
+        }
     }
 }
 
