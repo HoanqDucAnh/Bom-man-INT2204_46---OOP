@@ -1,5 +1,6 @@
 package uet.oop.bomberman;
 
+import uet.oop.bomberman.entities.Bomber;
 import uet.oop.bomberman.entities.Entity;
 import uet.oop.bomberman.entities.Portal;
 import uet.oop.bomberman.entities.block.Bomb;
@@ -11,6 +12,9 @@ import static uet.oop.bomberman.BombermanGame.*;
 import java.awt.*;
 
 import static uet.oop.bomberman.BombermanGame.*;
+import static uet.oop.bomberman.entities.Bomber.*;
+import static uet.oop.bomberman.entities.block.Bomb.timeBomb;
+import static uet.oop.bomberman.entities.block.Bomb.timeTmp;
 
 public class Collision {
     public static boolean collision(CollisionChecker collisionCheckerer, Rectangle player) {
@@ -119,9 +123,28 @@ public class Collision {
     public static boolean collisionCheck(Rectangle player) {
         CollisionChecker collisionCheckerer;
             collisionCheckerer = new CollisionChecker(player, bomberman.getSolidArea());
-            if (collisionCheckerer.isColided()) {
-                return true;
+            if (bomberman.isColidable()) {
+                if (collisionCheckerer.isColided()) {
+                    timeTmp1 = System.currentTimeMillis();
+                    timeTmp2 = timeTmp1;
+                    isBomber = 1;
+                   bomberman.setColidable(false);
+                   return true;
+                }
             }
+            timeBomber = System.currentTimeMillis();
+
+            if (isBomber == 1) {
+                if (System.currentTimeMillis() - timeTmp1 < 1000) {
+                    if (System.currentTimeMillis() - timeTmp2 > 200) {
+                        killBomber();
+                        timeTmp2 += 200;
+                    }
+                }
+            }
+        if (timeBomber - timeTmp1 > 2000) {
+            bomberman.setColidable(true);
+        }
         return false;
     }
 
@@ -131,6 +154,8 @@ public class Collision {
             if (monsters.get(i).isColidable()) {
                 collisionCheckerer = new CollisionChecker(player, monsters.get(i).getSolidArea());
                 if (collisionCheckerer.isColided()) {
+                    //if (System.currentTimeMillis() - timeTmp > )
+                    monsters.get(i).setColidable(false);
                     //monsters.get(i).setAlive(false);
                     //monsters.get(i).setDirection(0);
                     //monsters.get(i).setImg(Sprite.transparent.getFxImage());
@@ -139,7 +164,9 @@ public class Collision {
                     return true;
                 }
             }
+            //monsters.get(i).setColidable(true);
         }
+
         return false;
     }
 }
