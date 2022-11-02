@@ -5,9 +5,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="e158ab31-45d2-4b66-9fc5-59715caa0eda" name="Changes" comment="Menu">
+      <change afterPath="$PROJECT_DIR$/src/uet/oop/bomberman/viewManager.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/uet/oop/bomberman/BombermanGame.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/uet/oop/bomberman/BombermanGame.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/uet/oop/bomberman/entities/Bomber.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/uet/oop/bomberman/entities/Bomber.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/uet/oop/bomberman/BombermanGame$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/uet/oop/bomberman/BombermanGame$1.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/uet/oop/bomberman/BombermanGame$2.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/uet/oop/bomberman/BombermanGame$2.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/uet/oop/bomberman/BombermanGame.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/uet/oop/bomberman/BombermanGame.class" afterDir="false" />
@@ -15,10 +14,6 @@
       <change beforePath="$PROJECT_DIR$/target/classes/uet/oop/bomberman/entities/Balloon.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/uet/oop/bomberman/entities/Balloon.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/uet/oop/bomberman/entities/Bomber.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/uet/oop/bomberman/entities/Bomber.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/uet/oop/bomberman/entities/block/Bomb.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/uet/oop/bomberman/entities/block/Bomb.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/uet/oop/bomberman/graphics/Map.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/uet/oop/bomberman/graphics/Map.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/uet/oop/bomberman/graphics/MenuButton$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/uet/oop/bomberman/graphics/MenuButton$1.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/uet/oop/bomberman/level/Level1.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/uet/oop/bomberman/level/Level1.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/uet/oop/bomberman/levels/Level1.class" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -142,7 +137,7 @@
       <workItem from="1667311848563" duration="773000" />
       <workItem from="1667321139976" duration="1953000" />
       <workItem from="1667359894074" duration="606000" />
-      <workItem from="1667362660700" duration="1186000" />
+      <workItem from="1667362660700" duration="2750000" />
     </task>
     <task id="LOCAL-00001" summary="Monster can now laod with Map + some item stuff">
       <created>1666450006962</created>
@@ -193,7 +188,14 @@
       <option name="project" value="LOCAL" />
       <updated>1667321267281</updated>
     </task>
-    <option name="localTasksCounter" value="8" />
+    <task id="LOCAL-00008" summary="Menu">
+      <created>1667364573913</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1667364573913</updated>
+    </task>
+    <option name="localTasksCounter" value="9" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
