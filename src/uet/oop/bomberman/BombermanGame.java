@@ -214,6 +214,7 @@ public class BombermanGame extends Application {
                 }
             });
 
+            /*
             Rectangle rec1 = new Rectangle(bomberman.getX() ,bomberman.getY() ,30,30); //up
             Rectangle rec2 = new Rectangle(1 * Sprite.SCALED_SIZE + 4,1 * Sprite.SCALED_SIZE + 23 ,10,10); //down
             Rectangle rec3 = new Rectangle(1 * Sprite.SCALED_SIZE + 16,1 * Sprite.SCALED_SIZE + 16,10,10); //right
@@ -227,10 +228,13 @@ public class BombermanGame extends Application {
             root.getChildren().add(rec2);
             root.getChildren().add(rec3);
             root.getChildren().add(rec4);
+
+             */
     }
 
 
         public void update() {
+            //System.out.println(System.currentTimeMillis());
             //bomberman.update();
             stillObjects.forEach(Entity::update);
             block.forEach(Entity::update);

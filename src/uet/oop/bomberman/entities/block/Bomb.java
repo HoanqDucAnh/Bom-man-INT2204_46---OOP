@@ -23,6 +23,8 @@ public class Bomb extends Entity {
     private static int Status = 1;
     private static int swapExplosion = 1;
 
+
+
     // đánh dấu số bomb;
     public static int isBomb = 0;
     public static int powerBomb = 0;
@@ -211,6 +213,7 @@ public class Bomb extends Entity {
             if (System.currentTimeMillis() - timeBomb < 1000) {
                 if (System.currentTimeMillis() - timeTmp > 100) {
                     //createEdge();
+                    System.out.println(System.currentTimeMillis());
                     explosionCenter();
                     timeTmp += 100;
                 }
