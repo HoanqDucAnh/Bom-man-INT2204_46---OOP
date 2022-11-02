@@ -41,9 +41,18 @@ import uet.oop.bomberman.graphics.Sprite;
 import java.awt.*;
 
 import static uet.oop.bomberman.BombermanGame.*;
+import static uet.oop.bomberman.entities.block.Bomb.timeBomb;
+import static uet.oop.bomberman.entities.block.Bomb.timeTmp;
 
 
 public class Bomber extends Entity {
+
+    public  static long timeBomber;
+    public static long timeTmp1;
+    public static int isBomber = 0;
+    public static long timeTmp2;
+    public static int swapKill = 1;
+    private static int countKill = 0;
     private CollisionChecker collisionCheckerBomber;
 
     public CollisionChecker getCollisionCheckerBomber() {
@@ -62,7 +71,7 @@ public class Bomber extends Entity {
 
 
     public Bomber(int x, int y, Image img) {
-        super(x, y, img, false);
+        super(x, y, img, true);
         this.solidAreaUp = new Rectangle(this.x + 4, this.y - 4, 10, 10);
         this.solidAreaDown = new Rectangle(this.x + 4, this.y + 23, 10, 10);
         this.solidAreaLeft = new Rectangle(this.x - 2, this.y + 11, 10, 10);
@@ -70,11 +79,24 @@ public class Bomber extends Entity {
         this.solidArea = new Rectangle(this.x, this.y, 32, 32);
     }
 
+    public static void killBomber() {
+            if (swapKill == 1) {
+                bomberman.setImg(Sprite.player_dead1.getFxImage());
+                swapKill = 2;
+            } else if (swapKill == 2) {
+                bomberman.setImg(Sprite.player_dead2.getFxImage());
+                swapKill = 3;
+            } else if (swapKill == 3) {
+                bomberman.setImg(Sprite.player_dead3.getFxImage());
+                swapKill = 4;
+            } else {
+                bomberman.setImg(Sprite.player_right.getFxImage());
+                bomberman.setX(1*32);
+                bomberman.setY(1*32);
+                swapKill = 1;
+            }
+        }
 
-    @Override
-    public void update() {
-        movement();
-    }
 
     public void setUP() {
         if (Collision.collision(collisionCheckerBomber, this.solidAreaUp)) {
@@ -125,9 +147,7 @@ public class Bomber extends Entity {
     }
 
     public void movement() {
-        if (bomberman.life == false) {
 
-        }
         Image[] up = {
                 Sprite.player_up.getFxImage(),
                 Sprite.player_up_1.getFxImage(),
@@ -216,15 +236,24 @@ public class Bomber extends Entity {
             x += speedRight;
 
         }
-        if (Collision.collisionMonsterMain(collisionCheckerBomber, this.solidArea)) {
-            bomberman.setImg(Sprite.player_dead1.getFxImage());
-            heart--;
-            System.out.println(heart);
-            if (heart == 0) {
-                bomberman.setX(1*32);
-                bomberman.setY(1*32);
-            }
-        }
+/*
+      if (Collision.collisionMonsterMain(collisionCheckerBomber, this.solidArea)) {
+              heart--;
+              System.out.println(heart);
+              if (heart == 0) {
+                  bomberman.setX(1 * 32);
+                  bomberman.setY(1 * 32);
+              }
+      }
+
+ */
+    }
+
+
+
+    public void update() {
+        movement();
+
     }
 }
 
