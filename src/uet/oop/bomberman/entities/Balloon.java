@@ -1,14 +1,19 @@
 package uet.oop.bomberman.entities;
 
 import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import uet.oop.bomberman.Collision;
 import uet.oop.bomberman.CollisionChecker;
 import uet.oop.bomberman.graphics.Sprite;
 
 import static uet.oop.bomberman.entities.Bomber.*;
 import static uet.oop.bomberman.BombermanGame.*;
+import static uet.oop.bomberman.entities.Bomber.timeTmp1;
 import static uet.oop.bomberman.entities.block.Bomb.*;
 import java.awt.*;
+import java.io.InputStream;
+import java.nio.file.Files;
+import java.nio.file.Paths;
 import java.util.Random;
 
 public class Balloon extends Monster {
@@ -74,11 +79,23 @@ public class Balloon extends Monster {
             this.direction *= -1;
             this.solidArea.setLocation(this.x - 1, this.y);
         }
+
         if (Collision.collisionCheck(this.solidAreaRight)) {
+            bomberman.setColidable(false);
             heart--;
+
+            System.out.println(heart);
             if (heart == 0) {
-                bomberman.setY(1*32);
-                bomberman.setX(1*32);
+            }
+        }
+
+        if (Collision.collisionCheck(this.solidAreaLeft)) {
+            bomberman.setColidable(false);
+            heart--;
+            System.out.println(heart);
+            if (heart == 0) {
+//                Image img = new Image("res/Buttons/gameOver.png");
+//                authorView.setImage(img);
             }
         }
        if (Collision.collisionBomb(this.solidAreaRight, bomb) || Collision.collisionBomb(this.solidAreaRight, bomb)) {
