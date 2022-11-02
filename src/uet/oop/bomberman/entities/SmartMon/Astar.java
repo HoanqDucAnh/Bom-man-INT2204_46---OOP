@@ -3,6 +3,7 @@ package uet.oop.bomberman.entities.SmartMon;
 // Import library
 import java.util.*;
 
+//A* algorithm find path
 public class Astar {
     private Node[][] search_area;
     private PriorityQueue<Node> open_list;

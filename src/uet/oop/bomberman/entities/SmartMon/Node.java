@@ -6,7 +6,7 @@ public class Node {
     private int f;
     private int row;
     private int col;
-    private boolean is_block;   // This variable to check if the object is blocks.
+    private boolean is_block;   // This variable to check if the object is blocks or not.
     private Node parent;
 
     // Constructor to create object Node.
