@@ -13,7 +13,7 @@ import java.util.StringTokenizer;
 import static uet.oop.bomberman.BombermanGame.*;
 
 public class Map {
-    public static int[][] map;
+        public static int[][] map = new int[WIDTH][HEIGHT];
     public Map(String level) {
         System.out.println(System.getProperty("user.dir"));
         final File fileName = new File(level);
