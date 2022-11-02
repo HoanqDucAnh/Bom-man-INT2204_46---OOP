@@ -37,7 +37,7 @@ import java.util.List;
 import java.util.Scanner;
 
 import uet.oop.bomberman.level.Level2;
-import uet.oop.bomberman.level.LevelUp;
+
 import javafx.application.Application;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
@@ -52,7 +52,7 @@ import javafx.stage.Stage;
 import static uet.oop.bomberman.entities.Portal.isPortal;
 import static uet.oop.bomberman.graphics.Sprite.SCALED_SIZE;
 import static uet.oop.bomberman.graphics.Sprite.grass;
-import static uet.oop.bomberman.level.LevelUp.*;
+
 import uet.oop.bomberman.graphics.MenuButton;
 import static uet.oop.bomberman.graphics.MenuButton.*;
 
@@ -74,7 +74,9 @@ public class BombermanGame extends Application {
     public static final List<Entity> items = new ArrayList<>();
     public static final List<Monster> monsters = new ArrayList<>();
 
-    public static final List<Entity> block = new ArrayList<>();;
+    public static final List<Entity> block = new ArrayList<>();
+
+    public static final List<ImageView> lives = new ArrayList<>();
     public boolean gameState = true;
     public static boolean isAlive = true;
     public Timeline timeline;
@@ -236,15 +238,15 @@ public class BombermanGame extends Application {
             items.forEach(Entity::update);
             bomberman.update();
 
-            if (monsters.size() == 0 && !isPortal && !wait) {
-                Entity portal = new Portal(_width - 2, _height - 2, Sprite.portal.getFxImage(), true);
-                items.add(portal);
-
-                if (Collision.collisionPortal(bomberman.getSolidAreaRight(), portal)) {
-                    wait = true;
-                    waitingTime = System.currentTimeMillis();
-                }
-            }
+//            if (monsters.size() == 0 && !isPortal && !wait) {
+//                Entity portal = new Portal(_width - 2, _height - 2, Sprite.portal.getFxImage(), true);
+//                items.add(portal);
+//
+//                if (Collision.collisionPortal(bomberman.getSolidAreaRight(), portal)) {
+//                    wait = true;
+//                    waitingTime = System.currentTimeMillis();
+//                }
+//            }
         }
 
         public void render() {
