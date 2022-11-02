@@ -37,7 +37,6 @@ import java.util.List;
 import java.util.Scanner;
 
 import uet.oop.bomberman.level.Level2;
-
 import javafx.application.Application;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
@@ -52,7 +51,6 @@ import javafx.stage.Stage;
 import static uet.oop.bomberman.entities.Portal.isPortal;
 import static uet.oop.bomberman.graphics.Sprite.SCALED_SIZE;
 import static uet.oop.bomberman.graphics.Sprite.grass;
-
 import uet.oop.bomberman.graphics.MenuButton;
 import static uet.oop.bomberman.graphics.MenuButton.*;
 
@@ -74,9 +72,7 @@ public class BombermanGame extends Application {
     public static final List<Entity> items = new ArrayList<>();
     public static final List<Monster> monsters = new ArrayList<>();
 
-    public static final List<Entity> block = new ArrayList<>();
-
-    public static final List<ImageView> lives = new ArrayList<>();
+    public static final List<Entity> block = new ArrayList<>();;
     public boolean gameState = true;
     public static boolean isAlive = true;
     public Timeline timeline;

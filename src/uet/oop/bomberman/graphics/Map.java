@@ -13,6 +13,7 @@ import java.util.StringTokenizer;
 import static uet.oop.bomberman.BombermanGame.*;
 
 public class Map {
+    public static int[][] map;
     public Map(String level) {
         System.out.println(System.getProperty("user.dir"));
         final File fileName = new File(level);
@@ -32,6 +33,7 @@ public class Map {
 
                     for (int j = 0; j < _width; j++) {
                         int s = Integer.parseInt(tokenTile.nextToken());
+                        map[j][i] = s;
                         Entity entity;
                         Monster monster = null;
                         switch (s) {
