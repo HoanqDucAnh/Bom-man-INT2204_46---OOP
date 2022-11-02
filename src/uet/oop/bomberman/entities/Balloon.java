@@ -57,7 +57,7 @@ public class Balloon extends Monster {
         this.solidAreaDown.setLocation(this.x + 3, this.y + 23);
         this.solidAreaLeft.setLocation(this.x - 2, this.y + 11);
         this.solidAreaRight.setLocation(this.x + 16, this.y + 11);
-        this.solidArea.setLocation(this.x + 1, this.y);
+        //this.solidArea.setLocation(this.x + 1, this.y);
         if(this.direction == -1) {
             if (spriteNum == 1) {
                 this.img = left[1];
@@ -98,7 +98,7 @@ public class Balloon extends Monster {
 //                authorView.setImage(img);
             }
         }
-       if (Collision.collisionBomb(this.solidAreaRight, bomb) || Collision.collisionBomb(this.solidAreaRight, bomb)) {
+       if (Collision.collisionBomb(this.solidAreaLeft, bomb) || Collision.collisionBomb(this.solidAreaRight, bomb)) {
             this.direction *= -1;
             this.solidArea.setLocation(this.x - 1, this.y);
         }

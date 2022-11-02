@@ -21,7 +21,7 @@ public class Level1 {
         //bomberman.setLife(true); 
         Monster enemy = new Balloon(10,1, Sprite.balloom_left1.getFxImage());
         Monster enemy1 = new Balloon(10,3, Sprite.balloom_left1.getFxImage());
-        Monster enemy3 = new Oneal(12,5,Sprite.oneal_right1.getFxImage());
+        Monster enemy3 = new Oneal(10,5, Sprite.oneal_right1.getFxImage());
         monsters.add(enemy);
         monsters.add(enemy1);
         monsters.add(enemy3);
