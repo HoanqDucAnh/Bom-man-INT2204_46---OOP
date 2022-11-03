@@ -13,8 +13,10 @@ import uet.oop.bomberman.level.Level3;
 import static uet.oop.bomberman.BombermanGame.*;
 import java.awt.*;
 
+import static uet.oop.bomberman.entities.Brick.*;
 import static uet.oop.bomberman.BombermanGame.*;
 import static uet.oop.bomberman.entities.Bomber.*;
+import static uet.oop.bomberman.entities.Brick.swapKill;
 import static uet.oop.bomberman.entities.block.Bomb.*;
 import static uet.oop.bomberman.graphics.Sprite.SCALED_SIZE;
 
@@ -86,22 +88,37 @@ public class Collision {
     }
 
     public static boolean onealCollisionBrick(CollisionChecker collisionCheckerer, Rectangle player) {
-        int temp = 100000;
         for (int i = 0; i < brick.size(); i++) {
             if (brick.get(i).isColidable()) {
                 collisionCheckerer = new CollisionChecker(player, brick.get(i).getSolidArea());
                 if (collisionCheckerer.isColided()) {
-                    while(temp>0){
-                        temp--;
-                    }
-                    if(temp==0) {
-                        brick.get(i).setColidable(false);
-                        brick.get(i).setImg(Sprite.grass.getFxImage());
-                        brick.remove(i);
-                    }
+                    temp = i;
+                    timeTempBrick1 = System.currentTimeMillis();
+                    timeTempBrick2 = timeTempBrick1;
+                    brick.get(i).setColidable(false);
                     return true;
 
                 }
+            }
+        }
+        timeBrick = System.currentTimeMillis();
+        if (System.currentTimeMillis() - timeTempBrick1 < 500) {
+            if (System.currentTimeMillis() - timeTempBrick2 > 100) {
+                if (swapKill == 1) {
+                    brick.get(temp).setImg(Sprite.brick_exploded.getFxImage());
+                    swapKill = 2;
+                } else if (swapKill == 2) {
+                    brick.get(temp).setImg(Sprite.brick_exploded1.getFxImage());
+                    swapKill = 3;
+                } else if (swapKill == 3) {
+                    brick.get(temp).setImg(Sprite.brick_exploded2.getFxImage());
+                    swapKill = 4;
+                } else {
+                    brick.get(temp).setImg(Sprite.grass.getFxImage());
+                    //brick.remove(temp);
+                    swapKill = 1;
+                }
+                timeTempBrick2 += 100;
             }
         }
         return false;
@@ -172,6 +189,7 @@ public class Collision {
                     timeTmp1 = System.currentTimeMillis();
                     timeTmp2 = timeTmp1;
                     isBomber = 1;
+                    currentSpeed = 0;
                    bomberman.setColidable(false);
                    return true;
                 }
@@ -188,6 +206,7 @@ public class Collision {
             }
         if (timeBomber - timeTmp1 > 2000) {
             bomberman.setColidable(true);
+            currentSpeed = 1;
         }
         return false;
     }
