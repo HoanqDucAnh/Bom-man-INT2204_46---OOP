@@ -17,14 +17,14 @@ public class Level1 {
         block.clear();
         stillObjects.clear();
         new Map("res\\levels\\Level1.txt");
-        //new MonsterMap("res\\levels\\Level1.txt");
-        //bomberman.setLife(true); 
-        Monster enemy = new Balloon(10,1, Sprite.balloom_left1.getFxImage());
-        Monster enemy1 = new Balloon(10,3, Sprite.balloom_left1.getFxImage());
-        Monster enemy3 = new Oneal(12,5,Sprite.oneal_right1.getFxImage());
-        monsters.add(enemy);
-        monsters.add(enemy1);
-        monsters.add(enemy3);
+        new MonsterMap("res\\levels\\Level1.txt");
+        bomberman.setLife(true);
+//        Monster enemy = new Balloon(10,1, Sprite.balloom_left1.getFxImage());
+//        Monster enemy1 = new Balloon(10,3, Sprite.balloom_left1.getFxImage());
+//        Monster enemy3 = new Oneal(12,5,Sprite.oneal_right1.getFxImage());
+//        monsters.add(enemy);
+//        monsters.add(enemy1);
+//        monsters.add(enemy3);
         for (Monster monster : monsters) {
             monster.setAlive(true);
         }

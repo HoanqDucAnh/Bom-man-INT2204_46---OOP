@@ -95,10 +95,13 @@ public class BombermanGame extends Application {
         gc = canvas.getGraphicsContext2D();
 
         InputStream is = Files.newInputStream(Paths.get("res/Buttons/White.png"));
+        InputStream box = Files.newInputStream(Paths.get("res/Buttons/TextBox.png"));
         Image img = new Image(is);
+        Image imgBox = new Image(box);
+        box.close();
         is.close();
         ImageView imgView = new ImageView(img);
-
+        ImageView imgBoxi = new ImageView(imgBox);
         MenuButton start = new MenuButton("Start");
         MenuButton quit = new MenuButton("Quit");
         start.setLayoutX(290);
@@ -110,11 +113,15 @@ public class BombermanGame extends Application {
         // Tao root container
         Group root = new Group();
         root.getChildren().add(canvas);
+        root.getChildren().add(imgBoxi);
         root.getChildren().add(imgView);
+
+
         for (int i = 0; i < buttonList.size(); i++) {
             root.getChildren().add(buttonList.get(i));
         }
 
+        transition(root);
         // Tao scene
         Scene scene = new Scene(root);
         final int[] counter = {0};
@@ -142,7 +149,9 @@ public class BombermanGame extends Application {
         timeline.play();
         timeline.setRate(90);
 
+        if (start.isStatus() == false) {
 
+        }
 //            if (monsters.size() == 0 ) {
 //                stillObjects.clear();
 //                block.clear();
@@ -183,6 +192,7 @@ public class BombermanGame extends Application {
                     if (keyEvent.getCode() == KeyCode.SPACE) {
                         Bomb.putBomb();
                     }
+
 //
                 }
             });
@@ -256,5 +266,11 @@ public class BombermanGame extends Application {
             items.forEach((g -> g.render(gc)));
             block.forEach((g -> g.render(gc)));
             bomberman.render(gc);
+        }
+
+        public void transition(Group root) throws IOException {
+            GameSubscene subscene = new GameSubscene();
+            root.getChildren().add(subscene);
+            subscene.moveScene();
         }
     }
