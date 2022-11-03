@@ -1,7 +1,6 @@
 package uet.oop.bomberman.graphics;
 
 import uet.oop.bomberman.entities.*;
-import uet.oop.bomberman.entities.SmartMon.Oneal;
 
 import java.io.File;
 import java.io.FileReader;
@@ -32,9 +31,6 @@ public class MonsterMap {
                         int s = Integer.parseInt(tokenTile.nextToken());
                         Monster monster;
                         switch (s) {
-                            case 4:
-                                monster = new Oneal(j,i,Sprite.oneal_right1.getFxImage());
-                                break;
                             case 3:
                                 monster = new Balloon(j, i, Sprite.balloom_left1.getFxImage());
                                 break;
