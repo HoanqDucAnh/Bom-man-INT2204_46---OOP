@@ -49,26 +49,22 @@ public class Oneal extends Monster {
         this.solidAreaRight = new Rectangle(this.x + 16, this.y + 11, 20, 16);
         System.out.println(this.y);
             if (bomberman.getX() < this.x) {
-                if(!Collision.collision(collisionCheckerOneal,this.solidAreaLeft)) {
+                if(!Collision.onealCollisionBrick(collisionCheckerOneal,this.solidAreaLeft)) {
                     x --;
-                }else{
-                    x+=0;
                 }
             }
             else if (bomberman.getX() > this.x) {
-                if(!Collision.collision(collisionCheckerOneal,this.solidAreaRight)) {
+                if(!Collision.onealCollisionBrick(collisionCheckerOneal,this.solidAreaRight)) {
                     x++;
-                }else{
-                    x-=0;
                 }
             }
             else if (bomberman.getY() > this.y) {
-                if(!Collision.collision(collisionCheckerOneal,this.solidAreaUp)){
+                if(!Collision.onealCollisionBrick(collisionCheckerOneal,this.solidAreaUp)){
                     y++;
                 }
             }
             else if (bomberman.getY() < this.y) {
-                if(!Collision.collision(collisionCheckerOneal,this.solidAreaDown)){
+                if(!Collision.onealCollisionBrick(collisionCheckerOneal,this.solidAreaDown)){
                       y--;
                 }
             }

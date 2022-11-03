@@ -63,6 +63,28 @@ public class Collision {
         return false;
     }
 
+    public static boolean onealCollisionBrick(CollisionChecker collisionCheckerer, Rectangle player) {
+        int temp = 100000;
+        for (int i = 0; i < brick.size(); i++) {
+            if (brick.get(i).isColidable()) {
+                collisionCheckerer = new CollisionChecker(player, brick.get(i).getSolidArea());
+                if (collisionCheckerer.isColided()) {
+                    while(temp>0){
+                        temp--;
+                    }
+                    if(temp==0) {
+                        brick.get(i).setColidable(false);
+                        brick.get(i).setImg(Sprite.grass.getFxImage());
+                        brick.remove(i);
+                    }
+                    return true;
+
+                }
+            }
+        }
+        return false;
+    }
+
     public static boolean collisionPortal( Rectangle player, Entity x) {
         CollisionChecker collisionCheckerer;
         if (x instanceof Portal) {
