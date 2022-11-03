@@ -64,21 +64,21 @@ public class Bomb extends Entity {
             bomb.setSolidArea(mid);
             edge_down = new Bomb(x, y + 1,
                     Sprite.transparent.getFxImage(),false);
-            Down = new Rectangle(x * SCALED_SIZE, y * SCALED_SIZE + 1 * SCALED_SIZE, 10, 10);
+            Down = new Rectangle(x * SCALED_SIZE, y * SCALED_SIZE + 1 * SCALED_SIZE, 20, 20);
             edge_down.setSolidArea(Down);
             block.add(edge_down);
             edge_up = new Bomb(x, y - 1,
                     Sprite.transparent.getFxImage(),false);
-            Up = new Rectangle(x * SCALED_SIZE, (y - 1) * SCALED_SIZE, 10, 10);
+            Up = new Rectangle(x * SCALED_SIZE, (y - 1) * SCALED_SIZE, 20, 20);
             block.add(edge_up);
             edge_left = new Bomb(x - 1, y,
                     Sprite.transparent.getFxImage(), false);
-            Left = new Rectangle((x - 1) * SCALED_SIZE, y * SCALED_SIZE, 10, 10);
+            Left = new Rectangle((x - 1) * SCALED_SIZE, y * SCALED_SIZE, 20, 20);
             edge_left.setSolidArea(Left);
             block.add(edge_left);
             edge_right = new Bomb(x + 1, y,
                     Sprite.transparent.getFxImage(), false);
-            Right = new Rectangle((x + 1) * SCALED_SIZE, y * SCALED_SIZE, 10, 10);
+            Right = new Rectangle((x + 1) * SCALED_SIZE, y * SCALED_SIZE, 20, 20);
             edge_right.setSolidArea(Right);
             block.add(edge_right);
 
@@ -152,6 +152,14 @@ public class Bomb extends Entity {
                 bomb.setImg(Sprite.balloom_dead.getFxImage());
             }
 
+            if (Collision.collisionCheck(Left)) {
+            }
+            if (Collision.collisionCheck(Right)) {
+            }
+            if (Collision.collisionCheck(Up)) {
+            }
+            if (Collision.collisionCheck(Down)) {
+            }
             swapExplosion = 2;
 
         } else if (swapExplosion == 2) {
@@ -198,7 +206,7 @@ public class Bomb extends Entity {
     }
     private static void Status() {
         if (isBomb == 1) {
-            if (System.currentTimeMillis() - timeBomb < 2000) {
+            if (System.currentTimeMillis() - timeBomb < 800) {
                 if (System.currentTimeMillis() - timeTmp > 100) {
                     StatusBomb();
                     timeTmp += 100;
@@ -213,7 +221,7 @@ public class Bomb extends Entity {
 
     private void Explosion() {
         if (isBomb == 2)
-            if (System.currentTimeMillis() - timeBomb < 1000) {
+            if (System.currentTimeMillis() - timeBomb < 800) {
                 if (System.currentTimeMillis() - timeTmp > 100) {
                     //createEdge();
                     System.out.println(System.currentTimeMillis());
