@@ -40,9 +40,9 @@ import uet.oop.bomberman.graphics.Sprite;
 
 import java.awt.*;
 
+
 import static uet.oop.bomberman.BombermanGame.*;
-import static uet.oop.bomberman.entities.block.Bomb.timeBomb;
-import static uet.oop.bomberman.entities.block.Bomb.timeTmp;
+import static uet.oop.bomberman.entities.block.Bomb.*;
 
 
 public class Bomber extends Entity {
@@ -92,7 +92,7 @@ public class Bomber extends Entity {
             } else {
                 bomberman.setImg(Sprite.player_right.getFxImage());
                 bomberman.setX(1*32);
-                bomberman.setY(1*32);
+                bomberman.setY(2*32);
                 swapKill = 1;
             }
         }
@@ -105,7 +105,7 @@ public class Bomber extends Entity {
         if (!Collision.collision(collisionCheckerBomber, this.solidAreaUp)) {
             speedUp = currentSpeed;
         }
-        if (Collision.collisionItemSpeed(collisionCheckerBomber, this.solidAreaRight)) {
+        if (Collision.collisionItemSpeed(collisionCheckerBomber, this.solidAreaUp)) {
             currentSpeed++;
         }
     }
@@ -117,7 +117,7 @@ public class Bomber extends Entity {
         if (!Collision.collision(collisionCheckerBomber, this.solidAreaLeft)) {
             speedLeft = currentSpeed;
         }
-        if (Collision.collisionItemSpeed(collisionCheckerBomber, this.solidAreaRight)) {
+        if (Collision.collisionItemSpeed(collisionCheckerBomber, this.solidAreaLeft)) {
             currentSpeed++;
         }
     }
@@ -129,8 +129,11 @@ public class Bomber extends Entity {
         if (!Collision.collision(collisionCheckerBomber, this.solidAreaDown)) {
             speedDown = currentSpeed;
         }
-        if (Collision.collisionItemSpeed(collisionCheckerBomber, this.solidAreaRight)) {
+        if (Collision.collisionItemSpeed(collisionCheckerBomber, this.solidAreaDown)) {
             currentSpeed++;
+        }
+        if (Collision.collisionItemHeart(collisionCheckerBomber, this.solidAreaDown)) {
+            heart++;
         }
     }
 
@@ -143,6 +146,9 @@ public class Bomber extends Entity {
         }
         if (Collision.collisionItemSpeed(collisionCheckerBomber, this.solidAreaRight)) {
             currentSpeed++;
+        }
+        if (Collision.collisionItemHeart(collisionCheckerBomber, this.solidAreaRight)) {
+            heart++;
         }
     }
 
@@ -173,7 +179,7 @@ public class Bomber extends Entity {
         this.solidAreaDown.setLocation(this.x + 3, this.y + 23);
         this.solidAreaLeft.setLocation(this.x - 2, this.y + 11);
         this.solidAreaRight.setLocation(this.x + 16, this.y + 11);
-        this.solidArea.setLocation(this.x, this.y);
+        this.solidArea.setLocation(this.x , this.y);
         if (spriteCounter > 35) {
             if (spriteNum == 1) {
                 spriteNum = 2;
@@ -236,6 +242,7 @@ public class Bomber extends Entity {
             x += speedRight;
 
         }
+
 /*
       if (Collision.collisionMonsterMain(collisionCheckerBomber, this.solidArea)) {
               heart--;
