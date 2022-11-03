@@ -115,7 +115,7 @@ public class Collision {
                     swapKill = 4;
                 } else {
                     brick.get(temp).setImg(Sprite.grass.getFxImage());
-                    //brick.remove(temp);
+                    brick.remove(temp);
                     swapKill = 1;
                 }
                 timeTempBrick2 += 100;
