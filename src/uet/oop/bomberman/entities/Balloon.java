@@ -83,7 +83,6 @@ public class Balloon extends Monster {
         if (Collision.collisionCheck(this.solidAreaRight)) {
             bomberman.setColidable(false);
             heart--;
-
             System.out.println(heart);
             if (heart == 0) {
             }

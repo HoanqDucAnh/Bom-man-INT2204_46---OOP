@@ -76,7 +76,7 @@ public class Bomber extends Entity {
         this.solidAreaDown = new Rectangle(this.x + 4, this.y + 23, 10, 10);
         this.solidAreaLeft = new Rectangle(this.x - 2, this.y + 11, 10, 10);
         this.solidAreaRight = new Rectangle(this.x + 16, this.y + 11, 10, 10);
-        this.solidArea = new Rectangle(this.x, this.y, 32, 32);
+        this.solidArea = new Rectangle(this.x, this.y, 20, 20);
     }
 
     public static void killBomber() {
