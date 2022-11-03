@@ -16,7 +16,6 @@ import static uet.oop.bomberman.graphics.Sprite.powerup_bombs;
 import uet.oop.bomberman.CollisionChecker;
 public class Bomb extends Entity {
     private CollisionChecker collisionCheckerBomb;
-
     public  static long timeBomb;
     public static long timeTmp;
     public static long timeTmp4;
@@ -206,7 +205,7 @@ public class Bomb extends Entity {
     }
     private static void Status() {
         if (isBomb == 1) {
-            if (System.currentTimeMillis() - timeBomb < 800) {
+            if (System.currentTimeMillis() - timeBomb < 500) {
                 if (System.currentTimeMillis() - timeTmp > 100) {
                     StatusBomb();
                     timeTmp += 100;
@@ -221,7 +220,7 @@ public class Bomb extends Entity {
 
     private void Explosion() {
         if (isBomb == 2)
-            if (System.currentTimeMillis() - timeBomb < 800) {
+            if (System.currentTimeMillis() - timeBomb < 500) {
                 if (System.currentTimeMillis() - timeTmp > 100) {
                     //createEdge();
                     System.out.println(System.currentTimeMillis());
