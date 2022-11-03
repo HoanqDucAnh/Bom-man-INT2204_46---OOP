@@ -19,6 +19,9 @@ public class Bomb extends Entity {
 
     public  static long timeBomb;
     public static long timeTmp;
+    public static long timeTmp4;
+    public static long timeTmp5;
+    public static long timeTmp6;
     public  static Entity bomb;
     private static int Status = 1;
     private static int swapExplosion = 1;
@@ -36,12 +39,12 @@ public class Bomb extends Entity {
     private static Entity edge_up = null;
     private static Entity edge_left = null;
     private static Entity edge_right = null;
-    private static Rectangle mid = null;
+    public static Rectangle mid = null;
 
     private static boolean isEdge = false;
-    public static int bombNumber = 8;
-    public Bomb(int x, int y, Image img) {
-        super(x, y, img, false);
+    public static int bombNumber = 10000;
+    public Bomb(int x, int y, Image img, boolean colidable) {
+        super(x, y, img, true);
     }
 
     public static void putBomb() {
@@ -54,28 +57,28 @@ public class Bomb extends Entity {
             int y = (bomberman.getY() + (SCALED_SIZE / 2)) / SCALED_SIZE;
             //x = Math.round(x);
             //y = Math.round(y);
-            bomb = new Bomb(x, y, Sprite.bomb.getFxImage());
-            block.add(bomb);
+            bomb = new Bomb(x, y, Sprite.bomb.getFxImage(), false);
+            stillObjects.add(bomb);;
             System.out.println("addBomb");
             mid = new Rectangle(x * SCALED_SIZE, y * SCALED_SIZE, 32, 32);
             bomb.setSolidArea(mid);
             edge_down = new Bomb(x, y + 1,
-                    Sprite.transparent.getFxImage());
-            Down = new Rectangle(x * SCALED_SIZE, y * SCALED_SIZE + 1 * SCALED_SIZE, 10, 10);
+                    Sprite.transparent.getFxImage(),false);
+            Down = new Rectangle(x * SCALED_SIZE, y * SCALED_SIZE + 1 * SCALED_SIZE, 20, 20);
             edge_down.setSolidArea(Down);
             block.add(edge_down);
             edge_up = new Bomb(x, y - 1,
-                    Sprite.transparent.getFxImage());
-            Up = new Rectangle(x * SCALED_SIZE, (y - 1) * SCALED_SIZE, 10, 10);
+                    Sprite.transparent.getFxImage(),false);
+            Up = new Rectangle(x * SCALED_SIZE, (y - 1) * SCALED_SIZE, 20, 20);
             block.add(edge_up);
             edge_left = new Bomb(x - 1, y,
-                    Sprite.transparent.getFxImage());
-            Left = new Rectangle((x - 1) * SCALED_SIZE, y * SCALED_SIZE, 10, 10);
+                    Sprite.transparent.getFxImage(), false);
+            Left = new Rectangle((x - 1) * SCALED_SIZE, y * SCALED_SIZE, 20, 20);
             edge_left.setSolidArea(Left);
             block.add(edge_left);
             edge_right = new Bomb(x + 1, y,
-                    Sprite.transparent.getFxImage());
-            Right = new Rectangle((x + 1) * SCALED_SIZE, y * SCALED_SIZE, 10, 10);
+                    Sprite.transparent.getFxImage(), false);
+            Right = new Rectangle((x + 1) * SCALED_SIZE, y * SCALED_SIZE, 20, 20);
             edge_right.setSolidArea(Right);
             block.add(edge_right);
 
@@ -149,6 +152,14 @@ public class Bomb extends Entity {
                 bomb.setImg(Sprite.balloom_dead.getFxImage());
             }
 
+            if (Collision.collisionCheck(Left)) {
+            }
+            if (Collision.collisionCheck(Right)) {
+            }
+            if (Collision.collisionCheck(Up)) {
+            }
+            if (Collision.collisionCheck(Down)) {
+            }
             swapExplosion = 2;
 
         } else if (swapExplosion == 2) {
@@ -195,7 +206,7 @@ public class Bomb extends Entity {
     }
     private static void Status() {
         if (isBomb == 1) {
-            if (System.currentTimeMillis() - timeBomb < 2000) {
+            if (System.currentTimeMillis() - timeBomb < 800) {
                 if (System.currentTimeMillis() - timeTmp > 100) {
                     StatusBomb();
                     timeTmp += 100;
@@ -210,7 +221,7 @@ public class Bomb extends Entity {
 
     private void Explosion() {
         if (isBomb == 2)
-            if (System.currentTimeMillis() - timeBomb < 1000) {
+            if (System.currentTimeMillis() - timeBomb < 800) {
                 if (System.currentTimeMillis() - timeTmp > 100) {
                     //createEdge();
                     System.out.println(System.currentTimeMillis());
@@ -227,10 +238,16 @@ public class Bomb extends Entity {
                 mid.setLocation(0,0);
 //                System.out.println("Clear");
             }
+        if (Collision.collisionBetBombAndBomber(bomberman.getSolidArea())) {
+            System.out.println("true");
+            //mid.setLocation(bomb.getX(), bomb.getY());
+        }
     }
 
     @Override
     public void update() {
+
+
         Status();
         Explosion();
     }

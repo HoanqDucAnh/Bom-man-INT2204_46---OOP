@@ -2,6 +2,8 @@ package uet.oop.bomberman.graphics;
 
 import javafx.scene.canvas.GraphicsContext;
 import uet.oop.bomberman.entities.*;
+import uet.oop.bomberman.entities.Item.HeartIterm;
+import uet.oop.bomberman.entities.Item.SpeedItem;
 
 import java.io.File;
 import java.io.FileReader;
@@ -13,7 +15,6 @@ import java.util.StringTokenizer;
 import static uet.oop.bomberman.BombermanGame.*;
 
 public class Map {
-    public static int[][] map = new int[WIDTH][HEIGHT];
     public Map(String level) {
         System.out.println(System.getProperty("user.dir"));
         final File fileName = new File(level);
@@ -33,11 +34,10 @@ public class Map {
 
                     for (int j = 0; j < _width; j++) {
                         int s = Integer.parseInt(tokenTile.nextToken());
-                        map[j][i] = s;
                         Entity entity;
                         Monster monster = null;
                         switch (s) {
-                            case 4:
+                            case 3:
                                 entity = new Portal(j, i, Sprite.grass.getFxImage(), true);
                                 s = 0;
                                 break;
@@ -48,7 +48,10 @@ public class Map {
                                 entity = new Brick(j, i, Sprite.brick.getFxImage(),true);
                                 break;
                             case 6:
-                                entity = new Item(j, i, Sprite.powerup_speed.getFxImage(), true);
+                                entity = new SpeedItem(j, i, Sprite.powerup_speed.getFxImage(), true);
+                                break;
+                            case 8:
+                                entity = new HeartIterm(j, i, Sprite.powerup_detonator.getFxImage(), true);
                                 break;
                             default:
                                 entity = new Grass(j, i, Sprite.grass.getFxImage(),false);
@@ -63,7 +66,12 @@ public class Map {
             }
 
             for (int i = 0; i < stillObjects.size(); i ++) {
-                if (stillObjects.get(i) instanceof Item) {
+                if (stillObjects.get(i) instanceof HeartIterm) {
+                    items.add(stillObjects.get(i));
+                }
+            }
+            for (int i = 0; i < stillObjects.size(); i ++) {
+                if (stillObjects.get(i) instanceof SpeedItem) {
                     items.add(stillObjects.get(i));
                 }
             }

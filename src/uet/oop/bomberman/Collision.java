@@ -2,6 +2,8 @@ package uet.oop.bomberman;
 
 import uet.oop.bomberman.entities.Bomber;
 import uet.oop.bomberman.entities.Entity;
+import uet.oop.bomberman.entities.Item.HeartIterm;
+import uet.oop.bomberman.entities.Item.SpeedItem;
 import uet.oop.bomberman.entities.Portal;
 import uet.oop.bomberman.entities.block.Bomb;
 import uet.oop.bomberman.graphics.Sprite;
@@ -11,10 +13,12 @@ import uet.oop.bomberman.level.Level3;
 import static uet.oop.bomberman.BombermanGame.*;
 import java.awt.*;
 
+import static uet.oop.bomberman.entities.Brick.*;
 import static uet.oop.bomberman.BombermanGame.*;
 import static uet.oop.bomberman.entities.Bomber.*;
-import static uet.oop.bomberman.entities.block.Bomb.timeBomb;
-import static uet.oop.bomberman.entities.block.Bomb.timeTmp;
+import static uet.oop.bomberman.entities.Brick.swapKill;
+import static uet.oop.bomberman.entities.block.Bomb.*;
+import static uet.oop.bomberman.graphics.Sprite.SCALED_SIZE;
 
 public class Collision {
     public static boolean collision(CollisionChecker collisionCheckerer, Rectangle player) {
@@ -33,19 +37,39 @@ public class Collision {
 
     public static boolean collisionItemSpeed(CollisionChecker collisionCheckerer, Rectangle player) {
         for (int i = 0; i < items.size(); i++) {
-            if (items.get(i).isColidable()) {
-                collisionCheckerer = new CollisionChecker(player, items.get(i).getSolidArea());
-                if (collisionCheckerer.isColided()) {
-                    items.get(i).setColidable(false);
-                    items.get(i).setImg(Sprite.grass.getFxImage());
-                    items.remove(i);
-                    return true;
-
+            if (items.get(i) instanceof SpeedItem) {
+                if (items.get(i).isColidable()) {
+                    collisionCheckerer = new CollisionChecker(player, items.get(i).getSolidArea());
+                    if (collisionCheckerer.isColided()) {
+                        items.get(i).setColidable(false);
+                        items.get(i).setImg(Sprite.grass.getFxImage());
+                        items.remove(i);
+                        return true;
+                    }
                 }
             }
         }
         return false;
     }
+
+    public static boolean collisionItemHeart(CollisionChecker collisionCheckerer, Rectangle player) {
+        for (int i = 0; i < items.size(); i++) {
+            if (items.get(i) instanceof HeartIterm) {
+                if (items.get(i).isColidable()) {
+                    collisionCheckerer = new CollisionChecker(player, items.get(i).getSolidArea());
+                    if (collisionCheckerer.isColided()) {
+                        items.get(i).setColidable(false);
+                        items.get(i).setImg(Sprite.grass.getFxImage());
+                        items.remove(i);
+                        return true;
+
+                    }
+                }
+            }
+        }
+        return false;
+    }
+
 
     public static boolean collisionBrick(CollisionChecker collisionCheckerer, Rectangle player) {
         for (int i = 0; i < brick.size(); i++) {
@@ -58,6 +82,43 @@ public class Collision {
                     return true;
 
                 }
+            }
+        }
+        return false;
+    }
+
+    public static boolean onealCollisionBrick(CollisionChecker collisionCheckerer, Rectangle player) {
+        for (int i = 0; i < brick.size(); i++) {
+            if (brick.get(i).isColidable()) {
+                collisionCheckerer = new CollisionChecker(player, brick.get(i).getSolidArea());
+                if (collisionCheckerer.isColided()) {
+                    temp = i;
+                    timeTempBrick1 = System.currentTimeMillis();
+                    timeTempBrick2 = timeTempBrick1;
+                    brick.get(i).setColidable(false);
+                    return true;
+
+                }
+            }
+        }
+        timeBrick = System.currentTimeMillis();
+        if (System.currentTimeMillis() - timeTempBrick1 < 500) {
+            if (System.currentTimeMillis() - timeTempBrick2 > 100) {
+                if (swapKill == 1) {
+                    brick.get(temp).setImg(Sprite.brick_exploded.getFxImage());
+                    swapKill = 2;
+                } else if (swapKill == 2) {
+                    brick.get(temp).setImg(Sprite.brick_exploded1.getFxImage());
+                    swapKill = 3;
+                } else if (swapKill == 3) {
+                    brick.get(temp).setImg(Sprite.brick_exploded2.getFxImage());
+                    swapKill = 4;
+                } else {
+                    brick.get(temp).setImg(Sprite.grass.getFxImage());
+                    //brick.remove(temp);
+                    swapKill = 1;
+                }
+                timeTempBrick2 += 100;
             }
         }
         return false;
@@ -128,6 +189,7 @@ public class Collision {
                     timeTmp1 = System.currentTimeMillis();
                     timeTmp2 = timeTmp1;
                     isBomber = 1;
+                    currentSpeed = 0;
                    bomberman.setColidable(false);
                    return true;
                 }
@@ -144,11 +206,28 @@ public class Collision {
             }
         if (timeBomber - timeTmp1 > 2000) {
             bomberman.setColidable(true);
+            currentSpeed = 1;
         }
         return false;
     }
 
 
+    public static boolean collisionBetBombAndBomber(Rectangle player) {
+        CollisionChecker collisionChecker;
+        collisionChecker = new CollisionChecker(player, bomb.getSolidArea());
+            if (bomb.isColidable()) {
+                if (collisionChecker.isColided()) {
+                    timeTmp4 = System.currentTimeMillis();
+                    bomb.setColidable(false);
+                    return true;
+                }
+            }
+            timeTmp6 = System.currentTimeMillis();
+        if (timeTmp6 - timeTmp4 > 50) {
+            bomb.setColidable(true);
+        }
+        return false;
+    }
     public static boolean collisionMonsterMain(CollisionChecker collisionCheckerer, Rectangle player) {
         for (int i = 0; i < monsters.size(); i++) {
             if (monsters.get(i).isColidable()) {

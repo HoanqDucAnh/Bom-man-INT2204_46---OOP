@@ -83,7 +83,6 @@ public class Balloon extends Monster {
         if (Collision.collisionCheck(this.solidAreaRight)) {
             bomberman.setColidable(false);
             heart--;
-
             System.out.println(heart);
             if (heart == 0) {
             }
@@ -97,10 +96,6 @@ public class Balloon extends Monster {
 //                Image img = new Image("res/Buttons/gameOver.png");
 //                authorView.setImage(img);
             }
-        }
-       if (Collision.collisionBomb(this.solidAreaRight, bomb) || Collision.collisionBomb(this.solidAreaRight, bomb)) {
-            this.direction *= -1;
-            this.solidArea.setLocation(this.x - 1, this.y);
         }
         x+= this.direction;
     }
