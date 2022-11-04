@@ -41,6 +41,14 @@ public abstract class Monster {
         this.x = x;
     }
 
+    public int getY() {
+        return y;
+    }
+
+    public void setY(int y) {
+        this.y = y;
+    }
+
     public Rectangle getSolidArea() {
         return solidArea;
     }
@@ -94,10 +102,10 @@ public abstract class Monster {
         this.y = yUnit * Sprite.SCALED_SIZE;
         this.img = img;
         this.solidAreaUp = new Rectangle(this.x + 4, this.y - 4, 10, 10);
-        this.solidAreaDown = new Rectangle(this.x + 4, this.y + 23, 15, 10);
+        this.solidAreaDown = new Rectangle(this.x + 4, this.y + 23, 10, 10);
         this.solidAreaLeft = new Rectangle(this.x - 2, this.y + 11, 10, 10);
         this.solidAreaRight = new Rectangle(this.x + 16, this.y + 11, 10, 10);
-        this.solidArea = new Rectangle(this.x, this.y, 20, 20);
+        this.solidArea = new Rectangle(this.x, this.y, 10, 10);
         this.isColidable = true;
         this.isAlive = true;
     }

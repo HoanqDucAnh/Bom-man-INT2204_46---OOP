@@ -59,7 +59,7 @@ public class Bomb extends Entity {
             bomb = new Bomb(x, y, Sprite.bomb.getFxImage(), false);
             stillObjects.add(bomb);;
             System.out.println("addBomb");
-            mid = new Rectangle(x * SCALED_SIZE, y * SCALED_SIZE, 32, 32);
+            mid = new Rectangle(x * SCALED_SIZE, y * SCALED_SIZE, 20, 20);
             bomb.setSolidArea(mid);
             edge_down = new Bomb(x, y + 1,
                     Sprite.transparent.getFxImage(),false);
@@ -205,7 +205,7 @@ public class Bomb extends Entity {
     }
     private static void Status() {
         if (isBomb == 1) {
-            if (System.currentTimeMillis() - timeBomb < 500) {
+            if (System.currentTimeMillis() - timeBomb < 800) {
                 if (System.currentTimeMillis() - timeTmp > 100) {
                     StatusBomb();
                     timeTmp += 100;
@@ -220,7 +220,7 @@ public class Bomb extends Entity {
 
     private void Explosion() {
         if (isBomb == 2)
-            if (System.currentTimeMillis() - timeBomb < 500) {
+            if (System.currentTimeMillis() - timeBomb < 800) {
                 if (System.currentTimeMillis() - timeTmp > 100) {
                     //createEdge();
                     System.out.println(System.currentTimeMillis());

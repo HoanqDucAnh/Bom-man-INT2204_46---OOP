@@ -1,22 +1,17 @@
 package uet.oop.bomberman.entities;
 
 import javafx.scene.image.Image;
-import javafx.scene.image.ImageView;
 import uet.oop.bomberman.Collision;
 import uet.oop.bomberman.CollisionChecker;
 import uet.oop.bomberman.graphics.Sprite;
 
-import static uet.oop.bomberman.entities.Bomber.*;
-import static uet.oop.bomberman.BombermanGame.*;
-import static uet.oop.bomberman.entities.Bomber.timeTmp1;
-import static uet.oop.bomberman.entities.block.Bomb.*;
-import java.awt.*;
-import java.io.InputStream;
-import java.nio.file.Files;
-import java.nio.file.Paths;
-import java.util.Random;
+import static uet.oop.bomberman.BombermanGame.bomberman;
+import static uet.oop.bomberman.BombermanGame.monsters;
+import static uet.oop.bomberman.entities.Bomber.heart;
 
-public class Balloon extends Monster {
+public class Kodoria extends Monster{
+    public  static long timeKodoria;
+    public static long timeTmpKodoria;
     private CollisionChecker collisionCheckerBalloon;
 
     /**
@@ -25,7 +20,7 @@ public class Balloon extends Monster {
      */
 
 
-    public Balloon(int xUnit, int yUnit, Image img) {
+    public Kodoria(int xUnit, int yUnit, Image img) {
         super(xUnit, yUnit, img);
 
         this.isColidable = true;
@@ -34,14 +29,14 @@ public class Balloon extends Monster {
 
     public void movement() {
         Image[] left = {
-                Sprite.balloom_left1.getFxImage(),
-                Sprite.balloom_left2.getFxImage(),
-                Sprite.balloom_left3.getFxImage()
+                Sprite.kondoria_left1.getFxImage(),
+                Sprite.kondoria_left2.getFxImage(),
+                Sprite.kondoria_left3.getFxImage()
         };
         Image[] right = {
-                Sprite.balloom_right1.getFxImage(),
-                Sprite.balloom_right2.getFxImage(),
-                Sprite.balloom_right3.getFxImage()
+                Sprite.kondoria_right1.getFxImage(),
+                Sprite.kondoria_right2.getFxImage(),
+                Sprite.kondoria_right3.getFxImage()
         };
         spriteCounter++;
         if (spriteCounter > 16) {
@@ -102,5 +97,13 @@ public class Balloon extends Monster {
 
     public void update() {
         movement();
+        for (Monster x : monsters) {
+            double check = Math.sqrt((bomberman.getX()/32 - x.getX()/32) * (bomberman.getX()/32 - x.getX()/32) + (bomberman.getY()/32 - x.getY()/32) * (bomberman.getY()/32 - x.getY()/32));
+            if (x instanceof Kodoria) {
+                if (check >= 5) {
+                    x.setImg(Sprite.transparent.getFxImage());
+                }
+            }
+        }
     }
 }
