@@ -115,7 +115,7 @@ public class Collision {
                     swapKill = 4;
                 } else {
                     brick.get(temp).setImg(Sprite.grass.getFxImage());
-                    //brick.remove(temp);
+                    brick.remove(temp);
                     swapKill = 1;
                 }
                 timeTempBrick2 += 100;
@@ -139,6 +139,8 @@ public class Collision {
                         stillObjects.clear();
                         items.clear();
                         block.clear();
+                        bomberman.setX(1*32);
+                        bomberman.setY(1*32);
                         new Level2();
                     }
                     if (check == 2) {
@@ -189,7 +191,6 @@ public class Collision {
                     timeTmp1 = System.currentTimeMillis();
                     timeTmp2 = timeTmp1;
                     isBomber = 1;
-                    currentSpeed = 0;
                    bomberman.setColidable(false);
                    return true;
                 }

@@ -16,7 +16,6 @@ import static uet.oop.bomberman.graphics.Sprite.powerup_bombs;
 import uet.oop.bomberman.CollisionChecker;
 public class Bomb extends Entity {
     private CollisionChecker collisionCheckerBomb;
-
     public  static long timeBomb;
     public static long timeTmp;
     public static long timeTmp4;
@@ -60,25 +59,25 @@ public class Bomb extends Entity {
             bomb = new Bomb(x, y, Sprite.bomb.getFxImage(), false);
             stillObjects.add(bomb);;
             System.out.println("addBomb");
-            mid = new Rectangle(x * SCALED_SIZE, y * SCALED_SIZE, 32, 32);
+            mid = new Rectangle(x * SCALED_SIZE, y * SCALED_SIZE, 15, 15);
             bomb.setSolidArea(mid);
             edge_down = new Bomb(x, y + 1,
                     Sprite.transparent.getFxImage(),false);
-            Down = new Rectangle(x * SCALED_SIZE, y * SCALED_SIZE + 1 * SCALED_SIZE, 20, 20);
+            Down = new Rectangle(x * SCALED_SIZE, y * SCALED_SIZE + 1 * SCALED_SIZE, 15, 5);
             edge_down.setSolidArea(Down);
             block.add(edge_down);
             edge_up = new Bomb(x, y - 1,
                     Sprite.transparent.getFxImage(),false);
-            Up = new Rectangle(x * SCALED_SIZE, (y - 1) * SCALED_SIZE, 20, 20);
+            Up = new Rectangle(x * SCALED_SIZE, (y - 1) * SCALED_SIZE, 15, 5);
             block.add(edge_up);
             edge_left = new Bomb(x - 1, y,
                     Sprite.transparent.getFxImage(), false);
-            Left = new Rectangle((x - 1) * SCALED_SIZE, y * SCALED_SIZE, 20, 20);
+            Left = new Rectangle((x - 1) * SCALED_SIZE, y * SCALED_SIZE, 5, 15);
             edge_left.setSolidArea(Left);
             block.add(edge_left);
             edge_right = new Bomb(x + 1, y,
                     Sprite.transparent.getFxImage(), false);
-            Right = new Rectangle((x + 1) * SCALED_SIZE, y * SCALED_SIZE, 20, 20);
+            Right = new Rectangle((x + 1) * SCALED_SIZE, y * SCALED_SIZE, 5, 15);
             edge_right.setSolidArea(Right);
             block.add(edge_right);
 
