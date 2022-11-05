@@ -44,7 +44,6 @@ public class MonsterMap {
                         }
                         monsters.add(monster);
 
-
                     }
 
 
@@ -53,6 +52,12 @@ public class MonsterMap {
             }
         } catch (IOException e) {
             e.printStackTrace();
+        }
+
+        for (int i = 0; i < monsters.size(); i++) {
+            if (monsters.get(i) instanceof Balloon) {
+                monsterCount.add(monsters.get(i));
+            }
         }
     }
 

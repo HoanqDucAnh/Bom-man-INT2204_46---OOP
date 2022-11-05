@@ -16,11 +16,12 @@ public class Level1 {
 //        items.clear();
 //        block.clear();
 //        stillObjects.clear();
-//        new MonsterMap("res\\levels\\Level1.txt");
+
+        new MonsterMap("res\\levels\\Level1.txt");
         new Map("res\\levels\\Level1.txt");
 
         bomberman.setLife(true);
-        Monster enemy = new Balloon(12,2, Sprite.balloom_left1.getFxImage(), true, true);
+//        Monster enemy = new Balloon(12,2, Sprite.balloom_left1.getFxImage(), true, true);
 //        Monster enemy1 = new Balloon(10,4, Sprite.balloom_left1.getFxImage());
 //        Monster enemy2 = new Balloon(10,6, Sprite.balloom_left1.getFxImage());
 //        Monster enemy3 = new Balloon(10,8, Sprite.balloom_left1.getFxImage());
@@ -28,7 +29,7 @@ public class Level1 {
 //        Monster enemy5 = new Balloon(16,12, Sprite.balloom_left1.getFxImage());
 //        Monster enemy6 = new Balloon(13,13, Sprite.balloom_left1.getFxImage());
 //        Monster enemy7 = new Oneal(13, 12, Sprite.oneal_left1.getFxImage());
-        monsters.add(enemy);
+//        monsters.add(enemy);
 //        monsters.add(enemy1);
 //        monsters.add(enemy2);
 //        monsters.add(enemy3);

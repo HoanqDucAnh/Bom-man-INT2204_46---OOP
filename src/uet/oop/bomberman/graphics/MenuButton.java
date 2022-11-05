@@ -32,8 +32,12 @@ import static uet.oop.bomberman.BombermanGame.*;
 public class MenuButton extends Button {
 
     private final String fontPath = "res/font/airstrike.ttf";
+    private final String fontPath2 = "res/font/Marios.ttf";
     private final String BUTTON_PRESSED_STYLE = "-fx-background-color: yellow; -fx-background-image: url('Buttons/red_button_pressed.png')";
     private final String BUTTON_FREE_STYLE = "-fx-background-color: yellow; -fx-background-image: url('Buttons/red_button.png')";
+
+    private final String BUTTON_PRESSED_STYLE_ING = "-fx-background-color: grey; -fx-background-image: url('Buttons/red_button_pressed.png')";
+    private final String BUTTON_FREE_STYLE_ING = "-fx-background-color: grey; -fx-background-image: url('Buttons/red_button.png')";
     public boolean status = true;
     public static boolean quitButton = true;
 
@@ -46,9 +50,26 @@ public class MenuButton extends Button {
         initializeButtonListeners();
     }
 
+    public MenuButton(String text, boolean bruh) throws FileNotFoundException {
+        setText(text);
+        setButtonFontIng();
+        setPrefWidth(32);
+        setPrefHeight(32);
+        setStyle(BUTTON_PRESSED_STYLE_ING);
+        initializeButtonListenersIng();
+    }
+
     private void setButtonFont() throws FileNotFoundException {
         try {
             setFont(Font.loadFont(new FileInputStream(fontPath),23));
+        } catch(FileNotFoundException e) {
+            setFont(Font.font("VERDANA",23));
+        }
+    }
+
+    private void setButtonFontIng() throws FileNotFoundException {
+        try {
+            setFont(Font.loadFont(new FileInputStream(fontPath2),10));
         } catch(FileNotFoundException e) {
             setFont(Font.font("VERDANA",23));
         }
@@ -64,6 +85,20 @@ public class MenuButton extends Button {
     private void setButtonReleasedStyle() {
         setStyle(BUTTON_FREE_STYLE);
         setPrefHeight(45);
+        setLayoutY(getLayoutY() - 4);
+
+    }
+
+    private void setButtonPressedStyleIng() {
+        setStyle(BUTTON_PRESSED_STYLE_ING);
+        setPrefHeight(32);
+        setLayoutY(getLayoutY() + 4);
+
+    }
+
+    private void setButtonReleasedStyleIng() {
+        setStyle(BUTTON_FREE_STYLE_ING);
+        setPrefHeight(32);
         setLayoutY(getLayoutY() - 4);
 
     }
@@ -91,6 +126,56 @@ public class MenuButton extends Button {
             public void handle(MouseEvent event) {
                 if(event.getButton().equals(MouseButton.PRIMARY)) {
                     setButtonReleasedStyle();
+
+                }
+
+            }
+        });
+
+        setOnMouseEntered(new EventHandler<MouseEvent>() {
+
+            @Override
+            public void handle(MouseEvent event) {
+                setEffect(new DropShadow());
+
+            }
+        });
+
+        setOnMouseExited(new EventHandler<MouseEvent>() {
+
+            @Override
+            public void handle(MouseEvent event) {
+                setEffect(null);
+
+            }
+        });
+
+
+    }
+
+    private void initializeButtonListenersIng() {
+
+        setOnMousePressed(new EventHandler<MouseEvent>() {
+
+            @Override
+            public void handle(MouseEvent event) {
+                if(event.getButton().equals(MouseButton.PRIMARY)) {
+                    setButtonPressedStyleIng();
+//                    status = false;
+//                    //isAlive = false;
+//                    System.out.print(status);
+//                    new Level1();
+                }
+
+            }
+        });
+
+        setOnMouseReleased(new EventHandler<MouseEvent>() {
+
+            @Override
+            public void handle(MouseEvent event) {
+                if(event.getButton().equals(MouseButton.PRIMARY)) {
+                    setButtonReleasedStyleIng();
 
                 }
 

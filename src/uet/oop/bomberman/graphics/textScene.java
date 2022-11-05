@@ -1,32 +1,53 @@
 package uet.oop.bomberman.graphics;
 
+import javafx.beans.property.IntegerProperty;
+import javafx.beans.property.SimpleIntegerProperty;
 import javafx.scene.Group;
 import javafx.scene.Parent;
 import javafx.scene.SubScene;
 import javafx.scene.control.Label;
+import javafx.scene.layout.Pane;
+import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
+import javafx.scene.text.Text;
 
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
+import java.util.Timer;
+import java.util.TimerTask;
 
-public class textScene extends SubScene {
-    private final String fontPath = "res/font/airstrike.ttf";
-    private int x = 2;
-    public textScene() throws FileNotFoundException {
-        super(new Group(), 800, 480);
-        Label label = new Label();
-        label.setText("Test " + x);
-        label.setFont(Font.loadFont(new FileInputStream(fontPath),23));
-        label.setLayoutX(30);
-        label.setLayoutY(5);
-        Group root2 = (Group) this.getRoot();
-        root2.getChildren().add(label);
+import static uet.oop.bomberman.entities.Bomber.heart;
 
+public class textScene {
+
+    public static Text time, live;
+    private static final String fontPath = "res/font/Mario.ttf";
+    public static int time_number = 120;   // the number of bomb is 20 and the time limit is 120 seconds
+
+    public static void createText(Group root) throws FileNotFoundException {
+        time = new Text("Timer: 120" );
+
+//        time.setFill(Color.WHITE);
+        time.setFont(Font.loadFont(new FileInputStream(fontPath),15));
+        time.setX(30);
+        time.setY(25);
+
+        Pane pane = new Pane();
+        pane.getChildren().add(time);
+        root.getChildren().add(pane);
     }
 
-    public void text(String s) {
+    public static void createTextLives(Group root) throws FileNotFoundException {
+        live = new Text("Lives: " + heart );
 
+//        time.setFill(Color.WHITE);
+        live.setFont(Font.loadFont(new FileInputStream(fontPath),15));
+        live.setX(200);
+        live.setY(25);
+
+        Pane pane = new Pane();
+        pane.getChildren().add(live);
+        root.getChildren().add(pane);
     }
-
 
 }

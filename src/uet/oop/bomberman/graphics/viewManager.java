@@ -5,23 +5,31 @@ import javafx.event.EventHandler;
 import javafx.scene.Group;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.Pane;
+import javafx.scene.text.Font;
+import javafx.scene.text.Text;
 import uet.oop.bomberman.GameSubscene;
 import uet.oop.bomberman.level.Level1;
 
+import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.InputStream;
 import java.nio.file.Files;
 import java.nio.file.Paths;
 
-import static uet.oop.bomberman.BombermanGame.buttonList;
+import static uet.oop.bomberman.BombermanGame.*;
+import static uet.oop.bomberman.graphics.textScene.time_number;
 
 
 public class viewManager {
 
     public static Pane pane = new Pane();
+    public static Pane ingPane = new Pane();
     public static boolean start = false;
+    public static boolean pause = false;
+    private static final String fontPath = "res/font/Mario.ttf";
 
     public viewManager(Group root) throws IOException {
         createBackground();
@@ -29,6 +37,12 @@ public class viewManager {
         createQuit();
         createGuide();
         root.getChildren().add(pane);
+
+    }
+
+    public viewManager(Group root, boolean bruh) throws FileNotFoundException {
+        createPause();
+        root.getChildren().add(ingPane);
 
     }
 
@@ -41,9 +55,12 @@ public class viewManager {
         button.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent actionEvent) {
+                time_number = 120;
                 start = true;
+                timerOn = true;
                 new Level1();
                 System.out.println("bruh");
+
             }
         });
         pane.getChildren().add(button);
@@ -73,19 +90,19 @@ public class viewManager {
 
     public void createGuide() throws IOException {
         Pane pane1 = new Pane();
-        pane1.setPrefWidth(220);
-        pane1.setPrefHeight(230);
+        pane1.setPrefWidth(200);
+        pane1.setPrefHeight(300);
 //        InputStream is = Files.newInputStream(Paths.get());
 //        Image img = new Image(is);
 //        ImageView imgView = new ImageView(img);
-        GameSubscene subscene = new GameSubscene("res/Buttons/Control.png");
+        GameSubscene subscene = new GameSubscene("res/Buttons/Control1.png");
         MenuButton button = new MenuButton("How to play");
         button.setLayoutX(290);
         button.setLayoutY(350);
         subscene.widthProperty().bind(pane1.widthProperty());
         subscene.heightProperty().bind(pane1.heightProperty());
         subscene.setLayoutX(290);
-        subscene.setLayoutY(-230);
+        subscene.setLayoutY(-300);
         button.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent actionEvent) {
@@ -98,4 +115,33 @@ public class viewManager {
         pane.getChildren().add(pane1);
     }
 
+    public void createPause() throws FileNotFoundException {
+        MenuButton button = new MenuButton("| |", pause);
+        Text textP = new Text("Pause ->");
+
+//        time.setFill(Color.WHITE);
+        textP.setFont(Font.loadFont(new FileInputStream(fontPath),15));
+        textP.setX(650);
+        textP.setY(25);
+        button.setLayoutX(768);
+        button.setLayoutY(0);
+        button.setOnAction(new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent actionEvent) {
+                if (pause == false) {
+                    timeline.pause();
+                    button.setText("~");
+                    textP.setText("Resume ->");
+                    pause = true;
+                } else {
+                    timeline.play();
+                    button.setText("| |");
+                    textP.setText("Pause ->");
+                    pause = false;
+                }
+            }
+        });
+        ingPane.getChildren().add(textP);
+        ingPane.getChildren().add(button);
+    }
 }
