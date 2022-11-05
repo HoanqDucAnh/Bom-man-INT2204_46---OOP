@@ -32,14 +32,14 @@ public class MonsterMap {
                         int s = Integer.parseInt(tokenTile.nextToken());
                         Monster monster;
                         switch (s) {
-                            case 3:
-                                monster = new Balloon(j, i, Sprite.balloom_left1.getFxImage());
+                            case 4:
+                                monster = new Balloon(j, i, Sprite.balloom_left1.getFxImage(), true, true);
                                 break;
-                            case 5:
-                                monster = new Oneal(j, i, Sprite.oneal_right1.getFxImage());
-                                break;
+//                            case 5:
+//                                monster = new Oneal(j, i, Sprite.oneal_right1.getFxImage());
+//                                break;
                             default:
-                                monster = new Unharmed(j, i, Sprite.transparent.getFxImage());
+                                monster = new Unharmed(j, i, Sprite.transparent.getFxImage(), false, false);
 
                         }
                         monsters.add(monster);

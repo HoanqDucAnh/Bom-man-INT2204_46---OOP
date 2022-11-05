@@ -16,17 +16,21 @@ import javafx.scene.image.ImageView;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.paint.Color;
+import javafx.scene.text.Text;
+import javafx.scene.text.TextFlow;
 import javafx.stage.Stage;
 import javafx.util.Duration;
 //import uet.oop.bomberman.entities.*;
 import uet.oop.bomberman.entities.*;
-import uet.oop.bomberman.graphics.Map;
-import uet.oop.bomberman.graphics.Sprite;
+import uet.oop.bomberman.graphics.*;
 import uet.oop.bomberman.entities.block.Bomb;
+import uet.oop.bomberman.graphics.MenuButton;
 import uet.oop.bomberman.level.Level1;
 import javafx.scene.paint.Paint;
 import java.awt.*;
+import java.awt.Label;
 import java.io.File;
+import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.InputStream;
 import java.nio.file.Files;
@@ -37,7 +41,7 @@ import java.util.List;
 import java.util.Scanner;
 
 import uet.oop.bomberman.level.Level2;
-import uet.oop.bomberman.level.LevelUp;
+
 import javafx.application.Application;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
@@ -52,9 +56,10 @@ import javafx.stage.Stage;
 import static uet.oop.bomberman.entities.Portal.isPortal;
 import static uet.oop.bomberman.graphics.Sprite.SCALED_SIZE;
 import static uet.oop.bomberman.graphics.Sprite.grass;
-import static uet.oop.bomberman.level.LevelUp.*;
-import uet.oop.bomberman.graphics.MenuButton;
+
 import static uet.oop.bomberman.graphics.MenuButton.*;
+import static uet.oop.bomberman.graphics.viewManager.pane;
+import static uet.oop.bomberman.graphics.viewManager.start;
 
 public class BombermanGame extends Application {
     public static final int WIDTH = 25;
@@ -65,7 +70,7 @@ public class BombermanGame extends Application {
     public static int _height = 0;
     public static int _level = 1;
     private GraphicsContext gc;
-    public static boolean running;
+
     private Canvas canvas;
     private Map map;
     public  List<Entity> entities = new ArrayList<>();
@@ -78,12 +83,14 @@ public class BombermanGame extends Application {
     public boolean gameState = true;
     public static boolean isAlive = true;
     public Timeline timeline;
-    public List<MenuButton> buttonList = new ArrayList<>();
+    public static List<MenuButton> buttonList = new ArrayList<>();
 
     public static Entity bomberman;
 
-    public static ImageView authorView;
-
+    private boolean coPortal = true;
+    public static Group root = new Group();
+    private int test = 0;
+    private String U;
     public static void main(String[] args) {
         Application.launch(BombermanGame.class);
     }
@@ -96,34 +103,30 @@ public class BombermanGame extends Application {
         canvas = new Canvas(Sprite.SCALED_SIZE * WIDTH, Sprite.SCALED_SIZE * HEIGHT);
         gc = canvas.getGraphicsContext2D();
 
-        InputStream is = Files.newInputStream(Paths.get("res/Buttons/White.png"));
+
+
+
+
         InputStream box = Files.newInputStream(Paths.get("res/Buttons/TextBox.png"));
-        Image img = new Image(is);
         Image imgBox = new Image(box);
         box.close();
-        is.close();
-        ImageView imgView = new ImageView(img);
         ImageView imgBoxi = new ImageView(imgBox);
-        MenuButton start = new MenuButton("Start");
-        MenuButton quit = new MenuButton("Quit");
-        start.setLayoutX(290);
-        start.setLayoutY(290);
-        quit.setLayoutX(290);
-        quit.setLayoutY(350);
-        buttonList.add(start);
-        buttonList.add(quit);
+        Label label = new Label();
+
+
+
         // Tao root container
-        Group root = new Group();
+//        Group root = new Group();
+
         root.getChildren().add(canvas);
         root.getChildren().add(imgBoxi);
-        root.getChildren().add(imgView);
+        textTest(root);
+
+        viewManager viewManager = new viewManager(root);
 
 
-        for (int i = 0; i < buttonList.size(); i++) {
-            root.getChildren().add(buttonList.get(i));
-        }
 
-        transition(root);
+
         // Tao scene
         Scene scene = new Scene(root);
         final int[] counter = {0};
@@ -134,26 +137,33 @@ public class BombermanGame extends Application {
 
         timeline = new Timeline(new KeyFrame(Duration.seconds(1), event -> {
             render();
-            update();
-            if (start.isStatus() == false) {
-                for (int i = 0; i < buttonList.size(); i++) {
-                    root.getChildren().remove(buttonList.get(i));
-                }
-                root.getChildren().remove(imgView);
+            try {
+                update();
+            } catch (IOException e) {
+                throw new RuntimeException(e);
             }
 
-            if (quit.isStatus() == false) {
-                System.exit(1);
+            if (start) {
+                root.getChildren().remove(pane);
             }
+
+            for (int i = 0; i < 10; i++) {
+                test++;
+                if (test == 99) {
+                    i = 0;
+                    test = 0;
+                }
+                U = Integer.toString(test);
+            }
+
+//
         }));
 
         timeline.setCycleCount(Animation.INDEFINITE);
         timeline.play();
         timeline.setRate(90);
 
-        if (start.isStatus() == false) {
 
-        }
 //            if (monsters.size() == 0 ) {
 //                stillObjects.clear();
 //                block.clear();
@@ -194,6 +204,7 @@ public class BombermanGame extends Application {
                     if (keyEvent.getCode() == KeyCode.SPACE) {
                             Bomb.putBomb();
                     }
+
 
 //
                 }
@@ -238,10 +249,13 @@ public class BombermanGame extends Application {
             root.getChildren().add(rec4);
 
              */
+
+
+
     }
 
 
-        public void update() {
+        public void update() throws IOException {
             //System.out.println(System.currentTimeMillis());
             //bomberman.update();
             stillObjects.forEach(Entity::update);
@@ -250,13 +264,16 @@ public class BombermanGame extends Application {
             items.forEach(Entity::update);
             bomberman.update();
 
+            boolean wait = false;
             if (monsters.size() == 0 && !isPortal && !wait) {
                 Entity portal = new Portal(_width - 2, _height - 2, Sprite.portal.getFxImage(), true);
                 items.add(portal);
 
-                if (Collision.collisionPortal(bomberman.getSolidAreaRight(), portal)) {
+                if (Collision.collisionPortal(bomberman.getSolidAreaRight(), portal) && coPortal == true) {
+                    transition(root);
+                    coPortal = false;
                     wait = true;
-                    waitingTime = System.currentTimeMillis();
+                    long waitingTime = System.currentTimeMillis();
                 }
             }
         }
@@ -271,8 +288,19 @@ public class BombermanGame extends Application {
         }
 
         public void transition(Group root) throws IOException {
-            GameSubscene subscene = new GameSubscene();
+            GameSubscene subscene = new GameSubscene("res/Buttons/Black.jpg");
+            TextFlow flow = new TextFlow();
+
+            Text text1=new Text("Some Text");
+
+
             root.getChildren().add(subscene);
+            root.getChildren().add(text1);
             subscene.moveScene();
+        }
+
+        public void textTest(Group root) throws FileNotFoundException {
+            textScene textScene = new textScene();
+            root.getChildren().add(textScene);
         }
     }

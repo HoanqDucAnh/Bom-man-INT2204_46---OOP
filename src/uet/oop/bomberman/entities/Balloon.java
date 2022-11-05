@@ -25,10 +25,9 @@ public class Balloon extends Monster {
      */
 
 
-    public Balloon(int xUnit, int yUnit, Image img) {
-        super(xUnit, yUnit, img);
+    public Balloon(int xUnit, int yUnit, Image img, boolean isColidable, boolean isAlive) {
+        super(xUnit, yUnit, img, isColidable, isAlive);
 
-        this.isColidable = true;
     }
 
 

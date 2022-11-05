@@ -36,6 +36,7 @@ public class MenuButton extends Button {
     private final String BUTTON_FREE_STYLE = "-fx-background-color: yellow; -fx-background-image: url('Buttons/red_button.png')";
     public boolean status = true;
     public static boolean quitButton = true;
+
     public MenuButton(String text) throws FileNotFoundException {
         setText(text);
         setButtonFont();
@@ -75,10 +76,10 @@ public class MenuButton extends Button {
             public void handle(MouseEvent event) {
                 if(event.getButton().equals(MouseButton.PRIMARY)) {
                     setButtonPressedStyle();
-                    status = false;
-                    //isAlive = false;
-                    System.out.print(status);
-                    new Level1();
+//                    status = false;
+//                    //isAlive = false;
+//                    System.out.print(status);
+//                    new Level1();
                 }
 
             }

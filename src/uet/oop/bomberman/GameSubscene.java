@@ -16,11 +16,11 @@ import java.nio.file.Files;
 import java.nio.file.Paths;
 
 public class GameSubscene extends SubScene {
+    public boolean guide = true;
 
-
-    public GameSubscene() throws IOException {
+    public GameSubscene(String path) throws IOException {
         super(new Group(), 800, 480);
-        InputStream is = Files.newInputStream(Paths.get("res/Buttons/Black.jpg"));
+        InputStream is = Files.newInputStream(Paths.get(path));
 //        InputStream box = Files.newInputStream(Paths.get("res/Buttons/TextBox.png"));
         Image img = new Image(is);
         ImageView imgView = new ImageView(img);
@@ -32,10 +32,26 @@ public class GameSubscene extends SubScene {
 
     public void moveScene() {
         TranslateTransition transition = new TranslateTransition();
+        transition.setDuration(Duration.seconds(3));
+        transition.setNode(this);
+        transition.setToX(-800);
+
+        transition.play();
+    }
+
+    public void moveGuide() {
+        TranslateTransition transition = new TranslateTransition();
         transition.setDuration(Duration.seconds(1));
         transition.setNode(this);
 
-        transition.setToX(-800);
+        if (guide) {
+            transition.setToY(230);
+            guide = false;
+        } else {
+            transition.setToY(-230);
+            guide = true;
+        }
+
         transition.play();
     }
 }
