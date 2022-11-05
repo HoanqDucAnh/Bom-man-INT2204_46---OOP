@@ -172,6 +172,22 @@ public class Collision {
         return false;
     }
 
+    public static boolean collisionMonsterMid(CollisionChecker collisionCheckerer, Rectangle player) {
+        for (int i = 0; i < monsterCount.size(); i++) {
+            if (monsterCount.get(i).isColidable()) {
+                collisionCheckerer = new CollisionChecker(player, monsterCount.get(i).getSolidArea());
+                if (collisionCheckerer.isColided()) {
+                    monsterCount.get(i).setDirection(0);
+                    monsterCount.get(i).setAlive(false);
+                    monsterCount.get(i).setImg(Sprite.transparent.getFxImage());
+                    monsterCount.remove(i);
+                    return true;
+                }
+            }
+        }
+        return false;
+    }
+
     public static boolean collisionBomb(Rectangle player, Entity x) {
         CollisionChecker collisionCheckerer;
         if (x instanceof Bomb) {
@@ -212,6 +228,7 @@ public class Collision {
         return false;
     }
 
+ 
 
     public static boolean collisionBetBombAndBomber(Rectangle player) {
         CollisionChecker collisionChecker;
