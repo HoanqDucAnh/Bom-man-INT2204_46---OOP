@@ -97,7 +97,7 @@ public abstract class Monster {
         this.solidAreaRight = solidAreaRight;
     }
 
-    public Monster(int xUnit, int yUnit, Image img) {
+    public Monster(int xUnit, int yUnit, Image img, boolean isColidable, boolean isAlive) {
         this.x = xUnit * Sprite.SCALED_SIZE;
         this.y = yUnit * Sprite.SCALED_SIZE;
         this.img = img;
@@ -106,8 +106,8 @@ public abstract class Monster {
         this.solidAreaLeft = new Rectangle(this.x - 2, this.y + 11, 10, 15);
         this.solidAreaRight = new Rectangle(this.x + 16, this.y + 11, 10, 15);
         this.solidArea = new Rectangle(this.x+3, this.y-5, 10, 10);
-        this.isColidable = true;
-        this.isAlive = true;
+        this.isColidable = isColidable;
+        this.isAlive = isAlive;
     }
 
     public boolean isAlive() {
