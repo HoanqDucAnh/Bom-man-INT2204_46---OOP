@@ -212,11 +212,11 @@ public class BombermanGame extends Application {
                 }
             });
 
-            /*
-            Rectangle rec1 = new Rectangle(bomberman.getX() ,bomberman.getY() ,30,30); //up
-            Rectangle rec2 = new Rectangle(1 * Sprite.SCALED_SIZE + 4,1 * Sprite.SCALED_SIZE + 23 ,10,10); //down
-            Rectangle rec3 = new Rectangle(1 * Sprite.SCALED_SIZE + 16,1 * Sprite.SCALED_SIZE + 16,10,10); //right
-            Rectangle rec4 = new Rectangle(1 * Sprite.SCALED_SIZE - 2,1 * Sprite.SCALED_SIZE + 11 ,10,10); //left
+
+            Rectangle rec1 = new Rectangle(bomberman.getX() +4 ,bomberman.getY()+1,15,10); //up
+            Rectangle rec2 = new Rectangle(bomberman.getX() +4 ,bomberman.getY()+24,15,10); //down
+            Rectangle rec3 = new Rectangle(bomberman.getX() -2 ,bomberman.getY()+11,10,15); //left
+            Rectangle rec4 = new Rectangle(bomberman.getX() +16 ,bomberman.getY()+11,10,15); //right
             rec1.setFill(Color.RED);
             rec2.setFill(Color.BLUE);
             rec3.setFill(Color.YELLOW);
@@ -227,7 +227,7 @@ public class BombermanGame extends Application {
             root.getChildren().add(rec3);
             root.getChildren().add(rec4);
 
-             */
+
     }
 
 

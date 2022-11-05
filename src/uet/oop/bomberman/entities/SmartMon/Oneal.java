@@ -43,10 +43,11 @@ public class Oneal extends Monster {
             }
             spriteCounter = 0;
         }
-        this.solidAreaUp = new Rectangle(this.x + 4, this.y - 4, 20, 16);
-        this.solidAreaDown = new Rectangle(this.x + 4, this.y + 23, 20, 16);
-        this.solidAreaLeft = new Rectangle(this.x - 2, this.y + 11, 20, 16);
-        this.solidAreaRight = new Rectangle(this.x + 16, this.y + 11, 20, 16);
+        this.solidAreaUp.setLocation(this.x + 4, this.y - 4);
+        this.solidAreaDown.setLocation(this.x + 3, this.y + 23);
+        this.solidAreaLeft.setLocation(this.x - 2, this.y + 11);
+        this.solidAreaRight.setLocation(this.x + 16, this.y + 11);
+        this.solidArea.setLocation(this.x, this.y);
         System.out.println(this.y);
             if (bomberman.getX() < this.x) {
                 if(!Collision.onealCollisionBrick(collisionCheckerOneal,this.solidAreaLeft)) {

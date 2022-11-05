@@ -72,11 +72,11 @@ public class Bomber extends Entity {
 
     public Bomber(int x, int y, Image img) {
         super(x, y, img, true);
-        this.solidAreaUp = new Rectangle(this.x + 4, this.y - 4, 10, 10);
-        this.solidAreaDown = new Rectangle(this.x + 4, this.y + 23, 10, 10);
-        this.solidAreaLeft = new Rectangle(this.x - 2, this.y + 11, 10, 10);
-        this.solidAreaRight = new Rectangle(this.x + 16, this.y + 11, 10, 10);
-        this.solidArea = new Rectangle(this.x, this.y, 20, 20);
+        this.solidAreaUp = new Rectangle(this.x + 4, this.y +1, 15, 5);
+        this.solidAreaDown = new Rectangle(this.x + 4, this.y + 24, 15, 5);
+        this.solidAreaLeft = new Rectangle(this.x - 2, this.y + 11, 5, 15);
+        this.solidAreaRight = new Rectangle(this.x + 16, this.y + 11, 5, 15);
+        this.solidArea = new Rectangle(this.x+3, this.y-5, 12, 10);
     }
 
     public static void killBomber() {
@@ -175,8 +175,8 @@ public class Bomber extends Entity {
                 Sprite.player_right_2.getFxImage()
         };
         spriteCounter++;
-        this.solidAreaUp.setLocation(this.x + 4, this.y - 4);
-        this.solidAreaDown.setLocation(this.x + 3, this.y + 23);
+        this.solidAreaUp.setLocation(this.x + 4, this.y +1);
+        this.solidAreaDown.setLocation(this.x + 3, this.y + 24);
         this.solidAreaLeft.setLocation(this.x - 2, this.y + 11);
         this.solidAreaRight.setLocation(this.x + 16, this.y + 11);
         this.solidArea.setLocation(this.x , this.y);

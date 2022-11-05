@@ -26,7 +26,7 @@ public class Level1 {
 //        Monster enemy4 = new Balloon(10,10, Sprite.balloom_left1.getFxImage());
 //        Monster enemy5 = new Balloon(16,12, Sprite.balloom_left1.getFxImage());
 //        Monster enemy6 = new Balloon(13,13, Sprite.balloom_left1.getFxImage());
-//        Monster enemy7 = new Oneal(13, 12, Sprite.oneal_left1.getFxImage());
+        //Monster enemy7 = new Oneal(13, 12, Sprite.oneal_left1.getFxImage());
         monsters.add(enemy);
         monsters.add(enemy1);
         Monster enemy2 = new Kodoria(10,6, Sprite.balloom_left1.getFxImage());
@@ -36,7 +36,7 @@ public class Level1 {
 //        monsters.add(enemy4);
 //        monsters.add(enemy5);
 //        monsters.add(enemy6);
-//        monsters.add(enemy7);
+        //monsters.add(enemy7);
         for (Monster monster : monsters) {
             monster.setAlive(true);
         }
