@@ -11,8 +11,8 @@ import java.util.Random;
 public class Unharmed extends Monster {
 
 
-    public Unharmed(int xUnit, int yUnit, Image img) {
-        super(xUnit, yUnit, img);
+    public Unharmed(int xUnit, int yUnit, Image img, boolean isColidable, boolean isAlive) {
+        super(xUnit, yUnit, img, isColidable, isAlive);
     }
 
     @Override

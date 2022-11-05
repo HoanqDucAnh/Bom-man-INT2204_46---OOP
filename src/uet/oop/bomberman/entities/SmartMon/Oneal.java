@@ -18,9 +18,9 @@ import static uet.oop.bomberman.BombermanGame.*;
 
 public class Oneal extends Monster {
     private CollisionChecker collisionCheckerOneal;
-    public Oneal(int xUnit, int yUnit, Image img) {
-        super(xUnit, yUnit, img);
-        this.isColidable = true;
+    public Oneal(int xUnit, int yUnit, Image img, boolean isColidable, boolean isAlive) {
+        super(xUnit, yUnit, img, isColidable, isAlive);
+
     }
 
     public void movement() {

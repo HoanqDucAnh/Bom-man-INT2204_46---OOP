@@ -157,14 +157,14 @@ public class Collision {
     }
 
     public static boolean collisionMonster(CollisionChecker collisionCheckerer, Rectangle player) {
-        for (int i = 0; i < monsters.size(); i++) {
-            if (monsters.get(i).isColidable()) {
-                collisionCheckerer = new CollisionChecker(player, monsters.get(i).getSolidArea());
+        for (int i = 0; i < monsterCount.size(); i++) {
+            if (monsterCount.get(i).isColidable()) {
+                collisionCheckerer = new CollisionChecker(player, monsterCount.get(i).getSolidArea());
                 if (collisionCheckerer.isColided()) {
-                    monsters.get(i).setDirection(0);
-                    monsters.get(i).setAlive(false);
-                    monsters.get(i).setImg(Sprite.transparent.getFxImage());
-                    monsters.remove(i);
+                    monsterCount.get(i).setDirection(0);
+                    monsterCount.get(i).setAlive(false);
+                    monsterCount.get(i).setImg(Sprite.transparent.getFxImage());
+                    monsterCount.remove(i);
                     return true;
                 }
             }

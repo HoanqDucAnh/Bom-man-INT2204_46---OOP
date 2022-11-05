@@ -4,8 +4,8 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="e158ab31-45d2-4b66-9fc5-59715caa0eda" name="Changes" comment="fixed some collision bugs and working on the ghost">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+    <list default="true" id="7275cc03-4061-43cc-95a4-a6d71586ac6d" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/src/uet/oop/bomberman/level/Level1.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/uet/oop/bomberman/level/Level1.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -40,7 +40,9 @@
     <option name="version" value="2" />
   </component>
   <component name="ProjectId" id="2FUw6rZ24rTdoToX4FFnk7Mffjh" />
-  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true">
+    <ConfirmationsSetting value="2" id="Add" />
+  </component>
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
@@ -226,14 +228,7 @@
       <option name="project" value="LOCAL" />
       <updated>1667614162031</updated>
     </task>
-    <task id="LOCAL-00016" summary="fixed some collision bugs and working on the ghost">
-      <created>1667623301058</created>
-      <option name="number" value="00016" />
-      <option name="presentableId" value="LOCAL-00016" />
-      <option name="project" value="LOCAL" />
-      <updated>1667623301058</updated>
-    </task>
-    <option name="localTasksCounter" value="17" />
+    <option name="localTasksCounter" value="16" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -266,8 +261,7 @@
     <MESSAGE value="update oneal 3rd" />
     <MESSAGE value="update oneal breaks walls" />
     <MESSAGE value="comit" />
-    <MESSAGE value="fixed some collision bugs and working on the ghost" />
-    <option name="LAST_COMMIT_MESSAGE" value="fixed some collision bugs and working on the ghost" />
+    <option name="LAST_COMMIT_MESSAGE" value="comit" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
