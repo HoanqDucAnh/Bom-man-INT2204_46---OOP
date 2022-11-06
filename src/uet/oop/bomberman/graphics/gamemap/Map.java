@@ -19,7 +19,6 @@ import java.util.StringTokenizer;
 import static uet.oop.bomberman.gamerunner.BombermanGame.*;
 
 public class Map {
-    public static int[][] mapObj = new int[HEIGHT][WIDTH];
     public Map(String level) {
         System.out.println(System.getProperty("user.dir"));
         final File fileName = new File(level);
@@ -41,7 +40,6 @@ public class Map {
                         int s = Integer.parseInt(tokenTile.nextToken());
                         Entity entity;
                         Monster monster = null;
-                        mapObj[i][j] = s;
                         switch (s) {
                             case 3:
                                 entity = new Portal(j, i, Sprite.grass.getFxImage(), true);
