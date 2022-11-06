@@ -39,7 +39,7 @@ public class Oneal extends Monster {
         this.solidAreaDown.setLocation(this.x + 3, this.y + 23);
         this.solidAreaLeft.setLocation(this.x - 2, this.y + 11);
         this.solidAreaRight.setLocation(this.x + 16, this.y + 11);
-        this.solidArea.setLocation(this.x, this.y);
+        this.solidArea.setLocation(this.x+3, this.y+3);
             if (bomberman.getX() < this.x) {
                 if(!Collision.onealCollisionBrick(collisionCheckerOneal,this.solidAreaLeft) &&
                         (!Collision.collision(collisionCheckerOneal,this.solidAreaLeft))) {
@@ -60,7 +60,7 @@ public class Oneal extends Monster {
             }
             else if (bomberman.getY() < this.y) {
                 if(!Collision.onealCollisionBrick(collisionCheckerOneal,this.solidAreaDown) &&
-                        (!Collision.collision(collisionCheckerOneal,this.solidAreaDown))){
+                        (!Collision.collision(collisionCheckerOneal,this.solidArea))){
                       y--;
                 }
             }

@@ -104,7 +104,7 @@ public abstract class Monster {
         this.solidAreaDown = new Rectangle(this.x + 4, this.y + 23, 20, 20);
         this.solidAreaLeft = new Rectangle(this.x - 2, this.y + 11, 15, 15);
         this.solidAreaRight = new Rectangle(this.x + 16, this.y + 11, 15, 15);
-        this.solidArea = new Rectangle(this.x, this.y, 25, 25);
+        this.solidArea = new Rectangle(this.x, this.y, 20, 20);
         this.isColidable = isColidable;
         this.isAlive = isAlive;
     }
