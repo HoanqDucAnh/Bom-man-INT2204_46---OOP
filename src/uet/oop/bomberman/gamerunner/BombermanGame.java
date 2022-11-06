@@ -28,6 +28,7 @@ import uet.oop.bomberman.graphics.*;
 import uet.oop.bomberman.entities.player.Bomb;
 import uet.oop.bomberman.graphics.gamemap.Map;
 import uet.oop.bomberman.graphics.gamesprite.Sprite;
+import uet.oop.bomberman.sound.soundManager;
 
 import java.io.*;
 import java.nio.file.Files;
@@ -42,11 +43,11 @@ import static uet.oop.bomberman.graphics.textScene.*;
 import static uet.oop.bomberman.entities.buildingblocks.Portal.isPortal;
 
 import static uet.oop.bomberman.graphics.viewManager.*;
+import static uet.oop.bomberman.sound.soundManager.*;
 
 public class BombermanGame extends Application {
     public static final int WIDTH = 25;
     public static final int HEIGHT = 15;
-
     public static int check = 0;
     public static int _width = 0;
     public static int _height = 0;
@@ -54,7 +55,7 @@ public class BombermanGame extends Application {
     private GraphicsContext gc;
 
     private Canvas canvas;
-    private Map map;
+
     public  List<Entity> entities = new ArrayList<>();
     public static final List<Entity> stillObjects = new ArrayList<>();
     public static final List<Entity> brick = new ArrayList<>();
@@ -65,6 +66,7 @@ public class BombermanGame extends Application {
     public static final List<Entity> block = new ArrayList<>();;
     private static int levelNum = 1;
     public static Timeline timeline;
+    private static boolean gameOver = false;
 
 
     public static Entity bomberman;
@@ -73,9 +75,10 @@ public class BombermanGame extends Application {
     public static Group root = new Group();
     private long last_time;
     public static boolean timerOn = false;
-
+    private soundManager soundManager1 = new soundManager(isEx);
     public static void main(String[] args) {
         Application.launch(BombermanGame.class);
+
     }
 
 
@@ -94,8 +97,8 @@ public class BombermanGame extends Application {
         ImageView imgBoxi = new ImageView(imgBox);
 
 
-
-
+        soundManager soundManager = new soundManager();
+//        soundManager soundManager1 = new soundManager(isEx);
         // Tao root container
 //        Group root = new Group();
         root.getChildren().add(canvas);
@@ -131,8 +134,19 @@ public class BombermanGame extends Application {
             if (timerOn) {
                 time();
                 heart();
+
             }
 
+            exSound();
+            if (gameOver == true) {
+                try {
+                    gameOver(root);
+                } catch (IOException e) {
+                    throw new RuntimeException(e);
+                }
+                gameOver = false;
+                timeline.stop();
+            }
 
         }));
 
@@ -203,7 +217,7 @@ public class BombermanGame extends Application {
             monsterCount.forEach(Monster::update);
             items.forEach(Entity::update);
             bomberman.update();
-            System.out.println(heart);
+
             boolean wait = false;
             if (monsterCount.size() == 0 && !isPortal && !wait) {
                 Entity portal = new Portal(_width - 2, _height - 2, Sprite.portal.getFxImage(), true);
@@ -216,6 +230,15 @@ public class BombermanGame extends Application {
                     long waitingTime = System.currentTimeMillis();
                 }
             }
+
+            if (heart == 0 || time_number == 0) {
+                gameOver = true;
+                heart++;
+                endSound.play();
+                mediaPlayer.stop();
+            }
+
+
         }
 
         public void render() {
@@ -229,6 +252,7 @@ public class BombermanGame extends Application {
 
         public void transition(Group root) throws IOException {
             GameSubscene subscene = new GameSubscene("res/Buttons/Black.jpg");
+            levelNum++;
             GameSubscene subscene1 = new GameSubscene(levelNum);
 
             root.getChildren().add(subscene);
@@ -236,6 +260,7 @@ public class BombermanGame extends Application {
 //            root.getChildren().add(textP);
             subscene.moveScene();
             subscene1.moveScene();
+
 
         }
 
@@ -254,4 +279,27 @@ public class BombermanGame extends Application {
     public void heart() {
         live.setText("Heart: " + heart);
     }
+
+    public void exSound() {
+        if (isEx ==true ) {
+            bombSound.play();
+            isEx = false;
+        } else {
+            bombSound.stop();
+        }
+
+    }
+
+    public void gameOver(Group root) throws IOException {
+        GameSubscene subscene = new GameSubscene("res/Buttons/Black.jpg");
+
+        GameSubscene subscene1 = new GameSubscene("res/Buttons/Black.jpg", gameOver);
+
+        root.getChildren().add(subscene);
+        root.getChildren().add(subscene1);
+//            root.getChildren().add(textP);
+        subscene.movePause();
+        subscene1.movePause();
+    }
+
     }

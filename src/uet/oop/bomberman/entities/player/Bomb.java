@@ -12,6 +12,7 @@ import java.awt.*;
 import static uet.oop.bomberman.gamerunner.BombermanGame.bomberman;
 import static uet.oop.bomberman.gamerunner.BombermanGame.*;
 import static uet.oop.bomberman.graphics.gamesprite.Sprite.SCALED_SIZE;
+import static uet.oop.bomberman.sound.soundManager.isEx;
 
 public class Bomb extends Entity {
     private CollisionChecker collisionCheckerBomb;
@@ -222,11 +223,14 @@ public class Bomb extends Entity {
     private void Explosion() {
         if (isBomb == 2)
             if (System.currentTimeMillis() - timeBomb < 800) {
+                isEx = true;
                 if (System.currentTimeMillis() - timeTmp > 100) {
                     //createEdge();
                     System.out.println(System.currentTimeMillis());
+
                     explosionCenter();
                     timeTmp += 100;
+
                 }
             } else {
                 isBomb = 0;

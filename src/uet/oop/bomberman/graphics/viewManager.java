@@ -20,6 +20,7 @@ import java.nio.file.Paths;
 
 import static uet.oop.bomberman.gamerunner.BombermanGame.*;
 import static uet.oop.bomberman.graphics.textScene.time_number;
+import static uet.oop.bomberman.sound.soundManager.mediaPlayer;
 
 
 public class viewManager {
@@ -28,6 +29,7 @@ public class viewManager {
     public static Pane ingPane = new Pane();
     public static boolean start = false;
     public static boolean pause = false;
+    public static boolean mute = false;
     private static final String fontPath = "res/font/Mario.ttf";
 
     public viewManager(Group root) throws IOException {
@@ -41,6 +43,7 @@ public class viewManager {
 
     public viewManager(Group root, boolean bruh) throws FileNotFoundException {
         createPause();
+        createMute();
         root.getChildren().add(ingPane);
 
     }
@@ -137,10 +140,70 @@ public class viewManager {
                     button.setText("| |");
                     textP.setText("Pause ->");
                     pause = false;
+
                 }
             }
         });
         ingPane.getChildren().add(textP);
         ingPane.getChildren().add(button);
     }
+
+    public void createMute() throws FileNotFoundException {
+        MenuButton button = new MenuButton("| |", pause);
+        Text textP = new Text("Mute ->");
+
+//        time.setFill(Color.WHITE);
+        textP.setFont(Font.loadFont(new FileInputStream(fontPath),15));
+        textP.setX(500);
+        textP.setY(25);
+        button.setLayoutX(650);
+        button.setLayoutY(0);
+        button.setOnAction(new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent actionEvent) {
+                if (mute == false) {
+                    button.setText("~");
+                    textP.setText("Unmute ->");
+                    mediaPlayer.pause();
+                    mute = true;
+                } else {
+
+                    button.setText("| |");
+                    textP.setText("Mute ->");
+                    mute = false;
+                    mediaPlayer.play();
+                }
+            }
+        });
+        ingPane.getChildren().add(textP);
+        ingPane.getChildren().add(button);
+    }
+
+    public void createCheat() throws IOException {
+        Pane pane1 = new Pane();
+        pane1.setPrefWidth(200);
+        pane1.setPrefHeight(300);
+//        InputStream is = Files.newInputStream(Paths.get());
+//        Image img = new Image(is);
+//        ImageView imgView = new ImageView(img);
+        GameSubscene subscene = new GameSubscene("res/Buttons/Box.png");
+        MenuButton button = new MenuButton("How to play");
+        button.setLayoutX(290);
+        button.setLayoutY(350);
+        subscene.widthProperty().bind(pane1.widthProperty());
+        subscene.heightProperty().bind(pane1.heightProperty());
+        subscene.setLayoutX(290);
+        subscene.setLayoutY(-300);
+        button.setOnAction(new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent actionEvent) {
+                subscene.moveGuide();
+
+            }
+        });
+        pane.getChildren().add(button);
+        pane1.getChildren().add(subscene);
+        pane.getChildren().add(pane1);
+    }
+
 }

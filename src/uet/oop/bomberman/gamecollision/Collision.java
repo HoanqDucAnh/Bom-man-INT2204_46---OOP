@@ -16,6 +16,7 @@ import static uet.oop.bomberman.entities.buildingblocks.Brick.*;
 import static uet.oop.bomberman.entities.player.Bomber.*;
 import static uet.oop.bomberman.entities.buildingblocks.Brick.swapKill;
 import static uet.oop.bomberman.entities.player.Bomb.*;
+import static uet.oop.bomberman.graphics.textScene.time_number;
 
 public class Collision {
     public static boolean collision(CollisionChecker collisionCheckerer, Rectangle player) {
@@ -139,6 +140,7 @@ public class Collision {
                         bomberman.setX(1*32);
                         bomberman.setY(1*32);
                         new Level2();
+                        time_number = 120;
                     }
                     if (check == 2) {
                         System.out.println(check);
@@ -146,6 +148,7 @@ public class Collision {
                         items.clear();
                         block.clear();
                         new Level3();
+                        time_number = 120;
                     }
                     return true;
                 }

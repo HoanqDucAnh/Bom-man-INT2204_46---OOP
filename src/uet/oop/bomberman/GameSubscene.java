@@ -11,6 +11,7 @@ import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
 import javafx.scene.text.Text;
 import javafx.util.Duration;
+import uet.oop.bomberman.graphics.MenuButton;
 
 import java.awt.*;
 import java.io.FileInputStream;
@@ -51,6 +52,25 @@ public class GameSubscene extends SubScene {
         root2.getChildren().add(textP);
     }
 
+    public GameSubscene(String text, boolean over) throws IOException {
+        super(new Group(), 1000, 480);
+        Text textP = new Text("Game Over ");
+
+        textP.setFill(Color.RED);
+
+        textP.setFont(Font.loadFont(new FileInputStream(fontPath),15));
+        textP.setX(400);
+        textP.setY(250);
+
+        Group root2 = (Group) this.getRoot();
+        root2.getChildren().add(textP);
+    }
+
+    public GameSubscene(boolean pause) throws FileNotFoundException {
+        super(new Group(), 800, 480);
+        MenuButton button1 = new MenuButton("| |");
+    }
+
     public void moveScene() throws FileNotFoundException {
         TranslateTransition transition = new TranslateTransition();
 
@@ -79,6 +99,13 @@ public class GameSubscene extends SubScene {
     }
 
     public void movePause() {
+        TranslateTransition transition = new TranslateTransition();
 
+        transition.setDuration(Duration.seconds(3));
+        transition.setNode(this);
+        transition.setFromY(-480);
+        transition.setToY(0);
+
+        transition.play();
     }
 }
