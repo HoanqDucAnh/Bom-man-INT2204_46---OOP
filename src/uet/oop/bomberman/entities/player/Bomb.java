@@ -135,23 +135,49 @@ public class Bomb extends Entity {
                 edge_down.setImg(Sprite.brick_exploded.getFxImage());
             }
 
-            if (Collision.collisionMonster(collisionCheckerBomb, Right)) {
-
+            if (Collision.collisionMonsterBalloon(collisionCheckerBomb, Right)) {
                 edge_right.setImg(Sprite.balloom_dead.getFxImage());
             }
-            if (Collision.collisionMonster(collisionCheckerBomb, Left)) {
+            if (Collision.collisionMonsterBalloon(collisionCheckerBomb, Left)) {
                 edge_left.setImg(Sprite.balloom_dead.getFxImage());
             }
-            if (Collision.collisionMonster(collisionCheckerBomb, Down)) {
+            if (Collision.collisionMonsterBalloon(collisionCheckerBomb, Down)) {
                 edge_down.setImg(Sprite.balloom_dead.getFxImage());
             }
-            if (Collision.collisionMonster(collisionCheckerBomb, Up)) {
+            if (Collision.collisionMonsterBalloon(collisionCheckerBomb, Up)) {
                 edge_up.setImg(Sprite.balloom_dead.getFxImage());
             }
-            if (Collision.collisionMonster(collisionCheckerBomb, mid)) {
+            if (Collision.collisionMonsterBalloon(collisionCheckerBomb, mid)) {
                 bomb.setImg(Sprite.balloom_dead.getFxImage());
             }
 
+            if (Collision.collisionMonsterKodoria(collisionCheckerBomb, Right)) {
+                edge_right.setImg(Sprite.kondoria_dead.getFxImage());
+            }
+            if (Collision.collisionMonsterBalloon(collisionCheckerBomb, Left)) {
+                edge_left.setImg(Sprite.kondoria_dead.getFxImage());
+            }
+            if (Collision.collisionMonsterBalloon(collisionCheckerBomb, Down)) {
+                edge_down.setImg(Sprite.kondoria_dead.getFxImage());
+            }
+            if (Collision.collisionMonsterBalloon(collisionCheckerBomb, Up)) {
+                edge_up.setImg(Sprite.kondoria_dead.getFxImage());
+            }
+            if (Collision.collisionMonsterBalloon(collisionCheckerBomb, mid)) {
+                bomb.setImg(Sprite.kondoria_dead.getFxImage());
+            }
+            if (Collision.collisionMonsterOneal(collisionCheckerBomb, Left)) {
+                edge_left.setImg(Sprite.kondoria_dead.getFxImage());
+            }
+            if (Collision.collisionMonsterOneal(collisionCheckerBomb, Down)) {
+                edge_down.setImg(Sprite.kondoria_dead.getFxImage());
+            }
+            if (Collision.collisionMonsterOneal(collisionCheckerBomb, Up)) {
+                edge_up.setImg(Sprite.kondoria_dead.getFxImage());
+            }
+            if (Collision.collisionMonsterOneal(collisionCheckerBomb, mid)) {
+                bomb.setImg(Sprite.kondoria_dead.getFxImage());
+            }
             if (Collision.collisionCheck(Left)) {
             }
             if (Collision.collisionCheck(Right)) {
@@ -181,6 +207,18 @@ public class Bomb extends Entity {
                 edge_up.setImg(Sprite.transparent.getFxImage());
             }
 
+            if (Collision.collisionBrick(collisionCheckerBomb, Right)) {
+                edge_right.setImg(Sprite.brick_exploded1.getFxImage());
+            }
+            if (Collision.collisionBrick(collisionCheckerBomb, Left)) {
+                edge_left.setImg(Sprite.brick_exploded1.getFxImage());
+            }
+            if (Collision.collisionBrick(collisionCheckerBomb, Up)) {
+                edge_up.setImg(Sprite.brick_exploded1.getFxImage());
+            }
+            if (Collision.collisionBrick(collisionCheckerBomb, Down)) {
+                edge_down.setImg(Sprite.brick_exploded1.getFxImage());
+            }
             swapExplosion = 3;
 
         } else if (swapExplosion == 3) {
@@ -200,6 +238,18 @@ public class Bomb extends Entity {
             }
             if (Collision.collision(collisionCheckerBomb, Up)) {
                 edge_up.setImg(Sprite.transparent.getFxImage());
+            }
+            if (Collision.collisionBrick(collisionCheckerBomb, Right)) {
+                edge_right.setImg(Sprite.brick_exploded2.getFxImage());
+            }
+            if (Collision.collisionBrick(collisionCheckerBomb, Left)) {
+                edge_left.setImg(Sprite.brick_exploded2.getFxImage());
+            }
+            if (Collision.collisionBrick(collisionCheckerBomb, Up)) {
+                edge_up.setImg(Sprite.brick_exploded2.getFxImage());
+            }
+            if (Collision.collisionBrick(collisionCheckerBomb, Down)) {
+                edge_down.setImg(Sprite.brick_exploded2.getFxImage());
             }
             swapExplosion = 1;
         }
@@ -221,7 +271,7 @@ public class Bomb extends Entity {
 
     private void Explosion() {
         if (isBomb == 2)
-            if (System.currentTimeMillis() - timeBomb < 800) {
+            if (System.currentTimeMillis() - timeBomb < 500) {
                 if (System.currentTimeMillis() - timeTmp > 100) {
                     //createEdge();
                     System.out.println(System.currentTimeMillis());

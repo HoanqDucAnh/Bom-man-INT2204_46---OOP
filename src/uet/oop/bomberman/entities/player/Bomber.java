@@ -105,6 +105,9 @@ public class Bomber extends Entity {
         if (Collision.collisionItemSpeed(collisionCheckerBomber, this.solidAreaUp)) {
             currentSpeed++;
         }
+        if (Collision.collisionItemHeart(collisionCheckerBomber, this.solidAreaUp)) {
+            heart++;
+        }
     }
 
     public void setLeft() {
@@ -116,6 +119,9 @@ public class Bomber extends Entity {
         }
         if (Collision.collisionItemSpeed(collisionCheckerBomber, this.solidAreaLeft)) {
             currentSpeed++;
+        }
+        if (Collision.collisionItemHeart(collisionCheckerBomber, this.solidAreaLeft)) {
+            heart++;
         }
     }
 

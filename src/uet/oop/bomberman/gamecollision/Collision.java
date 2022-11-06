@@ -4,6 +4,9 @@ import uet.oop.bomberman.entities.Entity;
 import uet.oop.bomberman.entities.Item.HeartIterm;
 import uet.oop.bomberman.entities.Item.SpeedItem;
 import uet.oop.bomberman.entities.buildingblocks.Portal;
+import uet.oop.bomberman.entities.enemy.Balloon;
+import uet.oop.bomberman.entities.enemy.Kodoria;
+import uet.oop.bomberman.entities.enemy.Oneal;
 import uet.oop.bomberman.entities.player.Bomb;
 import uet.oop.bomberman.graphics.gamesprite.Sprite;
 import uet.oop.bomberman.level.Level2;
@@ -153,9 +156,9 @@ public class Collision {
         return false;
     }
 
-    public static boolean collisionMonster(CollisionChecker collisionCheckerer, Rectangle player) {
+    public static boolean collisionMonsterBalloon(CollisionChecker collisionCheckerer, Rectangle player) {
         for (int i = 0; i < monsterCount.size(); i++) {
-            if (monsterCount.get(i).isColidable()) {
+            if (monsterCount.get(i) instanceof Balloon && monsterCount.get(i).isColidable()) {
                 collisionCheckerer = new CollisionChecker(player, monsterCount.get(i).getSolidArea());
                 if (collisionCheckerer.isColided()) {
                     monsterCount.get(i).setDirection(0);
@@ -169,6 +172,36 @@ public class Collision {
         return false;
     }
 
+    public static boolean collisionMonsterKodoria(CollisionChecker collisionCheckerer, Rectangle player) {
+        for (int i = 0; i < monsterCount.size(); i++) {
+            if (monsterCount.get(i) instanceof Kodoria && monsterCount.get(i).isColidable()) {
+                collisionCheckerer = new CollisionChecker(player, monsterCount.get(i).getSolidArea());
+                if (collisionCheckerer.isColided()) {
+                    monsterCount.get(i).setDirection(0);
+                    monsterCount.get(i).setAlive(false);
+                    monsterCount.get(i).setImg(Sprite.transparent.getFxImage());
+                    monsterCount.remove(i);
+                    return true;
+                }
+            }
+        }
+        return false;
+    }
+    public static boolean collisionMonsterOneal(CollisionChecker collisionCheckerer, Rectangle player) {
+        for (int i = 0; i < monsterCount.size(); i++) {
+            if (monsterCount.get(i) instanceof Oneal && monsterCount.get(i).isColidable()) {
+                collisionCheckerer = new CollisionChecker(player, monsterCount.get(i).getSolidArea());
+                if (collisionCheckerer.isColided()) {
+                    monsterCount.get(i).setDirection(0);
+                    monsterCount.get(i).setAlive(false);
+                    monsterCount.get(i).setImg(Sprite.transparent.getFxImage());
+                    monsterCount.remove(i);
+                    return true;
+                }
+            }
+        }
+        return false;
+    }
     public static boolean collisionMonsterMid(CollisionChecker collisionCheckerer, Rectangle player) {
         for (int i = 0; i < monsterCount.size(); i++) {
             if (monsterCount.get(i).isColidable()) {

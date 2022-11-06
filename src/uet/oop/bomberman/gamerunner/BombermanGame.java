@@ -142,102 +142,104 @@ public class BombermanGame extends Application {
 
 
 
-            bomberman = new Bomber(1, 2, Sprite.player_right.getFxImage());
-            bomberman.setLife(false);
-            scene.setOnKeyPressed(new EventHandler<KeyEvent>() {
+        bomberman = new Bomber(1, 2, Sprite.player_right.getFxImage());
+        bomberman.setLife(false);
+        scene.setOnKeyPressed(new EventHandler<KeyEvent>() {
 
-                @Override
-                public void handle(KeyEvent keyEvent) {
-                    if(bomberman.isLife() == true) {
-                        if (keyEvent.getCode() == KeyCode.A) {
-                            bomberman.setLeftPressed(true);
-                        }
-                        if (keyEvent.getCode() == KeyCode.W) {
-                            bomberman.setUpPressed(true);
-                        }
-                        if (keyEvent.getCode() == KeyCode.S) {
-                            bomberman.setDownPressed(true);
-                        }
-                        if (keyEvent.getCode() == KeyCode.D) {
-                            bomberman.setRightPressed(true);
-                        }
-                        if (keyEvent.getCode() == KeyCode.B) {
-                            Bomb.putBomb();
-                        }
-
-                    }
-                }
-            });
-
-            scene.setOnKeyReleased(new EventHandler<KeyEvent>() {
-                @Override
-                public void handle(KeyEvent keyEvent) {
+            @Override
+            public void handle(KeyEvent keyEvent) {
+                if(bomberman.isLife() == true) {
                     if (keyEvent.getCode() == KeyCode.A) {
-                        bomberman.setLeftPressed(false);
-                        bomberman.setImg(Sprite.player_left.getFxImage());
+                        bomberman.setLeftPressed(true);
                     }
                     if (keyEvent.getCode() == KeyCode.W) {
-                        bomberman.setUpPressed(false);
-                        bomberman.setImg(Sprite.player_up.getFxImage());
+                        bomberman.setUpPressed(true);
                     }
                     if (keyEvent.getCode() == KeyCode.S) {
-                        bomberman.setDownPressed(false);
-                        bomberman.setImg(Sprite.player_down.getFxImage());
+                        bomberman.setDownPressed(true);
                     }
                     if (keyEvent.getCode() == KeyCode.D) {
-                        bomberman.setRightPressed(false);
-                        bomberman.setImg(Sprite.player_right.getFxImage());
+                        bomberman.setRightPressed(true);
+                    }
+                    if (keyEvent.getCode() == KeyCode.B) {
+                        Bomb.putBomb();
                     }
 
                 }
-            });
+            }
+        });
+
+        scene.setOnKeyReleased(new EventHandler<KeyEvent>() {
+            @Override
+            public void handle(KeyEvent keyEvent) {
+                if (keyEvent.getCode() == KeyCode.A) {
+                    bomberman.setLeftPressed(false);
+                    bomberman.setImg(Sprite.player_left.getFxImage());
+                }
+                if (keyEvent.getCode() == KeyCode.W) {
+                    bomberman.setUpPressed(false);
+                    bomberman.setImg(Sprite.player_up.getFxImage());
+                }
+                if (keyEvent.getCode() == KeyCode.S) {
+                    bomberman.setDownPressed(false);
+                    bomberman.setImg(Sprite.player_down.getFxImage());
+                }
+                if (keyEvent.getCode() == KeyCode.D) {
+                    bomberman.setRightPressed(false);
+                    bomberman.setImg(Sprite.player_right.getFxImage());
+                }
+
+            }
+        });
 
 
     }
 
 
-        public void update() throws IOException {
+    public void update() throws IOException {
 
-            stillObjects.forEach(Entity::update);
-            block.forEach(Entity::update);
-            monsterCount.forEach(Monster::update);
-            items.forEach(Entity::update);
-            bomberman.update();
-            System.out.println(heart);
-            boolean wait = false;
-            if (monsterCount.size() == 0 && !isPortal && !wait) {
-                Entity portal = new Portal(_width - 2, _height - 2, Sprite.portal.getFxImage(), true);
-                items.add(portal);
+        stillObjects.forEach(Entity::update);
+        block.forEach(Entity::update);
+        monsterCount.forEach(Monster::update);
+        items.forEach(Entity::update);
+        bomberman.update();
+        System.out.println(heart);
+        boolean wait = false;
+        if (monsterCount.size() == 0 && !isPortal && !wait) {
+            Entity portal = new Portal(_width - 2, _height - 2, Sprite.portal.getFxImage(), true);
+            items.add(portal);
 
-                if (Collision.collisionPortal(bomberman.getSolidAreaRight(), portal) && coPortal == true) {
-                    transition(root);
-                    coPortal = false;
-                    wait = true;
-                    long waitingTime = System.currentTimeMillis();
-                }
+            if ((Collision.collisionPortal(bomberman.getSolidAreaRight(), portal) || (Collision.collisionPortal(bomberman.getSolidAreaDown(), portal)))  && coPortal == true ) {
+                transition(root);
+                coPortal = false;
+                wait = true;
+                long waitingTime = System.currentTimeMillis();
             }
         }
+    }
 
-        public void render() {
-            gc.clearRect(0, 0, canvas.getWidth(), canvas.getHeight());
-            stillObjects.forEach(g -> g.render(gc));
-            monsterCount.forEach((g -> g.render(gc)));
-            items.forEach((g -> g.render(gc)));
-            block.forEach((g -> g.render(gc)));
-            bomberman.render(gc);
-        }
+    public void render() {
+        gc.clearRect(0, 0, canvas.getWidth(), canvas.getHeight());
+        stillObjects.forEach(g -> g.render(gc));
+        monsterCount.forEach((g -> g.render(gc)));
+        items.forEach((g -> g.render(gc)));
+        block.forEach((g -> g.render(gc)));
+        bomberman.render(gc);
+    }
 
-        public void transition(Group root) throws IOException {
-            GameSubscene subscene = new GameSubscene("res/Buttons/Black.jpg");
-            GameSubscene subscene1 = new GameSubscene(levelNum);
+    public void transition(Group root) throws IOException {
+        GameSubscene subscene = new GameSubscene("res/Buttons/Black.jpg");
+        levelNum++;
+        GameSubscene subscene1 = new GameSubscene(levelNum);
 
-            root.getChildren().add(subscene);
-            root.getChildren().add(subscene1);
+        root.getChildren().add(subscene);
+        root.getChildren().add(subscene1);
 //            root.getChildren().add(textP);
-            subscene.moveScene();
-            subscene1.moveScene();
+        subscene.moveScene();
+        subscene1.moveScene();
 
-        }
+
+    }
 
 
     public void time() {
@@ -254,4 +256,4 @@ public class BombermanGame extends Application {
     public void heart() {
         live.setText("Heart: " + heart);
     }
-    }
+}
