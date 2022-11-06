@@ -3,10 +3,9 @@ package uet.oop.bomberman.entities;
 
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.image.Image;
-import uet.oop.bomberman.graphics.Sprite;
+import uet.oop.bomberman.graphics.gamesprite.Sprite;
 
 import java.awt.*;
-import java.awt.event.KeyEvent;
 
 public abstract class Entity {
     //Tọa độ X tính từ góc trái trên trong Canvas
@@ -24,7 +23,7 @@ public abstract class Entity {
 
     private boolean colidable;
 
-    protected boolean life;
+    protected static boolean life;
 
     public boolean isLife() {
         return life;
@@ -40,7 +39,7 @@ public abstract class Entity {
         this.img = img;
         this.colidable = colidable;
         this.solidArea = new Rectangle(x,y,32, 32);
-
+        life = true;
     }
 
     public int getSpriteCounter() {

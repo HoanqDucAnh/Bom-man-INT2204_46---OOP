@@ -1,4 +1,4 @@
-package uet.oop.bomberman;
+package uet.oop.bomberman.gamerunner;
 
 import javafx.animation.Animation;
 //import javafx.animation.AnimationTimer;
@@ -15,49 +15,32 @@ import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
-import javafx.scene.paint.Color;
-import javafx.scene.text.Font;
-import javafx.scene.text.Text;
-import javafx.scene.text.TextFlow;
 import javafx.stage.Stage;
 import javafx.util.Duration;
 //import uet.oop.bomberman.entities.*;
+import uet.oop.bomberman.GameSubscene;
+import uet.oop.bomberman.entities.buildingblocks.Portal;
+import uet.oop.bomberman.entities.enemy.Monster;
 import uet.oop.bomberman.entities.*;
+import uet.oop.bomberman.entities.player.Bomber;
+import uet.oop.bomberman.gamecollision.Collision;
 import uet.oop.bomberman.graphics.*;
-import uet.oop.bomberman.entities.block.Bomb;
-import uet.oop.bomberman.graphics.MenuButton;
-import uet.oop.bomberman.level.Level1;
-import javafx.scene.paint.Paint;
-import java.awt.*;
-import java.awt.Label;
+import uet.oop.bomberman.entities.player.Bomb;
+import uet.oop.bomberman.graphics.gamemap.Map;
+import uet.oop.bomberman.graphics.gamesprite.Sprite;
+
 import java.io.*;
 import java.nio.file.Files;
 import java.nio.file.Paths;
-import java.security.Key;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Scanner;
 
-import uet.oop.bomberman.level.Level2;
-
-import javafx.application.Application;
-import javafx.scene.Scene;
-import javafx.scene.control.Button;
-import javafx.scene.layout.*;
-import javafx.scene.paint.Color;
-import javafx.scene.shape.Rectangle;
-import javafx.scene.control.*;
-import javafx.stage.Stage;
-
-import static uet.oop.bomberman.entities.Bomber.heart;
+import static uet.oop.bomberman.entities.player.Bomber.heart;
 import static uet.oop.bomberman.graphics.textScene.*;
 
 
-import static uet.oop.bomberman.entities.Portal.isPortal;
-import static uet.oop.bomberman.graphics.Sprite.SCALED_SIZE;
-import static uet.oop.bomberman.graphics.Sprite.grass;
+import static uet.oop.bomberman.entities.buildingblocks.Portal.isPortal;
 
-import static uet.oop.bomberman.graphics.MenuButton.*;
 import static uet.oop.bomberman.graphics.viewManager.*;
 
 public class BombermanGame extends Application {
@@ -165,23 +148,24 @@ public class BombermanGame extends Application {
 
                 @Override
                 public void handle(KeyEvent keyEvent) {
-                    if (keyEvent.getCode() == KeyCode.A) {
-                        bomberman.setLeftPressed(true);
-                    }
-                    if (keyEvent.getCode() == KeyCode.W) {
-                        bomberman.setUpPressed(true);
-                    }
-                    if (keyEvent.getCode() == KeyCode.S) {
-                        bomberman.setDownPressed(true);
-                    }
-                    if (keyEvent.getCode() == KeyCode.D) {
-                        bomberman.setRightPressed(true);
-                    }
-                    if (keyEvent.getCode() == KeyCode.B) {
+                    if(bomberman.isLife() == true) {
+                        if (keyEvent.getCode() == KeyCode.A) {
+                            bomberman.setLeftPressed(true);
+                        }
+                        if (keyEvent.getCode() == KeyCode.W) {
+                            bomberman.setUpPressed(true);
+                        }
+                        if (keyEvent.getCode() == KeyCode.S) {
+                            bomberman.setDownPressed(true);
+                        }
+                        if (keyEvent.getCode() == KeyCode.D) {
+                            bomberman.setRightPressed(true);
+                        }
+                        if (keyEvent.getCode() == KeyCode.B) {
                             Bomb.putBomb();
-                    }
+                        }
 
-//
+                    }
                 }
             });
 

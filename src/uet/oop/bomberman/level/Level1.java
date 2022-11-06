@@ -1,15 +1,11 @@
 package uet.oop.bomberman.level;
 
 
-import uet.oop.bomberman.entities.Balloon;
-import uet.oop.bomberman.entities.Kodoria;
-import uet.oop.bomberman.entities.Monster;
-import uet.oop.bomberman.entities.SmartMon.Oneal;
-import uet.oop.bomberman.graphics.Map;
-import uet.oop.bomberman.graphics.MonsterMap;
-import uet.oop.bomberman.graphics.Sprite;
-import static uet.oop.bomberman.BombermanGame.*;
-import static uet.oop.bomberman.entities.Kodoria.*;
+import uet.oop.bomberman.graphics.gamemap.Map;
+import uet.oop.bomberman.graphics.gamemap.MonsterMap;
+
+import static uet.oop.bomberman.gamerunner.BombermanGame.*;
+
 public class Level1 {
     public Level1() {
         stillObjects.clear();

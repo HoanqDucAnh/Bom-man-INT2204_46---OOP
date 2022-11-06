@@ -1,11 +1,10 @@
-package uet.oop.bomberman.entities;
+package uet.oop.bomberman.entities.enemy;
 
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.image.Image;
-import uet.oop.bomberman.graphics.Sprite;
+import uet.oop.bomberman.graphics.gamesprite.Sprite;
 
 import java.awt.*;
-import java.awt.event.KeyEvent;
 
 public abstract class Monster {
     //Tọa độ X tính từ góc trái trên trong Canvas
@@ -102,10 +101,10 @@ public abstract class Monster {
         this.y = yUnit * Sprite.SCALED_SIZE;
         this.img = img;
         this.solidAreaUp = new Rectangle(this.x + 4, this.y - 4, 15, 15);
-        this.solidAreaDown = new Rectangle(this.x + 4, this.y + 23, 15, 15);
+        this.solidAreaDown = new Rectangle(this.x + 4, this.y + 23, 20, 20);
         this.solidAreaLeft = new Rectangle(this.x - 2, this.y + 11, 15, 15);
         this.solidAreaRight = new Rectangle(this.x + 16, this.y + 11, 15, 15);
-        this.solidArea = new Rectangle(this.x, this.y, 15, 15);
+        this.solidArea = new Rectangle(this.x, this.y, 25, 25);
         this.isColidable = isColidable;
         this.isAlive = isAlive;
     }

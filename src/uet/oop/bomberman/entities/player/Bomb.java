@@ -1,19 +1,18 @@
-package uet.oop.bomberman.entities.block;
+package uet.oop.bomberman.entities.player;
 
 import javafx.scene.image.Image;
-import uet.oop.bomberman.Collision;
-import uet.oop.bomberman.CollisionChecker;
+import uet.oop.bomberman.gamecollision.Collision;
+import uet.oop.bomberman.gamecollision.CollisionChecker;
 import uet.oop.bomberman.entities.Entity;
 
-import uet.oop.bomberman.graphics.Sprite;
+import uet.oop.bomberman.graphics.gamesprite.Sprite;
 
 import java.awt.*;
 
-import static uet.oop.bomberman.BombermanGame.bomberman;
-import static uet.oop.bomberman.BombermanGame.*;
-import static uet.oop.bomberman.graphics.Sprite.SCALED_SIZE;
-import static uet.oop.bomberman.graphics.Sprite.powerup_bombs;
-import uet.oop.bomberman.CollisionChecker;
+import static uet.oop.bomberman.gamerunner.BombermanGame.bomberman;
+import static uet.oop.bomberman.gamerunner.BombermanGame.*;
+import static uet.oop.bomberman.graphics.gamesprite.Sprite.SCALED_SIZE;
+
 public class Bomb extends Entity {
     private CollisionChecker collisionCheckerBomb;
     public  static long timeBomb;

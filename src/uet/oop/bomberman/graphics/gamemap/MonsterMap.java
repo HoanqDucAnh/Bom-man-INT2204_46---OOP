@@ -1,7 +1,7 @@
-package uet.oop.bomberman.graphics;
+package uet.oop.bomberman.graphics.gamemap;
 
-import uet.oop.bomberman.entities.*;
-import uet.oop.bomberman.entities.SmartMon.Oneal;
+import uet.oop.bomberman.entities.enemy.*;
+import uet.oop.bomberman.graphics.gamesprite.Sprite;
 
 import java.io.File;
 import java.io.FileReader;
@@ -9,7 +9,7 @@ import java.io.IOException;
 import java.util.Scanner;
 import java.util.StringTokenizer;
 
-import static uet.oop.bomberman.BombermanGame.*;
+import static uet.oop.bomberman.gamerunner.BombermanGame.*;
 
 public class MonsterMap {
     public MonsterMap(String level) {
@@ -33,11 +33,16 @@ public class MonsterMap {
                         Monster monster;
                         switch (s) {
                             case 4:
-                                monster = new Balloon(j, i, Sprite.balloom_left1.getFxImage(), true, true);
+                                monster = new Balloon(j, i, Sprite.balloom_left1.getFxImage(), true, true,"Horizon");
                                 break;
                             case 5:
                                 monster = new Oneal(j, i, Sprite.oneal_right1.getFxImage(),true,true);
                                 break;
+                            case 7:
+                                monster = new Kodoria(j,i,Sprite.kondoria_right1.getFxImage(), true, true);
+                                break;
+                            case 9:
+                                monster = new Balloon(j, i, Sprite.balloom_left1.getFxImage(), true, true,"Vertical");
                             default:
                                 monster = new Unharmed(j, i, Sprite.transparent.getFxImage(), false, false);
 
@@ -59,6 +64,9 @@ public class MonsterMap {
                 monsterCount.add(monsters.get(i));
             }
             if(monsters.get(i) instanceof Oneal){
+                monsterCount.add(monsters.get(i));
+            }
+            if(monsters.get(i) instanceof Kodoria){
                 monsterCount.add(monsters.get(i));
             }
         }

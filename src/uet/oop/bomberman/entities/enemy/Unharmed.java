@@ -1,12 +1,7 @@
-package uet.oop.bomberman.entities;
+package uet.oop.bomberman.entities.enemy;
 
 import javafx.scene.image.Image;
-import uet.oop.bomberman.Collision;
-import uet.oop.bomberman.CollisionChecker;
-import uet.oop.bomberman.graphics.Sprite;
-
-import java.awt.*;
-import java.util.Random;
+import uet.oop.bomberman.entities.enemy.Monster;
 
 public class Unharmed extends Monster {
 

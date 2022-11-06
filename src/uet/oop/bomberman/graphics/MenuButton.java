@@ -1,33 +1,15 @@
 package uet.oop.bomberman.graphics;
 
 
-import javafx.event.ActionEvent;
-import javafx.scene.Group;
 import javafx.scene.control.Button;
-import javafx.scene.control.Label;
 import javafx.scene.effect.DropShadow;
-import javafx.scene.image.Image;
-import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseButton;
 import javafx.scene.input.MouseEvent;
-import javafx.scene.layout.Pane;
-import javafx.scene.layout.StackPane;
-import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
-import javafx.scene.text.Text;
-import uet.oop.bomberman.BombermanGame.*;
 import javafx.event.EventHandler;
-import uet.oop.bomberman.level.Level1;
 
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
-import java.io.IOException;
-import java.io.InputStream;
-import java.nio.file.Files;
-import java.nio.file.Paths;
-import java.util.Stack;
-
-import static uet.oop.bomberman.BombermanGame.*;
 
 public class MenuButton extends Button {
 

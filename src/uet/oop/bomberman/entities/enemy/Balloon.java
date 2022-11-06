@@ -1,23 +1,16 @@
-package uet.oop.bomberman.entities;
+package uet.oop.bomberman.entities.enemy;
 
 import javafx.scene.image.Image;
-import javafx.scene.image.ImageView;
-import uet.oop.bomberman.Collision;
-import uet.oop.bomberman.CollisionChecker;
-import uet.oop.bomberman.graphics.Sprite;
+import uet.oop.bomberman.gamecollision.Collision;
+import uet.oop.bomberman.gamecollision.CollisionChecker;
+import uet.oop.bomberman.graphics.gamesprite.Sprite;
 
-import static uet.oop.bomberman.entities.Bomber.*;
-import static uet.oop.bomberman.BombermanGame.*;
-import static uet.oop.bomberman.entities.Bomber.timeTmp1;
-import static uet.oop.bomberman.entities.block.Bomb.*;
-import java.awt.*;
-import java.io.InputStream;
-import java.nio.file.Files;
-import java.nio.file.Paths;
-import java.util.Random;
+import static uet.oop.bomberman.entities.player.Bomber.*;
+import static uet.oop.bomberman.gamerunner.BombermanGame.*;
 
 public class Balloon extends Monster {
     private CollisionChecker collisionCheckerBalloon;
+    private String type;
 
     /**
      * dir = 1 -> go right
@@ -25,9 +18,9 @@ public class Balloon extends Monster {
      */
 
 
-    public Balloon(int xUnit, int yUnit, Image img, boolean isColidable, boolean isAlive) {
+    public Balloon(int xUnit, int yUnit, Image img, boolean isColidable, boolean isAlive,String type) {
         super(xUnit, yUnit, img, isColidable, isAlive);
-
+        this.type = type;
     }
 
 
@@ -54,8 +47,8 @@ public class Balloon extends Monster {
 
         this.solidAreaUp.setLocation(this.x + 4, this.y - 4);
         this.solidAreaDown.setLocation(this.x + 3, this.y + 24);
-        this.solidAreaLeft.setLocation(this.x - 2, this.y + 11);
-        this.solidAreaRight.setLocation(this.x + 16, this.y + 11);
+        this.solidAreaLeft.setLocation(this.x +4, this.y + 11);
+        this.solidAreaRight.setLocation(this.x + 13, this.y + 11);
         this.solidArea.setLocation(this.x, this.y);
         if(this.direction == -1) {
             if (spriteNum == 1) {
@@ -81,6 +74,7 @@ public class Balloon extends Monster {
 
         if (Collision.collisionCheck(this.solidAreaRight)) {
             bomberman.setColidable(false);
+            bomberman.setLife(false);
             heart--;
             System.out.println(heart);
             if (heart == 0) {
@@ -89,6 +83,7 @@ public class Balloon extends Monster {
 
         if (Collision.collisionCheck(this.solidAreaLeft)) {
             bomberman.setColidable(false);
+            bomberman.setLife(false);
             heart--;
             System.out.println(heart);
             if (heart == 0) {
@@ -96,7 +91,11 @@ public class Balloon extends Monster {
 //                authorView.setImage(img);
             }
         }
-        x+= this.direction;
+        if(this.type == "Horizon") {
+            x += this.direction;
+        }else{
+            y += this.direction;
+        }
     }
 
     public void update() {

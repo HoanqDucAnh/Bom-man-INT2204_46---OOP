@@ -25,24 +25,19 @@
 //    }
 //}
 
-package uet.oop.bomberman.entities;
+package uet.oop.bomberman.entities.player;
 
-import javafx.scene.Scene;
-import javafx.scene.SnapshotParameters;
-import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.image.Image;
-import javafx.scene.image.ImageView;
-import javafx.scene.paint.Color;
 
-import uet.oop.bomberman.Collision;
-import uet.oop.bomberman.CollisionChecker;
-import uet.oop.bomberman.graphics.Sprite;
+import uet.oop.bomberman.gamecollision.Collision;
+import uet.oop.bomberman.gamecollision.CollisionChecker;
+import uet.oop.bomberman.entities.Entity;
+import uet.oop.bomberman.graphics.gamesprite.Sprite;
 
 import java.awt.*;
 
 
-import static uet.oop.bomberman.BombermanGame.*;
-import static uet.oop.bomberman.entities.block.Bomb.*;
+import static uet.oop.bomberman.gamerunner.BombermanGame.*;
 
 
 public class Bomber extends Entity {
@@ -69,15 +64,15 @@ public class Bomber extends Entity {
     public static int speedUp = 1;
     public static int speedDown = 1;
 
-
     public Bomber(int x, int y, Image img) {
         super(x, y, img, true);
         this.solidAreaUp = new Rectangle(this.x + 4, this.y - 4, 15, 15);
-        this.solidAreaDown = new Rectangle(this.x + 4, this.y + 24, 15, 15);
+        this.solidAreaDown = new Rectangle(this.x + 4, this.y + 23, 15, 15);
         this.solidAreaLeft = new Rectangle(this.x - 2, this.y + 11, 15, 15);
         this.solidAreaRight = new Rectangle(this.x + 16, this.y + 11, 15, 15);
-        this.solidArea = new Rectangle(this.x, this.y, 30, 30);
+        this.solidArea = new Rectangle(this.x, this.y, 25, 25);
         //this.solidArea = new Rectangle()
+        //life = true;
     }
 
     public static void killBomber() {
@@ -96,7 +91,8 @@ public class Bomber extends Entity {
                 bomberman.setY(2*32);
                 swapKill = 1;
             }
-        }
+            setIsAlive(true);
+    }
 
 
     public void setUP() {
@@ -177,10 +173,10 @@ public class Bomber extends Entity {
         };
         spriteCounter++;
         this.solidAreaUp.setLocation(this.x + 4, this.y - 4);
-        this.solidAreaDown.setLocation(this.x + 3, this.y + 23);
+        this.solidAreaDown.setLocation(this.x + 3, this.y + 21);
         this.solidAreaLeft.setLocation(this.x - 2, this.y + 11);
         this.solidAreaRight.setLocation(this.x + 16, this.y + 11);
-        this.solidArea.setLocation(this.x , this.y);
+        this.solidArea.setLocation(this.x+3, this.y+3);
         if (spriteCounter > 35) {
             if (spriteNum == 1) {
                 spriteNum = 2;
@@ -257,7 +253,14 @@ public class Bomber extends Entity {
  */
     }
 
+    public static void setIsAlive(boolean status) {
+        life = status;
+    }
 
+
+    public boolean returnAlive() {
+        return life;
+    }
 
     public void update() {
         movement();

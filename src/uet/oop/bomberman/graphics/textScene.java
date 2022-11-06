@@ -1,22 +1,14 @@
 package uet.oop.bomberman.graphics;
 
-import javafx.beans.property.IntegerProperty;
-import javafx.beans.property.SimpleIntegerProperty;
 import javafx.scene.Group;
-import javafx.scene.Parent;
-import javafx.scene.SubScene;
-import javafx.scene.control.Label;
 import javafx.scene.layout.Pane;
-import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
 import javafx.scene.text.Text;
 
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
-import java.util.Timer;
-import java.util.TimerTask;
 
-import static uet.oop.bomberman.entities.Bomber.heart;
+import static uet.oop.bomberman.entities.player.Bomber.heart;
 
 public class textScene {
 

@@ -1,6 +1,7 @@
-package uet.oop.bomberman.entities;
+package uet.oop.bomberman.entities.buildingblocks;
 
 import javafx.scene.image.Image;
+import uet.oop.bomberman.entities.Entity;
 
 public class Portal extends Entity {
     public static boolean isPortal = false;

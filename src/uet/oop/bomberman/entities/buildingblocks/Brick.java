@@ -1,11 +1,6 @@
-package uet.oop.bomberman.entities;
+package uet.oop.bomberman.entities.buildingblocks;
 import javafx.scene.image.Image;
-import uet.oop.bomberman.graphics.Sprite;
-
-import java.awt.*;
-
-import static uet.oop.bomberman.BombermanGame.bomberman;
-import static uet.oop.bomberman.BombermanGame.brick;
+import uet.oop.bomberman.entities.Entity;
 
 public class Brick extends Entity {
     public static int swapKill = 1;

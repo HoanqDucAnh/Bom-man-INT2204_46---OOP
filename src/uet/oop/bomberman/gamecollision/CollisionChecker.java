@@ -1,4 +1,4 @@
-package uet.oop.bomberman;
+package uet.oop.bomberman.gamecollision;
 
 import java.awt.*;
 

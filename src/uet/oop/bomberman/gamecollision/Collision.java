@@ -1,24 +1,21 @@
-package uet.oop.bomberman;
+package uet.oop.bomberman.gamecollision;
 
-import uet.oop.bomberman.entities.Bomber;
 import uet.oop.bomberman.entities.Entity;
 import uet.oop.bomberman.entities.Item.HeartIterm;
 import uet.oop.bomberman.entities.Item.SpeedItem;
-import uet.oop.bomberman.entities.Portal;
-import uet.oop.bomberman.entities.block.Bomb;
-import uet.oop.bomberman.graphics.Sprite;
+import uet.oop.bomberman.entities.buildingblocks.Portal;
+import uet.oop.bomberman.entities.player.Bomb;
+import uet.oop.bomberman.graphics.gamesprite.Sprite;
 import uet.oop.bomberman.level.Level2;
 import uet.oop.bomberman.level.Level3;
 
-import static uet.oop.bomberman.BombermanGame.*;
+import static uet.oop.bomberman.gamerunner.BombermanGame.*;
 import java.awt.*;
 
-import static uet.oop.bomberman.entities.Brick.*;
-import static uet.oop.bomberman.BombermanGame.*;
-import static uet.oop.bomberman.entities.Bomber.*;
-import static uet.oop.bomberman.entities.Brick.swapKill;
-import static uet.oop.bomberman.entities.block.Bomb.*;
-import static uet.oop.bomberman.graphics.Sprite.SCALED_SIZE;
+import static uet.oop.bomberman.entities.buildingblocks.Brick.*;
+import static uet.oop.bomberman.entities.player.Bomber.*;
+import static uet.oop.bomberman.entities.buildingblocks.Brick.swapKill;
+import static uet.oop.bomberman.entities.player.Bomb.*;
 
 public class Collision {
     public static boolean collision(CollisionChecker collisionCheckerer, Rectangle player) {

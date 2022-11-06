@@ -1,14 +1,11 @@
 package uet.oop.bomberman.level;
 
-import uet.oop.bomberman.entities.Balloon;
-import uet.oop.bomberman.entities.Monster;
-import uet.oop.bomberman.graphics.Map;
-import uet.oop.bomberman.graphics.Sprite;
+import uet.oop.bomberman.graphics.gamemap.Map;
 
 
-import static uet.oop.bomberman.entities.Bomber.*;
-import static uet.oop.bomberman.BombermanGame.*;
-import static uet.oop.bomberman.BombermanGame.monsters;
+import static uet.oop.bomberman.entities.player.Bomber.*;
+import static uet.oop.bomberman.gamerunner.BombermanGame.*;
+import static uet.oop.bomberman.gamerunner.BombermanGame.monsters;
 
 public class Level2 {
     public Level2() {
