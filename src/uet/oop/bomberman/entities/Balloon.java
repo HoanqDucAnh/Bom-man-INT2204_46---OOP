@@ -53,7 +53,7 @@ public class Balloon extends Monster {
         }
 
         this.solidAreaUp.setLocation(this.x + 4, this.y - 4);
-        this.solidAreaDown.setLocation(this.x + 4, this.y + 23);
+        this.solidAreaDown.setLocation(this.x + 3, this.y + 24);
         this.solidAreaLeft.setLocation(this.x - 2, this.y + 11);
         this.solidAreaRight.setLocation(this.x + 16, this.y + 11);
         this.solidArea.setLocation(this.x, this.y);
@@ -76,13 +76,13 @@ public class Balloon extends Monster {
         }
         if((Collision.collision(collisionCheckerBalloon,this.solidAreaLeft) || Collision.collision(collisionCheckerBalloon,this.solidAreaRight))){
             this.direction *= -1;
-            this.solidArea.setLocation(this.x, this.y);
+            //this.solidArea.setLocation(this.x, this.y);
         }
 
         if (Collision.collisionCheck(this.solidAreaRight)) {
             bomberman.setColidable(false);
             heart--;
-            System.out.println("heart1");
+            System.out.println(heart);
             if (heart == 0) {
             }
         }
@@ -95,10 +95,6 @@ public class Balloon extends Monster {
 //                Image img = new Image("res/Buttons/gameOver.png");
 //                authorView.setImage(img);
             }
-        }
-        if (Collision.collisionBomb(this.solidAreaLeft, bomb) || Collision.collisionBomb(this.solidAreaRight, bomb)) {
-            this.direction *= -1;
-            this.solidArea.setLocation(this.x, this.y);
         }
         x+= this.direction;
     }

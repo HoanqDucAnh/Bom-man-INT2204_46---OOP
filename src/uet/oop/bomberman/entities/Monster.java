@@ -101,11 +101,11 @@ public abstract class Monster {
         this.x = xUnit * Sprite.SCALED_SIZE;
         this.y = yUnit * Sprite.SCALED_SIZE;
         this.img = img;
-        this.solidAreaUp = new Rectangle(this.x + 4, this.y -4, 10, 10);
-        this.solidAreaDown = new Rectangle(this.x + 4, this.y + 23, 10, 10);
-        this.solidAreaLeft = new Rectangle(this.x - 2, this.y + 11, 10, 10);
-        this.solidAreaRight = new Rectangle(this.x + 16, this.y + 11, 10, 10);
-        this.solidArea = new Rectangle(this.x+3, this.y-5, 10, 10);
+        this.solidAreaUp = new Rectangle(this.x + 4, this.y - 4, 15, 15);
+        this.solidAreaDown = new Rectangle(this.x + 4, this.y + 23, 15, 15);
+        this.solidAreaLeft = new Rectangle(this.x - 2, this.y + 11, 15, 15);
+        this.solidAreaRight = new Rectangle(this.x + 16, this.y + 11, 15, 15);
+        this.solidArea = new Rectangle(this.x, this.y, 15, 15);
         this.isColidable = isColidable;
         this.isAlive = isAlive;
     }
