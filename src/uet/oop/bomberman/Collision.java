@@ -236,7 +236,7 @@ public class Collision {
                 if (collisionCheckerer.isColided()) {
                     //if (System.currentTimeMillis() - timeTmp > )
                     monsters.get(i).setColidable(false);
-                    //monsters.get(i).setAlive(false);
+                    //monsters.get(i)setAlive(false);
                     //monsters.get(i).setDirection(0);
                     //monsters.get(i).setImg(Sprite.transparent.getFxImage());
                     //monsters.remove(i);

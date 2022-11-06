@@ -35,9 +35,9 @@ public class MonsterMap {
                             case 4:
                                 monster = new Balloon(j, i, Sprite.balloom_left1.getFxImage(), true, true);
                                 break;
-//                            case 5:
-//                                monster = new Oneal(j, i, Sprite.oneal_right1.getFxImage());
-//                                break;
+                            case 5:
+                                monster = new Oneal(j, i, Sprite.oneal_right1.getFxImage(),true,true);
+                                break;
                             default:
                                 monster = new Unharmed(j, i, Sprite.transparent.getFxImage(), false, false);
 
@@ -56,6 +56,9 @@ public class MonsterMap {
 
         for (int i = 0; i < monsters.size(); i++) {
             if (monsters.get(i) instanceof Balloon) {
+                monsterCount.add(monsters.get(i));
+            }
+            if(monsters.get(i) instanceof Oneal){
                 monsterCount.add(monsters.get(i));
             }
         }

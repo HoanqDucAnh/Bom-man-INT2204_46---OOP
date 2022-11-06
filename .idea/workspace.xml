@@ -4,8 +4,14 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="7275cc03-4061-43cc-95a4-a6d71586ac6d" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/src/uet/oop/bomberman/level/Level1.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/uet/oop/bomberman/level/Level1.java" afterDir="false" />
+    <list default="true" id="7275cc03-4061-43cc-95a4-a6d71586ac6d" name="Changes" comment="comit">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/res/levels/Level1.txt" beforeDir="false" afterPath="$PROJECT_DIR$/res/levels/Level1.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/uet/oop/bomberman/Collision.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/uet/oop/bomberman/Collision.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/uet/oop/bomberman/entities/Balloon.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/uet/oop/bomberman/entities/Balloon.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/uet/oop/bomberman/entities/Monster.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/uet/oop/bomberman/entities/Monster.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/uet/oop/bomberman/graphics/MonsterMap.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/uet/oop/bomberman/graphics/MonsterMap.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/levels/Level1.txt" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/levels/Level1.txt" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
