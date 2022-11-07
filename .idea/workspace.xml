@@ -4,17 +4,13 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="7275cc03-4061-43cc-95a4-a6d71586ac6d" name="Changes" comment="Cheat sheet">
+    <list default="true" id="7275cc03-4061-43cc-95a4-a6d71586ac6d" name="Changes" comment="Win sound">
+      <change afterPath="$PROJECT_DIR$/res/Buttons/biggerBlack.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/res/music/credit.mp3" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/uet/oop/bomberman/GameSubscene.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/uet/oop/bomberman/GameSubscene.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/uet/oop/bomberman/gamecollision/Collision.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/uet/oop/bomberman/gamecollision/Collision.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/uet/oop/bomberman/gamerunner/BombermanGame.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/uet/oop/bomberman/gamerunner/BombermanGame.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/uet/oop/bomberman/sound/soundManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/uet/oop/bomberman/sound/soundManager.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/uet/oop/bomberman/graphics/MenuButton$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/uet/oop/bomberman/graphics/MenuButton$1.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/uet/oop/bomberman/graphics/MenuButton$2.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/uet/oop/bomberman/graphics/MenuButton$2.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/uet/oop/bomberman/graphics/MenuButton$3.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/uet/oop/bomberman/graphics/MenuButton$3.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/uet/oop/bomberman/graphics/MenuButton$4.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/uet/oop/bomberman/graphics/MenuButton$4.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/uet/oop/bomberman/graphics/MenuButton.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/uet/oop/bomberman/graphics/MenuButton.class" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -136,7 +132,7 @@
       <workItem from="1667732466813" duration="4816000" />
       <workItem from="1667741171290" duration="12365000" />
       <workItem from="1667790577696" duration="6350000" />
-      <workItem from="1667804298036" duration="471000" />
+      <workItem from="1667804298036" duration="5079000" />
     </task>
     <task id="LOCAL-00001" summary="Monster can now laod with Map + some item stuff">
       <created>1666450006962</created>
@@ -264,7 +260,14 @@
       <option name="project" value="LOCAL" />
       <updated>1667795446810</updated>
     </task>
-    <option name="localTasksCounter" value="19" />
+    <task id="LOCAL-00019" summary="Win sound">
+      <created>1667804946834</created>
+      <option name="number" value="00019" />
+      <option name="presentableId" value="LOCAL-00019" />
+      <option name="project" value="LOCAL" />
+      <updated>1667804946834</updated>
+    </task>
+    <option name="localTasksCounter" value="20" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -300,7 +303,8 @@
     <MESSAGE value="comit" />
     <MESSAGE value="Sounds + Some menu features" />
     <MESSAGE value="Cheat sheet" />
-    <option name="LAST_COMMIT_MESSAGE" value="Cheat sheet" />
+    <MESSAGE value="Win sound" />
+    <option name="LAST_COMMIT_MESSAGE" value="Win sound" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

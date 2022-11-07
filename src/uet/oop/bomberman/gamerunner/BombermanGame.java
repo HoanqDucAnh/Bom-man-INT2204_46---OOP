@@ -15,6 +15,7 @@ import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
+import javafx.scene.text.Text;
 import javafx.stage.Stage;
 import javafx.util.Duration;
 //import uet.oop.bomberman.entities.*;
@@ -74,6 +75,7 @@ public class BombermanGame extends Application {
     private boolean coPortal = true;
     public static Group root = new Group();
     private long last_time;
+
     public static boolean timerOn = false;
     private soundManager soundManager1 = new soundManager(isEx);
     public static void main(String[] args) {
@@ -141,6 +143,7 @@ public class BombermanGame extends Application {
             if (gameOver == true) {
                 try {
                     gameOver(root);
+                    gameCredit(root);
                 } catch (IOException e) {
                     throw new RuntimeException(e);
                 }
@@ -313,7 +316,7 @@ public class BombermanGame extends Application {
 
         root.getChildren().add(subscene);
         root.getChildren().add(subscene1);
-//            root.getChildren().add(textP);
+
         subscene.movePause();
         subscene1.movePause();
     }
@@ -325,9 +328,24 @@ public class BombermanGame extends Application {
 
         root.getChildren().add(subscene);
         root.getChildren().add(subscene1);
-//            root.getChildren().add(textP);
         subscene.movePause();
         subscene1.movePause();
+    }
+
+    public void gameCredit(Group root) throws IOException {
+        GameSubscene subscene = new GameSubscene("res/Buttons/biggerBlack.png");
+
+        GameSubscene subscene1 = new GameSubscene();
+        GameSubscene creditScene = new GameSubscene();
+
+        root.getChildren().add(subscene);
+        root.getChildren().add(subscene1);
+        root.getChildren().add(creditScene);
+        subscene.moveCreditBackground();
+//        subscene.moveCredit();
+        subscene1.moveCredit();
+        creditScene.moveCredit();
+
     }
 
     }

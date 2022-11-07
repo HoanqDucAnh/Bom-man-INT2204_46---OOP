@@ -26,6 +26,7 @@ import java.nio.file.Paths;
 import static uet.oop.bomberman.entities.player.Bomber.heart;
 import static uet.oop.bomberman.gamerunner.BombermanGame.monsterCount;
 import static uet.oop.bomberman.graphics.textScene.time_number;
+import static uet.oop.bomberman.sound.soundManager.creditMusic;
 
 public class GameSubscene extends SubScene {
 
@@ -62,7 +63,7 @@ public class GameSubscene extends SubScene {
         super(new Group(), 1000, 480);
         Text textP = new Text(text);
 
-        textP.setFill(Color.RED);
+        textP.setFill(Color.WHITE);
 
         textP.setFont(Font.loadFont(new FileInputStream(fontPath),25));
         textP.setX(330);
@@ -70,6 +71,44 @@ public class GameSubscene extends SubScene {
 
         Group root2 = (Group) this.getRoot();
         root2.getChildren().add(textP);
+    }
+
+    public GameSubscene() throws IOException {
+        super(new Group(), 1000, 1920);
+        Text group = new Text("Group 21");
+        Text name1 = new Text("Hoang Viet Anh");
+        Text name2 = new Text("Hoang Duc Anh");
+        Text name3 = new Text("Nguyen Trung Hieu");
+        Text thanks = new Text("Thanks for playing!");
+
+        group.setFill(Color.WHITE);
+        group.setFont(Font.loadFont(new FileInputStream(fontPath),25));
+        group.setX(300);
+        group.setY(100);
+
+        name1.setFill(Color.WHITE);
+        name1.setFont(Font.loadFont(new FileInputStream(fontPath),25));
+        name1.setX(290);
+        name1.setY(250);
+
+        name2.setFill(Color.WHITE);
+        name2.setFont(Font.loadFont(new FileInputStream(fontPath),25));
+        name2.setX(290);
+        name2.setY(320);
+
+        name3.setFill(Color.WHITE);
+        name3.setFont(Font.loadFont(new FileInputStream(fontPath),25));
+        name3.setX(290);
+        name3.setY(390);
+
+        thanks.setFill(Color.WHITE);
+        thanks.setFont(Font.loadFont(new FileInputStream(fontPath),25));
+        thanks.setX(290);
+        thanks.setY(900);
+
+        Group root2 = (Group) this.getRoot();
+        root2.getChildren().addAll(group, name1, name2, name3, thanks);
+
     }
 
     public GameSubscene(boolean pause) throws FileNotFoundException {
@@ -133,6 +172,7 @@ public class GameSubscene extends SubScene {
         transition.setToX(-800);
 
         transition.play();
+
     }
 
 
@@ -161,5 +201,29 @@ public class GameSubscene extends SubScene {
         transition.setToY(0);
 
         transition.play();
+    }
+
+    public void moveCredit() {
+        TranslateTransition transition = new TranslateTransition();
+
+        transition.setDuration(Duration.seconds(12));
+        transition.setNode(this);
+        transition.setFromY(960);
+        transition.setToY(-480);
+
+        transition.play();
+        creditMusic.play();
+    }
+
+    public void moveCreditBackground() {
+        TranslateTransition transition = new TranslateTransition();
+
+        transition.setDuration(Duration.seconds(7));
+        transition.setNode(this);
+        transition.setFromY(960);
+        transition.setToY(120);
+
+        transition.play();
+
     }
 }
