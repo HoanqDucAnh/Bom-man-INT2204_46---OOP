@@ -154,6 +154,23 @@ public class Bomb extends Entity {
                 bomb.setImg(Sprite.balloom_dead.getFxImage());
             }
 
+            if (Collision.collisionMonsterOneal(collisionCheckerBomb, Right)) {
+
+                edge_right.setImg(Sprite.oneal_dead.getFxImage());
+            }
+            if (Collision.collisionMonsterOneal(collisionCheckerBomb, Left)) {
+                edge_left.setImg(Sprite.oneal_dead.getFxImage());
+            }
+            if (Collision.collisionMonsterOneal(collisionCheckerBomb, Down)) {
+                edge_down.setImg(Sprite.oneal_dead.getFxImage());
+            }
+            if (Collision.collisionMonsterOneal(collisionCheckerBomb, Up)) {
+                edge_up.setImg(Sprite.oneal_dead.getFxImage());
+            }
+            if (Collision.collisionMonsterOneal(collisionCheckerBomb, mid)) {
+                bomb.setImg(Sprite.oneal_dead.getFxImage());
+            }
+
             if (Collision.collisionCheck(Left)) {
                 //bomberman.setLife(false);
                 heart--;
