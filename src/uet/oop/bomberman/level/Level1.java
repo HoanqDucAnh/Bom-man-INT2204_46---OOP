@@ -12,9 +12,11 @@ public class Level1 {
         monsters.clear();
         items.clear();
         block.clear();
-        stillObjects.clear();
-        new Map("res\\levels\\Level1.txt");
+        brick.clear();
+        System.out.println("lvl1");
         new MonsterMap("res\\levels\\Level1.txt");
+        new Map("res\\levels\\Level1.txt");
+
         //bomberman.setLife(true); 
 //        Monster enemy = new Balloon(12,2, Sprite.balloom_left1.getFxImage()),;
 //        Monster enemy1 = new Balloon(10,4, Sprite.balloom_left1.getFxImage());

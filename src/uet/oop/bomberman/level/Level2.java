@@ -1,6 +1,7 @@
 package uet.oop.bomberman.level;
 
 import uet.oop.bomberman.graphics.gamemap.Map;
+import uet.oop.bomberman.graphics.gamemap.MonsterMap;
 
 
 import static uet.oop.bomberman.entities.player.Bomber.*;
@@ -12,6 +13,10 @@ public class Level2 {
         stillObjects.clear();
         monsters.clear();
         items.clear();
+        block.clear();
+        brick.clear();
+        System.out.println("Lvl2");
+        new MonsterMap("res\\levels\\Level2.txt");
         new Map("res\\levels\\Level2.txt");
         //new MonsterMap("res\\levels\\Level1.txt");
         //bomberman.setLife(true);

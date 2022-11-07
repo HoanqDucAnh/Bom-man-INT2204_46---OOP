@@ -4,13 +4,8 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="7275cc03-4061-43cc-95a4-a6d71586ac6d" name="Changes" comment="fixing oneal's bugs">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/res/levels/Level1.txt" beforeDir="false" afterPath="$PROJECT_DIR$/res/levels/Level1.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/uet/oop/bomberman/entities/Entity.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/uet/oop/bomberman/entities/Entity.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/uet/oop/bomberman/gamecollision/Collision.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/uet/oop/bomberman/gamecollision/Collision.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/levels/Level1.txt" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/levels/Level1.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/uet/oop/bomberman/entities/Entity.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/uet/oop/bomberman/entities/Entity.class" afterDir="false" />
+    <list default="true" id="7275cc03-4061-43cc-95a4-a6d71586ac6d" name="Changes" comment="added credit">
+      <change beforePath="$PROJECT_DIR$/src/uet/oop/bomberman/gamerunner/BombermanGame.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/uet/oop/bomberman/gamerunner/BombermanGame.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -28,7 +23,6 @@
     </option>
   </component>
   <component name="Git.Settings">
-    <option name="PREVIEW_PUSH_PROTECTED_ONLY" value="true" />
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="MarkdownSettingsMigration">
@@ -55,12 +49,13 @@
   </component>
   <component name="PropertiesComponent">{
   &quot;keyToString&quot;: {
+    &quot;ASKED_ADD_EXTERNAL_FILES&quot;: &quot;true&quot;,
     &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
     &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
     &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
     &quot;last_opened_file_path&quot;: &quot;D:/Intelliji Project/BTL bommm&quot;,
     &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;project.propVCSSupport.DirectoryMappings&quot;
+    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.customizations&quot;
   }
 }</component>
   <component name="RunManager">
@@ -128,6 +123,11 @@
       <workItem from="1667148008834" duration="6390000" />
       <workItem from="1667191892043" duration="889000" />
       <workItem from="1667199967164" duration="2893000" />
+      <workItem from="1667730120480" duration="1544000" />
+      <workItem from="1667732466813" duration="4816000" />
+      <workItem from="1667741171290" duration="12365000" />
+      <workItem from="1667790577696" duration="6350000" />
+      <workItem from="1667804298036" duration="5420000" />
     </task>
     <task id="LOCAL-00001" summary="Monster can now laod with Map + some item stuff">
       <created>1666450006962</created>
@@ -241,28 +241,35 @@
       <option name="project" value="LOCAL" />
       <updated>1667702842652</updated>
     </task>
-    <task id="LOCAL-00017" summary="fixing enemy and finishing kodoria">
-      <created>1667723625493</created>
+    <task id="LOCAL-00017" summary="Sounds + Some menu features">
+      <created>1667759414012</created>
       <option name="number" value="00017" />
       <option name="presentableId" value="LOCAL-00017" />
       <option name="project" value="LOCAL" />
-      <updated>1667723625493</updated>
+      <updated>1667759414012</updated>
     </task>
-    <task id="LOCAL-00018" summary="fixing enemy and finishing kodoria 2nd">
-      <created>1667731280017</created>
+    <task id="LOCAL-00018" summary="Cheat sheet">
+      <created>1667795446810</created>
       <option name="number" value="00018" />
       <option name="presentableId" value="LOCAL-00018" />
       <option name="project" value="LOCAL" />
-      <updated>1667731280017</updated>
+      <updated>1667795446810</updated>
     </task>
-    <task id="LOCAL-00019" summary="fixing oneal's bugs">
-      <created>1667752991812</created>
+    <task id="LOCAL-00019" summary="Win sound">
+      <created>1667804946834</created>
       <option name="number" value="00019" />
       <option name="presentableId" value="LOCAL-00019" />
       <option name="project" value="LOCAL" />
-      <updated>1667752991812</updated>
+      <updated>1667804946834</updated>
     </task>
-    <option name="localTasksCounter" value="20" />
+    <task id="LOCAL-00020" summary="added credit">
+      <created>1667809667188</created>
+      <option name="number" value="00020" />
+      <option name="presentableId" value="LOCAL-00020" />
+      <option name="project" value="LOCAL" />
+      <updated>1667809667188</updated>
+    </task>
+    <option name="localTasksCounter" value="21" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -280,6 +287,7 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
+    <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
     <MESSAGE value="collision" />
     <MESSAGE value="Monster can now laod with Map + some item stuff" />
     <MESSAGE value="Monster can now loadd with Map + some item stuff" />
@@ -295,10 +303,11 @@
     <MESSAGE value="update oneal 3rd" />
     <MESSAGE value="update oneal breaks walls" />
     <MESSAGE value="comit" />
-    <MESSAGE value="fixing enemy and finishing kodoria" />
-    <MESSAGE value="fixing enemy and finishing kodoria 2nd" />
-    <MESSAGE value="fixing oneal's bugs" />
-    <option name="LAST_COMMIT_MESSAGE" value="fixing oneal's bugs" />
+    <MESSAGE value="Sounds + Some menu features" />
+    <MESSAGE value="Cheat sheet" />
+    <MESSAGE value="Win sound" />
+    <MESSAGE value="added credit" />
+    <option name="LAST_COMMIT_MESSAGE" value="added credit" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

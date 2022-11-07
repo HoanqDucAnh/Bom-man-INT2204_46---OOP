@@ -70,9 +70,9 @@ public class Bomber extends Entity {
         this.solidAreaDown = new Rectangle(this.x + 4, this.y + 23, 15, 15);
         this.solidAreaLeft = new Rectangle(this.x - 2, this.y + 11, 15, 15);
         this.solidAreaRight = new Rectangle(this.x + 16, this.y + 11, 15, 15);
-        this.solidArea = new Rectangle(this.x, this.y, 25, 25);
+        this.solidArea = new Rectangle(this.x, this.y, 20, 20);
         //this.solidArea = new Rectangle()
-        //life = true;
+        life = true;
     }
 
     public static void killBomber() {
@@ -183,68 +183,68 @@ public class Bomber extends Entity {
         this.solidAreaLeft.setLocation(this.x - 2, this.y + 11);
         this.solidAreaRight.setLocation(this.x + 16, this.y + 11);
         this.solidArea.setLocation(this.x+3, this.y+3);
-        if (spriteCounter > 35) {
-            if (spriteNum == 1) {
-                spriteNum = 2;
-            } else if (spriteNum == 2) {
-                spriteNum = 1;
-            }
-            spriteCounter = 0;
-        }
-
-
-        if (upPressed) {
-            setUP();
-            if (spriteNum == 1) {
-                this.img = up[1];
+            if (spriteCounter > 35) {
+                if (spriteNum == 1) {
+                    spriteNum = 2;
+                } else if (spriteNum == 2) {
+                    spriteNum = 1;
+                }
+                spriteCounter = 0;
             }
 
-            if (spriteNum == 2) {
-                this.img = up[0];
+
+            if (upPressed) {
+                setUP();
+                if (spriteNum == 1) {
+                    this.img = up[1];
+                }
+
+                if (spriteNum == 2) {
+                    this.img = up[0];
+                }
+                y -= speedUp;
+
             }
-            y -= speedUp;
+            if (downPressed) {
+                setDown();
 
-        }
-        if (downPressed) {
-            setDown();
+                if (spriteNum == 1) {
+                    this.img = down[1];
+                }
 
-            if (spriteNum == 1) {
-                this.img = down[1];
-            }
+                if (spriteNum == 2) {
+                    this.img = down[2];
+                }
 
-            if (spriteNum == 2) {
-                this.img = down[2];
-            }
+                y += speedDown;
 
-            y += speedDown;
-
-        }
-
-        if (leftPressed) {
-            setLeft();
-            if (spriteNum == 1) {
-                this.img = left[1];
-            }
-
-            if (spriteNum == 2) {
-                this.img = left[2];
-            }
-            x -= speedLeft;
-
-        }
-
-        if (rightPressed) {
-            setRight();
-            if (spriteNum == 1) {
-                this.img = right[1];
             }
 
-            if (spriteNum == 2) {
-                this.img = right[2];
-            }
-            x += speedRight;
+            if (leftPressed) {
+                setLeft();
+                if (spriteNum == 1) {
+                    this.img = left[1];
+                }
 
-        }
+                if (spriteNum == 2) {
+                    this.img = left[2];
+                }
+                x -= speedLeft;
+
+            }
+
+            if (rightPressed) {
+                setRight();
+                if (spriteNum == 1) {
+                    this.img = right[1];
+                }
+
+                if (spriteNum == 2) {
+                    this.img = right[2];
+                }
+                x += speedRight;
+
+            }
 
 /*
       if (Collision.collisionMonsterMain(collisionCheckerBomber, this.solidArea)) {
@@ -269,7 +269,12 @@ public class Bomber extends Entity {
     }
 
     public void update() {
-        movement();
+        if (Collision.collisionMonsterKodoria(collisionCheckerBomber, this.solidArea)) {
+
+        }
+        if (bomberman.isLife() == true) {
+            movement();
+        }
 
     }
 }

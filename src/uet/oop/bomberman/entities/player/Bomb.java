@@ -9,9 +9,11 @@ import uet.oop.bomberman.graphics.gamesprite.Sprite;
 
 import java.awt.*;
 
+import static uet.oop.bomberman.entities.player.Bomber.*;
 import static uet.oop.bomberman.gamerunner.BombermanGame.bomberman;
 import static uet.oop.bomberman.gamerunner.BombermanGame.*;
 import static uet.oop.bomberman.graphics.gamesprite.Sprite.SCALED_SIZE;
+import static uet.oop.bomberman.sound.soundManager.isEx;
 
 public class Bomb extends Entity {
     private CollisionChecker collisionCheckerBomb;
@@ -60,7 +62,7 @@ public class Bomb extends Entity {
             bomb = new Bomb(x, y, Sprite.bomb.getFxImage(), false);
             stillObjects.add(bomb);;
             System.out.println("addBomb");
-            mid = new Rectangle(x * SCALED_SIZE, y * SCALED_SIZE, 15, 15);
+            mid = new Rectangle(x * SCALED_SIZE, y * SCALED_SIZE, 20, 20);
             bomb.setSolidArea(mid);
             edge_down = new Bomb(x, y + 1,
                     Sprite.transparent.getFxImage(),false);
@@ -136,6 +138,7 @@ public class Bomb extends Entity {
             }
 
             if (Collision.collisionMonsterBalloon(collisionCheckerBomb, Right)) {
+
                 edge_right.setImg(Sprite.balloom_dead.getFxImage());
             }
             if (Collision.collisionMonsterBalloon(collisionCheckerBomb, Left)) {
@@ -151,40 +154,38 @@ public class Bomb extends Entity {
                 bomb.setImg(Sprite.balloom_dead.getFxImage());
             }
 
-            if (Collision.collisionMonsterKodoria(collisionCheckerBomb, Right)) {
-                edge_right.setImg(Sprite.kondoria_dead.getFxImage());
-            }
-            if (Collision.collisionMonsterBalloon(collisionCheckerBomb, Left)) {
-                edge_left.setImg(Sprite.kondoria_dead.getFxImage());
-            }
-            if (Collision.collisionMonsterBalloon(collisionCheckerBomb, Down)) {
-                edge_down.setImg(Sprite.kondoria_dead.getFxImage());
-            }
-            if (Collision.collisionMonsterBalloon(collisionCheckerBomb, Up)) {
-                edge_up.setImg(Sprite.kondoria_dead.getFxImage());
-            }
-            if (Collision.collisionMonsterBalloon(collisionCheckerBomb, mid)) {
-                bomb.setImg(Sprite.kondoria_dead.getFxImage());
+            if (Collision.collisionMonsterOneal(collisionCheckerBomb, Right)) {
+
+                edge_right.setImg(Sprite.oneal_dead.getFxImage());
             }
             if (Collision.collisionMonsterOneal(collisionCheckerBomb, Left)) {
-                edge_left.setImg(Sprite.kondoria_dead.getFxImage());
+                edge_left.setImg(Sprite.oneal_dead.getFxImage());
             }
             if (Collision.collisionMonsterOneal(collisionCheckerBomb, Down)) {
-                edge_down.setImg(Sprite.kondoria_dead.getFxImage());
+                edge_down.setImg(Sprite.oneal_dead.getFxImage());
             }
             if (Collision.collisionMonsterOneal(collisionCheckerBomb, Up)) {
-                edge_up.setImg(Sprite.kondoria_dead.getFxImage());
+                edge_up.setImg(Sprite.oneal_dead.getFxImage());
             }
             if (Collision.collisionMonsterOneal(collisionCheckerBomb, mid)) {
-                bomb.setImg(Sprite.kondoria_dead.getFxImage());
+                bomb.setImg(Sprite.oneal_dead.getFxImage());
             }
+
             if (Collision.collisionCheck(Left)) {
+                //bomberman.setLife(false);
+                heart--;
             }
             if (Collision.collisionCheck(Right)) {
+                //bomberman.setLife(false);
+                heart--;
             }
             if (Collision.collisionCheck(Up)) {
+                //bomberman.setLife(false);
+                heart--;
             }
             if (Collision.collisionCheck(Down)) {
+                //bomberman.setLife(false);
+                heart--;
             }
             swapExplosion = 2;
 
@@ -207,18 +208,6 @@ public class Bomb extends Entity {
                 edge_up.setImg(Sprite.transparent.getFxImage());
             }
 
-            if (Collision.collisionBrick(collisionCheckerBomb, Right)) {
-                edge_right.setImg(Sprite.brick_exploded1.getFxImage());
-            }
-            if (Collision.collisionBrick(collisionCheckerBomb, Left)) {
-                edge_left.setImg(Sprite.brick_exploded1.getFxImage());
-            }
-            if (Collision.collisionBrick(collisionCheckerBomb, Up)) {
-                edge_up.setImg(Sprite.brick_exploded1.getFxImage());
-            }
-            if (Collision.collisionBrick(collisionCheckerBomb, Down)) {
-                edge_down.setImg(Sprite.brick_exploded1.getFxImage());
-            }
             swapExplosion = 3;
 
         } else if (swapExplosion == 3) {
@@ -238,18 +227,6 @@ public class Bomb extends Entity {
             }
             if (Collision.collision(collisionCheckerBomb, Up)) {
                 edge_up.setImg(Sprite.transparent.getFxImage());
-            }
-            if (Collision.collisionBrick(collisionCheckerBomb, Right)) {
-                edge_right.setImg(Sprite.brick_exploded2.getFxImage());
-            }
-            if (Collision.collisionBrick(collisionCheckerBomb, Left)) {
-                edge_left.setImg(Sprite.brick_exploded2.getFxImage());
-            }
-            if (Collision.collisionBrick(collisionCheckerBomb, Up)) {
-                edge_up.setImg(Sprite.brick_exploded2.getFxImage());
-            }
-            if (Collision.collisionBrick(collisionCheckerBomb, Down)) {
-                edge_down.setImg(Sprite.brick_exploded2.getFxImage());
             }
             swapExplosion = 1;
         }
@@ -271,12 +248,15 @@ public class Bomb extends Entity {
 
     private void Explosion() {
         if (isBomb == 2)
-            if (System.currentTimeMillis() - timeBomb < 500) {
+            if (System.currentTimeMillis() - timeBomb < 400) {
+                isEx = true;
                 if (System.currentTimeMillis() - timeTmp > 100) {
                     //createEdge();
                     System.out.println(System.currentTimeMillis());
+
                     explosionCenter();
                     timeTmp += 100;
+
                 }
             } else {
                 isBomb = 0;
