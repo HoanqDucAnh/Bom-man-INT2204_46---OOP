@@ -12,8 +12,6 @@ public class soundManager {
     public static MediaPlayer mediaPlayer;
     public static MediaPlayer bombSound;
     public static MediaPlayer endSound;
-    public static MediaPlayer winSound;
-    public static MediaPlayer creditMusic;
     public static boolean isEx = false;
     public soundManager() {
         backgroundMusic();
@@ -23,8 +21,6 @@ public class soundManager {
     public soundManager(boolean check) {
         explodeMusic();
         gameOvermusic();
-        gameWinMusic();
-        creditMusic();
     }
     public void backgroundMusic() {
         String s = "res/music/background.mp3";
@@ -50,20 +46,6 @@ public class soundManager {
         String s = "res/music/end.mp3";
         Media media = new Media(Paths.get(s).toUri().toString());
         endSound = new MediaPlayer(media);
-
-    }
-
-    public void gameWinMusic() {
-        String s = "res/music/win.mp3";
-        Media media = new Media(Paths.get(s).toUri().toString());
-        winSound = new MediaPlayer(media);
-
-    }
-
-    public void creditMusic() {
-        String s = "res/music/credit.mp3";
-        Media media = new Media(Paths.get(s).toUri().toString());
-        creditMusic = new MediaPlayer(media);
 
     }
 }

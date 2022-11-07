@@ -103,8 +103,8 @@ public class Collision {
             }
         }
         timeBrick = System.currentTimeMillis();
-        if (System.currentTimeMillis() - timeTempBrick1 < 500) {
-            if (System.currentTimeMillis() - timeTempBrick2 > 100) {
+        if (System.currentTimeMillis() - timeTempBrick1 < 150) {
+            if (System.currentTimeMillis() - timeTempBrick2 > 30) {
                 if (swapKill == 1) {
                     brick.get(temp).setImg(Sprite.brick_exploded.getFxImage());
                     swapKill = 2;
@@ -119,7 +119,7 @@ public class Collision {
                     brick.remove(temp);
                     swapKill = 1;
                 }
-                timeTempBrick2 += 100;
+                timeTempBrick2 += 30;
             }
         }
         return false;
@@ -144,7 +144,6 @@ public class Collision {
                         bomberman.setY(1*32);
                         new Level2();
                         time_number = 120;
-                        heart = 3;
                     }
                     if (check == 2) {
                         System.out.println(check);
@@ -187,7 +186,6 @@ public class Collision {
                     monsterCount.get(i).setDirection(0);
                     monsterCount.get(i).setAlive(false);
                     monsterCount.get(i).setImg(Sprite.kondoria_dead.getFxImage());
-                    monsterCount.remove(i);
                     return true;
                 }
             }
@@ -286,7 +284,7 @@ public class Collision {
             }
         if (timeBomber - timeTmp1 > 2000) {
             bomberman.setColidable(true);
-            currentSpeed = 1;
+            //currentSpeed = 1;
         }
         return false;
     }
@@ -304,7 +302,7 @@ public class Collision {
                 }
             }
             timeTmp6 = System.currentTimeMillis();
-        if (timeTmp6 - timeTmp4 > 50) {
+        if (timeTmp6 - timeTmp4 > 40) {
             bomb.setColidable(true);
         }
         return false;
