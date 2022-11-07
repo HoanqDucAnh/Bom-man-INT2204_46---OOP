@@ -11,6 +11,8 @@ import static uet.oop.bomberman.gamerunner.BombermanGame.*;
 public class Kodoria extends Monster {
     public  static long timeKodoria;
     public static long timeTmpKodoria;
+
+    public static int tempKodoria;
     private CollisionChecker collisionCheckerBalloon;
 
     /**
