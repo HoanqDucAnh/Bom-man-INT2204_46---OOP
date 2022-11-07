@@ -136,20 +136,20 @@ public class Bomb extends Entity {
                 edge_down.setImg(Sprite.brick_exploded.getFxImage());
             }
 
-            if (Collision.collisionMonster(collisionCheckerBomb, Right)) {
+            if (Collision.collisionMonsterBalloon(collisionCheckerBomb, Right)) {
 
                 edge_right.setImg(Sprite.balloom_dead.getFxImage());
             }
-            if (Collision.collisionMonster(collisionCheckerBomb, Left)) {
+            if (Collision.collisionMonsterBalloon(collisionCheckerBomb, Left)) {
                 edge_left.setImg(Sprite.balloom_dead.getFxImage());
             }
-            if (Collision.collisionMonster(collisionCheckerBomb, Down)) {
+            if (Collision.collisionMonsterBalloon(collisionCheckerBomb, Down)) {
                 edge_down.setImg(Sprite.balloom_dead.getFxImage());
             }
-            if (Collision.collisionMonster(collisionCheckerBomb, Up)) {
+            if (Collision.collisionMonsterBalloon(collisionCheckerBomb, Up)) {
                 edge_up.setImg(Sprite.balloom_dead.getFxImage());
             }
-            if (Collision.collisionMonster(collisionCheckerBomb, mid)) {
+            if (Collision.collisionMonsterBalloon(collisionCheckerBomb, mid)) {
                 bomb.setImg(Sprite.balloom_dead.getFxImage());
             }
 

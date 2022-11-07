@@ -1,6 +1,8 @@
 package uet.oop.bomberman;
 
 import javafx.animation.TranslateTransition;
+import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
 import javafx.scene.Group;
 import javafx.scene.Parent;
 import javafx.scene.SubScene;
@@ -20,6 +22,10 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.nio.file.Files;
 import java.nio.file.Paths;
+
+import static uet.oop.bomberman.entities.player.Bomber.heart;
+import static uet.oop.bomberman.gamerunner.BombermanGame.monsterCount;
+import static uet.oop.bomberman.graphics.textScene.time_number;
 
 public class GameSubscene extends SubScene {
 
@@ -68,7 +74,55 @@ public class GameSubscene extends SubScene {
 
     public GameSubscene(boolean pause) throws FileNotFoundException {
         super(new Group(), 800, 480);
-        MenuButton button1 = new MenuButton("| |");
+        boolean br = false;
+        MenuButton button = new MenuButton("", br);
+        MenuButton button1 = new MenuButton("", br);
+        MenuButton button3 = new MenuButton("", br);
+        Text cheat1 = new Text("Kill all");
+        Text cheat2 = new Text("More hearts ");
+        Text cheat3 = new Text("More time");
+        cheat1.setFont(Font.loadFont(new FileInputStream(fontPath),15));
+        cheat2.setFont(Font.loadFont(new FileInputStream(fontPath),15));
+        cheat3.setFont(Font.loadFont(new FileInputStream(fontPath),15));
+        cheat1.setFill(Color.RED);
+        cheat2.setFill(Color.RED);
+        cheat3.setFill(Color.RED);
+        cheat1.setY(25);
+        cheat1.setX(40);
+        cheat2.setY(80);
+        cheat2.setX(40);
+        cheat3.setY(145);
+        cheat3.setX(40);
+        button1.setLayoutX(0);
+        button1.setLayoutY(60);
+        button3.setLayoutY(116);
+        button.setOnAction(new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent actionEvent) {
+                monsterCount.clear();
+
+            }
+        });
+
+        button1.setOnAction(new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent actionEvent) {
+                heart++;
+            }
+        });
+
+        button3.setOnAction(new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent actionEvent) {
+                time_number += 15;
+
+            }
+        });
+        Group root2 = (Group) this.getRoot();
+        root2.getChildren().addAll(cheat1, cheat2, cheat3);
+        root2.getChildren().addAll(button, button1, button3);
+
+
     }
 
     public void moveScene() throws FileNotFoundException {

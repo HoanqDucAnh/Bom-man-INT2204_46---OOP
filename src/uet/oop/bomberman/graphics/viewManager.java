@@ -41,9 +41,10 @@ public class viewManager {
 
     }
 
-    public viewManager(Group root, boolean bruh) throws FileNotFoundException {
+    public viewManager(Group root, boolean bruh) throws IOException {
         createPause();
         createMute();
+        createCheat();
         root.getChildren().add(ingPane);
 
     }
@@ -61,7 +62,7 @@ public class viewManager {
                 start = true;
                 timerOn = true;
                 new Level1();
-                System.out.println("bruh");
+
 
             }
         });
@@ -156,14 +157,14 @@ public class viewManager {
         textP.setFont(Font.loadFont(new FileInputStream(fontPath),15));
         textP.setX(500);
         textP.setY(25);
-        button.setLayoutX(650);
+        button.setLayoutX(610);
         button.setLayoutY(0);
         button.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent actionEvent) {
                 if (mute == false) {
                     button.setText("~");
-                    textP.setText("Unmute ->");
+                    textP.setText("Muted ->");
                     mediaPlayer.pause();
                     mute = true;
                 } else {
@@ -181,29 +182,37 @@ public class viewManager {
 
     public void createCheat() throws IOException {
         Pane pane1 = new Pane();
-        pane1.setPrefWidth(200);
-        pane1.setPrefHeight(300);
-//        InputStream is = Files.newInputStream(Paths.get());
-//        Image img = new Image(is);
-//        ImageView imgView = new ImageView(img);
+        pane1.setPrefWidth(300);
+        pane1.setPrefHeight(198);
+        boolean test = true;
         GameSubscene subscene = new GameSubscene("res/Buttons/Box.png");
-        MenuButton button = new MenuButton("How to play");
-        button.setLayoutX(290);
-        button.setLayoutY(350);
+        GameSubscene subscene1 = new GameSubscene(test);
+        MenuButton button = new MenuButton(" ", test, test);
+
+        button.setLayoutX(768);
+        button.setLayoutY(64);
         subscene.widthProperty().bind(pane1.widthProperty());
         subscene.heightProperty().bind(pane1.heightProperty());
         subscene.setLayoutX(290);
         subscene.setLayoutY(-300);
+
+        subscene1.widthProperty().bind(pane1.widthProperty());
+        subscene1.heightProperty().bind(pane1.heightProperty());
+        subscene1.setLayoutX(290);
+        subscene1.setLayoutY(-300);
+
         button.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent actionEvent) {
                 subscene.moveGuide();
+                subscene1.moveGuide();
 
             }
         });
-        pane.getChildren().add(button);
+        ingPane.getChildren().add(button);
         pane1.getChildren().add(subscene);
-        pane.getChildren().add(pane1);
+        pane1.getChildren().add(subscene1);
+        ingPane.getChildren().add(pane1);
     }
 
 }

@@ -20,6 +20,9 @@ public class MenuButton extends Button {
 
     private final String BUTTON_PRESSED_STYLE_ING = "-fx-background-color: grey; -fx-background-image: url('Buttons/red_button_pressed.png')";
     private final String BUTTON_FREE_STYLE_ING = "-fx-background-color: grey; -fx-background-image: url('Buttons/red_button.png')";
+
+    private final String BUTTON_PRESSED_STYLE_C = "-fx-background-color: transparent; -fx-background-image: url('Buttons/red_button_pressed.png')";
+    private final String BUTTON_FREE_STYLE_C = "-fx-background-color: transparent; -fx-background-image: url('Buttons/red_button.png')";
     public boolean status = true;
     public static boolean quitButton = true;
 
@@ -32,13 +35,22 @@ public class MenuButton extends Button {
         initializeButtonListeners();
     }
 
-    public MenuButton(String text, boolean bruh) throws FileNotFoundException {
+    public MenuButton(String text, boolean check) throws FileNotFoundException {
         setText(text);
         setButtonFontIng();
         setPrefWidth(32);
         setPrefHeight(32);
         setStyle(BUTTON_PRESSED_STYLE_ING);
         initializeButtonListenersIng();
+    }
+
+    public MenuButton(String text, boolean check, boolean cheat) throws FileNotFoundException {
+        setText(text);
+        setButtonFontIng();
+        setPrefWidth(32);
+        setPrefHeight(32);
+        setStyle(BUTTON_PRESSED_STYLE_C);
+        initializeButtonListenersCheat();
     }
 
     private void setButtonFont() throws FileNotFoundException {
@@ -78,8 +90,22 @@ public class MenuButton extends Button {
 
     }
 
+    private void setButtonPressedStyleCheat() {
+        setStyle(BUTTON_PRESSED_STYLE_C);
+        setPrefHeight(32);
+        setLayoutY(getLayoutY() + 4);
+
+    }
+
     private void setButtonReleasedStyleIng() {
         setStyle(BUTTON_FREE_STYLE_ING);
+        setPrefHeight(32);
+        setLayoutY(getLayoutY() - 4);
+
+    }
+
+    private void setButtonReleasedStyleCheat() {
+        setStyle(BUTTON_FREE_STYLE_C);
         setPrefHeight(32);
         setLayoutY(getLayoutY() - 4);
 
@@ -143,10 +169,7 @@ public class MenuButton extends Button {
             public void handle(MouseEvent event) {
                 if(event.getButton().equals(MouseButton.PRIMARY)) {
                     setButtonPressedStyleIng();
-//                    status = false;
-//                    //isAlive = false;
-//                    System.out.print(status);
-//                    new Level1();
+
                 }
 
             }
@@ -158,6 +181,53 @@ public class MenuButton extends Button {
             public void handle(MouseEvent event) {
                 if(event.getButton().equals(MouseButton.PRIMARY)) {
                     setButtonReleasedStyleIng();
+
+                }
+
+            }
+        });
+
+        setOnMouseEntered(new EventHandler<MouseEvent>() {
+
+            @Override
+            public void handle(MouseEvent event) {
+                setEffect(new DropShadow());
+
+            }
+        });
+
+        setOnMouseExited(new EventHandler<MouseEvent>() {
+
+            @Override
+            public void handle(MouseEvent event) {
+                setEffect(null);
+
+            }
+        });
+
+
+    }
+
+    private void initializeButtonListenersCheat() {
+
+        setOnMousePressed(new EventHandler<MouseEvent>() {
+
+            @Override
+            public void handle(MouseEvent event) {
+                if(event.getButton().equals(MouseButton.PRIMARY)) {
+                    setButtonPressedStyleCheat();
+
+                }
+
+            }
+        });
+
+        setOnMouseReleased(new EventHandler<MouseEvent>() {
+
+            @Override
+            public void handle(MouseEvent event) {
+                if(event.getButton().equals(MouseButton.PRIMARY)) {
+                    setButtonReleasedStyleCheat();
 
                 }
 
