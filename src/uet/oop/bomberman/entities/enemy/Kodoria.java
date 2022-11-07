@@ -167,66 +167,6 @@ public class Kodoria extends Monster {
         }
     }
     public void update() {
-/*
-        for (Monster x : monsters) {
-            if (x instanceof Kodoria) {
-                if (Collision.collisionCheck(x.getSolidAreaLeft())) {
-                    x.setImg(Sprite.transparent.getFxImage());
-                    bomberman.setColidable(false);
-                    heart--;
-                    System.out.println(heart);
-                    if (heart == 0) {
-
-                    }
-                    monsters.remove(x);
-                    break;
-                }
-            }
-        }
-        for (Monster x : monsters) {
-            if (x instanceof Kodoria) {
-                if (Collision.collisionCheck(x.getSolidAreaRight())) {
-                    x.setImg(Sprite.transparent.getFxImage());
-                    //x.setImg(Sprite.kondoria_dead.getFxImage());
-                    bomberman.setColidable(false);
-                    heart--;
-                    System.out.println(heart);
-                    monsters.remove(x);
-                    break;
-                }
-            }
-        }
-        for (Monster x : monsters) {
-            if (x instanceof Kodoria) {
-                if (Collision.collisionCheck(x.getSolidAreaDown())) {
-                    x.setImg(Sprite.transparent.getFxImage());
-                    //x.setImg(Sprite.kondoria_dead.getFxImage());
-                    bomberman.setColidable(false);
-                    heart--;
-                    System.out.println(heart);
-                    x.setAlive(false);
-                    monsters.remove(x);
-                    break;
-                }
-            }
-        }
-        for (Monster x : monsters) {
-            if (x instanceof Kodoria) {
-                if (Collision.collisionCheck(x.getSolidAreaUp())) {
-                    x.setImg(Sprite.transparent.getFxImage());
-                    //x.setImg(Sprite.kondoria_dead.getFxImage());
-                    bomberman.setColidable(false);
-                    heart--;
-                    System.out.println(heart);
-                    monsters.remove(x);
-
-                }
-            }
-        }
-
-
- */
-
         double check = Math.sqrt((bomberman.getX()/32 - this.getX()/32) * (bomberman.getX()/32 - this.getX()/32) + (bomberman.getY()/32 - this.getY()/32) * (bomberman.getY()/32 - this.getY()/32));
         if(check>=4) {
             movement();

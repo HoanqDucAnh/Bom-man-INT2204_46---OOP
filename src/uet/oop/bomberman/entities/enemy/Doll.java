@@ -13,7 +13,7 @@ import static uet.oop.bomberman.entities.player.Bomber.heart;
 import static uet.oop.bomberman.gamerunner.BombermanGame.*;
 
 public class Doll extends Monster {
-    private static int directionChangeTimer = 100;
+    private static int directionChangeTimer2 = 30;
     private static String currentDir = "UP";
     private static int swapKill = 1;
     private CollisionChecker collisionCheckerDoll;
@@ -37,36 +37,16 @@ public class Doll extends Monster {
     public static int generateRandom()
     {
         Random random = new Random();
-        int num =  random.nextInt(4);
-        return num;
+        return random.nextInt(4);
     }
     public String getDir(){
-        /*
-        if(this.getX()/16 == bomberman.getX()/16){
-            if (this.getY()/16 > bomberman.getY()/16){
-                currentDir = "UP";
-                return currentDir;
-            }else {
-                currentDir = "DOWN";
-                return currentDir;
-            }
-        }else if(this.getY()/16 == bomberman.getY()/16){
-            if (this.getX()/16 > bomberman.getX()/16){
-                currentDir = "LEFT";
-                return currentDir;
-            }else {
-                currentDir = "RIGHT";
-                return currentDir;
-            }
-        }else {
 
-         */
             int num = generateRandom();
-            if(directionChangeTimer>0){
-                directionChangeTimer--;
+            if(directionChangeTimer2>0){
+                directionChangeTimer2--;
                 return currentDir;
             }else {
-                directionChangeTimer = 15;
+                directionChangeTimer2 = 30;
                 switch (num) {
                     case 0:
                         currentDir = "UP";
