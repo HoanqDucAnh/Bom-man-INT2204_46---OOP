@@ -146,6 +146,7 @@ public class Collision {
                         bomberman.setY(1*32);
                         new Level2();
                         time_number = 120;
+                        heart = 3;
                     }
                     if (check == 2) {
                         System.out.println(check);
@@ -188,6 +189,7 @@ public class Collision {
                     monsterCount.get(i).setDirection(0);
                     monsterCount.get(i).setAlive(false);
                     monsterCount.get(i).setImg(Sprite.kondoria_dead.getFxImage());
+                    monsterCount.remove(i);
                     return true;
                 }
             }
