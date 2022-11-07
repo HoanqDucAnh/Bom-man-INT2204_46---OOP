@@ -60,12 +60,12 @@ public class GameSubscene extends SubScene {
 
     public GameSubscene(String text, boolean over) throws IOException {
         super(new Group(), 1000, 480);
-        Text textP = new Text("Game Over ");
+        Text textP = new Text(text);
 
         textP.setFill(Color.RED);
 
-        textP.setFont(Font.loadFont(new FileInputStream(fontPath),15));
-        textP.setX(400);
+        textP.setFont(Font.loadFont(new FileInputStream(fontPath),25));
+        textP.setX(330);
         textP.setY(250);
 
         Group root2 = (Group) this.getRoot();

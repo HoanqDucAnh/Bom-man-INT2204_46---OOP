@@ -145,14 +145,7 @@ public class Collision {
                         new Level2();
                         time_number = 120;
                     }
-                    if (check == 2) {
-                        System.out.println(check);
-                        stillObjects.clear();
-                        items.clear();
-                        block.clear();
-                        new Level3();
-                        time_number = 120;
-                    }
+
                     return true;
                 }
             }

@@ -148,6 +148,16 @@ public class BombermanGame extends Application {
                 timeline.stop();
             }
 
+            if (check == 2) {
+                try {
+                    gameWin(root);
+                } catch (IOException e) {
+                    throw new RuntimeException(e);
+                }
+                check = 3;
+                timeline.stop();
+            }
+
         }));
 
         timeline.setCycleCount(Animation.INDEFINITE);
@@ -238,6 +248,12 @@ public class BombermanGame extends Application {
                 mediaPlayer.stop();
             }
 
+            if (check == 2) {
+                winSound.play();
+                mediaPlayer.stop();
+
+            }
+
 
         }
 
@@ -293,7 +309,19 @@ public class BombermanGame extends Application {
     public void gameOver(Group root) throws IOException {
         GameSubscene subscene = new GameSubscene("res/Buttons/Black.jpg");
 
-        GameSubscene subscene1 = new GameSubscene("res/Buttons/Black.jpg", gameOver);
+        GameSubscene subscene1 = new GameSubscene("Game over", gameOver);
+
+        root.getChildren().add(subscene);
+        root.getChildren().add(subscene1);
+//            root.getChildren().add(textP);
+        subscene.movePause();
+        subscene1.movePause();
+    }
+
+    public void gameWin(Group root) throws IOException {
+        GameSubscene subscene = new GameSubscene("res/Buttons/Black.jpg");
+
+        GameSubscene subscene1 = new GameSubscene("You win ", gameOver);
 
         root.getChildren().add(subscene);
         root.getChildren().add(subscene1);
