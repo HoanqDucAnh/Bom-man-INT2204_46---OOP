@@ -144,6 +144,7 @@ public class Collision {
                         bomberman.setY(1*32);
                         new Level2();
                         time_number = 120;
+                        heart = 3;
                     }
 
                     return true;
