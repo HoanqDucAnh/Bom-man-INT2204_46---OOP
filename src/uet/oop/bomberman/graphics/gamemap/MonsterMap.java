@@ -38,11 +38,14 @@ public class MonsterMap {
                             case 5:
                                 monster = new Oneal(j, i, Sprite.oneal_right1.getFxImage(),true,true);
                                 break;
-                            case 7:
+                            case 9:
                                 monster = new Kodoria(j,i,Sprite.kondoria_right1.getFxImage(), true, true);
                                 break;
-                            case 9:
-                                monster = new Balloon(j, i, Sprite.balloom_left1.getFxImage(), true, true,"Vertical");
+//                            case 9:
+//                                monster = new Balloon(j, i, Sprite.balloom_left1.getFxImage(), true, true,"Vertical");
+                            case 7:
+                                monster = new Doll(j,i,Sprite.doll_right1.getFxImage(),true, true);
+                                break;
                             default:
                                 monster = new Unharmed(j, i, Sprite.transparent.getFxImage(), false, false);
 
@@ -67,6 +70,9 @@ public class MonsterMap {
                 monsterCount.add(monsters.get(i));
             }
             if(monsters.get(i) instanceof Kodoria){
+                monsterCount.add(monsters.get(i));
+            }
+            if (monsters.get(i) instanceof Doll) {
                 monsterCount.add(monsters.get(i));
             }
         }
