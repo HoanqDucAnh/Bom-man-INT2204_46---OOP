@@ -171,6 +171,23 @@ public class Bomb extends Entity {
                 bomb.setImg(Sprite.oneal_dead.getFxImage());
             }
 
+            if (Collision.collisionMonsterDoll(collisionCheckerBomb, Right)) {
+
+                edge_right.setImg(Sprite.doll_dead.getFxImage());
+            }
+            if (Collision.collisionMonsterDoll(collisionCheckerBomb, Left)) {
+                edge_left.setImg(Sprite.doll_dead.getFxImage());
+            }
+            if (Collision.collisionMonsterDoll(collisionCheckerBomb, Down)) {
+                edge_down.setImg(Sprite.doll_dead.getFxImage());
+            }
+            if (Collision.collisionMonsterDoll(collisionCheckerBomb, Up)) {
+                edge_up.setImg(Sprite.doll_dead.getFxImage());
+            }
+            if (Collision.collisionMonsterDoll(collisionCheckerBomb, mid)) {
+                bomb.setImg(Sprite.doll_dead.getFxImage());
+            }
+
             if (Collision.collisionCheck(Left)) {
                 //bomberman.setLife(false);
                 heart--;
@@ -248,7 +265,7 @@ public class Bomb extends Entity {
 
     private void Explosion() {
         if (isBomb == 2)
-            if (System.currentTimeMillis() - timeBomb < 400) {
+            if (System.currentTimeMillis() - timeBomb < 800) {
                 isEx = true;
                 if (System.currentTimeMillis() - timeTmp > 100) {
                     //createEdge();
