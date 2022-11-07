@@ -5,8 +5,8 @@ import uet.oop.bomberman.gamecollision.Collision;
 import uet.oop.bomberman.gamecollision.CollisionChecker;
 import uet.oop.bomberman.graphics.gamesprite.Sprite;
 
-import static uet.oop.bomberman.gamerunner.BombermanGame.bomberman;
-import static uet.oop.bomberman.entities.player.Bomber.heart;
+import static uet.oop.bomberman.entities.player.Bomber.*;
+import static uet.oop.bomberman.gamerunner.BombermanGame.*;
 
 public class Kodoria extends Monster {
     public  static long timeKodoria;
@@ -17,15 +17,29 @@ public class Kodoria extends Monster {
      * dir = 1 -> go right
      * dir = -1 -> go left
      */
-
+    private static int swapKillKodoria = 1;
     private static int resetX;
     private static int resetY;
+
     public Kodoria(int xUnit, int yUnit, Image img, boolean isColidable, boolean isAlive) {
         super(xUnit, yUnit, img, isColidable, isAlive);
         resetX = xUnit;
         resetY = yUnit;
     }
 
+    private void killKondoria(Monster animal) {
+            if (swapKillKodoria == 1) {
+                animal.setImg(Sprite.kondoria_dead.getFxImage());
+                swapKillKodoria = 2;
+            } else if (swapKillKodoria == 2) {
+                animal.setImg(Sprite.player_dead3.getFxImage());
+                swapKillKodoria = 3;
+            } else {
+                animal.setAlive(false);
+                monsters.remove(animal);
+                swapKillKodoria = 1;
+            }
+    }
     public void setRec() {
         this.solidAreaUp.setLocation(this.x + 4, this.y - 4);
         this.solidAreaDown.setLocation(this.x + 3, this.y + 23);
@@ -77,22 +91,6 @@ public class Kodoria extends Monster {
             this.solidArea.setLocation(this.x, this.y);
         }
 
-        if (Collision.collisionCheck(this.solidAreaRight)) {
-            bomberman.setColidable(false);
-            heart--;
-            System.out.println(heart);
-            if (heart == 0) {
-            }
-        }
-
-        if (Collision.collisionCheck(this.solidAreaLeft)) {
-            bomberman.setColidable(false);
-            heart--;
-            System.out.println(heart);
-            if (heart == 0) {
-
-            }
-        }
         x+= this.direction;
     }
 
@@ -138,46 +136,21 @@ public class Kodoria extends Monster {
 
         if (Collision.collisionCheck(this.solidAreaRight)) {
             bomberman.setColidable(false);
-            heart--;
+            monsterCount.remove(this);
             System.out.println(heart);
             if (heart == 0) {
             }
-            this.x = resetX*32;
-            this.y = resetY*32;
         }
 
         if (Collision.collisionCheck(this.solidAreaLeft)) {
             bomberman.setColidable(false);
-            heart--;
+            monsterCount.remove(this);
             System.out.println(heart);
             if (heart == 0) {
 
             }
-            this.x = resetX*32;
-            this.y = resetY*32;
         }
 
-        if (Collision.collisionCheck(this.solidAreaUp)) {
-            bomberman.setColidable(false);
-            heart--;
-            System.out.println(heart);
-            if (heart == 0) {
-
-            }
-            this.x = resetX*32;
-            this.y = resetY*32;
-        }
-
-        if (Collision.collisionCheck(this.solidAreaDown)) {
-            bomberman.setColidable(false);
-            heart--;
-            System.out.println(heart);
-            if (heart == 0) {
-
-            }
-            this.x = resetX*32;
-            this.y = resetY*32;
-        }
         if (bomberman.getX() < this.x) {
                 x --;
         }
@@ -192,6 +165,66 @@ public class Kodoria extends Monster {
         }
     }
     public void update() {
+/*
+        for (Monster x : monsters) {
+            if (x instanceof Kodoria) {
+                if (Collision.collisionCheck(x.getSolidAreaLeft())) {
+                    x.setImg(Sprite.transparent.getFxImage());
+                    bomberman.setColidable(false);
+                    heart--;
+                    System.out.println(heart);
+                    if (heart == 0) {
+
+                    }
+                    monsters.remove(x);
+                    break;
+                }
+            }
+        }
+        for (Monster x : monsters) {
+            if (x instanceof Kodoria) {
+                if (Collision.collisionCheck(x.getSolidAreaRight())) {
+                    x.setImg(Sprite.transparent.getFxImage());
+                    //x.setImg(Sprite.kondoria_dead.getFxImage());
+                    bomberman.setColidable(false);
+                    heart--;
+                    System.out.println(heart);
+                    monsters.remove(x);
+                    break;
+                }
+            }
+        }
+        for (Monster x : monsters) {
+            if (x instanceof Kodoria) {
+                if (Collision.collisionCheck(x.getSolidAreaDown())) {
+                    x.setImg(Sprite.transparent.getFxImage());
+                    //x.setImg(Sprite.kondoria_dead.getFxImage());
+                    bomberman.setColidable(false);
+                    heart--;
+                    System.out.println(heart);
+                    x.setAlive(false);
+                    monsters.remove(x);
+                    break;
+                }
+            }
+        }
+        for (Monster x : monsters) {
+            if (x instanceof Kodoria) {
+                if (Collision.collisionCheck(x.getSolidAreaUp())) {
+                    x.setImg(Sprite.transparent.getFxImage());
+                    //x.setImg(Sprite.kondoria_dead.getFxImage());
+                    bomberman.setColidable(false);
+                    heart--;
+                    System.out.println(heart);
+                    monsters.remove(x);
+
+                }
+            }
+        }
+
+
+ */
+
         double check = Math.sqrt((bomberman.getX()/32 - this.getX()/32) * (bomberman.getX()/32 - this.getX()/32) + (bomberman.getY()/32 - this.getY()/32) * (bomberman.getY()/32 - this.getY()/32));
         if(check>=4) {
             movement();

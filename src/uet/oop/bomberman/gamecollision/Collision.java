@@ -6,6 +6,7 @@ import uet.oop.bomberman.entities.Item.SpeedItem;
 import uet.oop.bomberman.entities.buildingblocks.Portal;
 import uet.oop.bomberman.entities.enemy.Balloon;
 import uet.oop.bomberman.entities.enemy.Kodoria;
+import uet.oop.bomberman.entities.enemy.Monster;
 import uet.oop.bomberman.entities.enemy.Oneal;
 import uet.oop.bomberman.entities.player.Bomb;
 import uet.oop.bomberman.graphics.gamesprite.Sprite;
@@ -14,7 +15,7 @@ import uet.oop.bomberman.level.Level3;
 
 import static uet.oop.bomberman.gamerunner.BombermanGame.*;
 import java.awt.*;
-
+import static uet.oop.bomberman.entities.enemy.Kodoria.*;
 import static uet.oop.bomberman.entities.buildingblocks.Brick.*;
 import static uet.oop.bomberman.entities.player.Bomber.*;
 import static uet.oop.bomberman.entities.buildingblocks.Brick.swapKill;
@@ -97,6 +98,7 @@ public class Collision {
                     timeTempBrick1 = System.currentTimeMillis();
                     timeTempBrick2 = timeTempBrick1;
                     brick.get(i).setColidable(false);
+
                     return true;
 
                 }
@@ -146,7 +148,14 @@ public class Collision {
                         time_number = 120;
                         heart = 3;
                     }
-
+                    if (check == 2) {
+                        System.out.println(check);
+                        stillObjects.clear();
+                        items.clear();
+                        block.clear();
+                        new Level3();
+                        time_number = 120;
+                    }
                     return true;
                 }
             }
@@ -170,14 +179,16 @@ public class Collision {
     }
 
     public static boolean collisionMonsterKodoria(CollisionChecker collisionCheckerer, Rectangle player) {
+        Monster x = null;
         for (int i = 0; i < monsterCount.size(); i++) {
             if (monsterCount.get(i) instanceof Kodoria && monsterCount.get(i).isColidable()) {
                 collisionCheckerer = new CollisionChecker(player, monsterCount.get(i).getSolidArea());
                 if (collisionCheckerer.isColided()) {
+                    timeKodoria = System.currentTimeMillis();
+                    timeTmpKodoria = System.currentTimeMillis() + 1000;
                     monsterCount.get(i).setDirection(0);
                     monsterCount.get(i).setAlive(false);
-                    monsterCount.get(i).setImg(Sprite.transparent.getFxImage());
-                    monsterCount.remove(i);
+                    monsterCount.get(i).setImg(Sprite.kondoria_dead.getFxImage());
                     return true;
                 }
             }
@@ -234,6 +245,7 @@ public class Collision {
                     timeTmp1 = System.currentTimeMillis();
                     timeTmp2 = timeTmp1;
                     isBomber = 1;
+                    bomberman.setLife(false);
                    bomberman.setColidable(false);
                    return true;
                 }
@@ -243,6 +255,8 @@ public class Collision {
             if (isBomber == 1) {
                 if (System.currentTimeMillis() - timeTmp1 < 1000) {
                     if (System.currentTimeMillis() - timeTmp2 > 200) {
+                        //bomberman.setLife(false);
+                        bomberman.setLife(false);
                         killBomber();
                         timeTmp2 += 200;
                     }

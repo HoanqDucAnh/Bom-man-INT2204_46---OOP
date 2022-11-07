@@ -9,6 +9,7 @@ import uet.oop.bomberman.graphics.gamesprite.Sprite;
 
 import java.awt.*;
 
+import static uet.oop.bomberman.entities.player.Bomber.*;
 import static uet.oop.bomberman.gamerunner.BombermanGame.bomberman;
 import static uet.oop.bomberman.gamerunner.BombermanGame.*;
 import static uet.oop.bomberman.graphics.gamesprite.Sprite.SCALED_SIZE;
@@ -61,7 +62,7 @@ public class Bomb extends Entity {
             bomb = new Bomb(x, y, Sprite.bomb.getFxImage(), false);
             stillObjects.add(bomb);;
             System.out.println("addBomb");
-            mid = new Rectangle(x * SCALED_SIZE, y * SCALED_SIZE, 15, 15);
+            mid = new Rectangle(x * SCALED_SIZE, y * SCALED_SIZE, 20, 20);
             bomb.setSolidArea(mid);
             edge_down = new Bomb(x, y + 1,
                     Sprite.transparent.getFxImage(),false);
@@ -154,12 +155,20 @@ public class Bomb extends Entity {
             }
 
             if (Collision.collisionCheck(Left)) {
+                //bomberman.setLife(false);
+                heart--;
             }
             if (Collision.collisionCheck(Right)) {
+                //bomberman.setLife(false);
+                heart--;
             }
             if (Collision.collisionCheck(Up)) {
+                //bomberman.setLife(false);
+                heart--;
             }
             if (Collision.collisionCheck(Down)) {
+                //bomberman.setLife(false);
+                heart--;
             }
             swapExplosion = 2;
 
@@ -222,7 +231,7 @@ public class Bomb extends Entity {
 
     private void Explosion() {
         if (isBomb == 2)
-            if (System.currentTimeMillis() - timeBomb < 800) {
+            if (System.currentTimeMillis() - timeBomb < 400) {
                 isEx = true;
                 if (System.currentTimeMillis() - timeTmp > 100) {
                     //createEdge();
