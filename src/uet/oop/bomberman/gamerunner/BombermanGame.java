@@ -154,6 +154,7 @@ public class BombermanGame extends Application {
             if (check == 2) {
                 try {
                     gameWin(root);
+                    gameCredit(root);
                 } catch (IOException e) {
                     throw new RuntimeException(e);
                 }
