@@ -25,9 +25,7 @@ public class Collision {
         for (Entity stillObject : stillObjects) {
             if (stillObject.isColidable()) {
                 collisionCheckerer = new CollisionChecker(player, stillObject.getSolidArea());
-
                 if (collisionCheckerer.isColided()) {
-
                     return true;
                 }
             }

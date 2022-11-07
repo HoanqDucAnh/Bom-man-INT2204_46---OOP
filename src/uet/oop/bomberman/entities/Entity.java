@@ -38,7 +38,7 @@ public abstract class Entity {
         this.y = yUnit * Sprite.SCALED_SIZE;
         this.img = img;
         this.colidable = colidable;
-        this.solidArea = new Rectangle(x,y,32, 32);
+        this.solidArea = new Rectangle(x,y,30, 30);
         life = true;
     }
 
