@@ -189,6 +189,7 @@ public class Collision {
                     monsterCount.get(i).setDirection(0);
                     monsterCount.get(i).setAlive(false);
                     monsterCount.get(i).setImg(Sprite.kondoria_dead.getFxImage());
+                    monsterCount.remove(i);
                     return true;
                 }
             }

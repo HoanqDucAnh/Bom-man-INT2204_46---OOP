@@ -27,19 +27,19 @@ public class Kodoria extends Monster {
         resetY = yUnit;
     }
 
-    private void killKondoria(Monster animal) {
-            if (swapKillKodoria == 1) {
-                animal.setImg(Sprite.kondoria_dead.getFxImage());
-                swapKillKodoria = 2;
-            } else if (swapKillKodoria == 2) {
-                animal.setImg(Sprite.player_dead3.getFxImage());
-                swapKillKodoria = 3;
-            } else {
-                animal.setAlive(false);
-                monsters.remove(animal);
-                swapKillKodoria = 1;
-            }
-    }
+//    private void killKondoria(Monster animal) {
+//            if (swapKillKodoria == 1) {
+//                animal.setImg(Sprite.kondoria_dead.getFxImage());
+//                swapKillKodoria = 2;
+//            } else if (swapKillKodoria == 2) {
+//                animal.setImg(Sprite.player_dead3.getFxImage());
+//                swapKillKodoria = 3;
+//            } else {
+//                animal.setAlive(false);
+//                monsterCount.remove(animal);
+//                swapKillKodoria = 1;
+//            }
+//    }
     public void setRec() {
         this.solidAreaUp.setLocation(this.x + 4, this.y - 4);
         this.solidAreaDown.setLocation(this.x + 3, this.y + 23);
