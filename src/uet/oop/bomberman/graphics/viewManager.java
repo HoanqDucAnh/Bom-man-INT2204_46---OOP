@@ -52,7 +52,7 @@ public class viewManager {
     public void createStart() throws FileNotFoundException {
 
         MenuButton button = new MenuButton("Start");
-        button.setLayoutX(290);
+        button.setLayoutX(130);
         button.setLayoutY(290);
 
         button.setOnAction(new EventHandler<ActionEvent>() {
@@ -72,7 +72,7 @@ public class viewManager {
     public void createQuit() throws FileNotFoundException {
 
         MenuButton button = new MenuButton("Quit");
-        button.setLayoutX(290);
+        button.setLayoutX(130);
         button.setLayoutY(410);
 
         button.setOnAction(new EventHandler<ActionEvent>() {
@@ -100,7 +100,7 @@ public class viewManager {
 //        ImageView imgView = new ImageView(img);
         GameSubscene subscene = new GameSubscene("res/Buttons/Control1.png");
         MenuButton button = new MenuButton("How to play");
-        button.setLayoutX(290);
+        button.setLayoutX(130);
         button.setLayoutY(350);
         subscene.widthProperty().bind(pane1.widthProperty());
         subscene.heightProperty().bind(pane1.heightProperty());

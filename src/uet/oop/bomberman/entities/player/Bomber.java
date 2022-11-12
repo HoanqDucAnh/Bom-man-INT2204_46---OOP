@@ -200,7 +200,7 @@ public class Bomber extends Entity {
                 }
 
                 if (spriteNum == 2) {
-                    this.img = up[0];
+                    this.img = up[2];
                 }
                 y -= speedUp;
 
